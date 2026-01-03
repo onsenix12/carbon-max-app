@@ -70,7 +70,7 @@ export default function QuestHubPage() {
       y: 0,
       transition: {
         duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1], // Use an array instead of string
+        ease: "easeInOut",
       },
     },
   };
