@@ -1,0 +1,74 @@
+{
+  "tiers": [
+    {
+      "id": "seedling",
+      "name": "Seedling",
+      "icon": "🌱",
+      "minPoints": 0,
+      "maxPoints": 499,
+      "color": "#B7E4C7",
+      "perks": [
+        "Track your carbon impact",
+        "Access basic quests",
+        "Join the green community"
+      ]
+    },
+    {
+      "id": "sprout",
+      "name": "Sprout",
+      "icon": "🌿",
+      "minPoints": 500,
+      "maxPoints": 1499,
+      "color": "#87A878",
+      "perks": [
+        "10% bonus points on all quests",
+        "Exclusive green merchant deals",
+        "Early access to new quests"
+      ]
+    },
+    {
+      "id": "tree",
+      "name": "Tree",
+      "icon": "🌳",
+      "minPoints": 1500,
+      "maxPoints": 3999,
+      "color": "#2D8B4E",
+      "perks": [
+        "15% bonus points on all quests",
+        "Priority lounge access",
+        "Exclusive Tree-tier quests",
+        "Monthly impact report"
+      ]
+    },
+    {
+      "id": "forest",
+      "name": "Forest",
+      "icon": "🌲",
+      "minPoints": 4000,
+      "maxPoints": 9999,
+      "color": "#1B4332",
+      "perks": [
+        "20% bonus points on all quests",
+        "VIP airport experiences",
+        "Carbon offset matching up to $50",
+        "Sustainability workshop invites"
+      ]
+    },
+    {
+      "id": "canopy",
+      "name": "Canopy",
+      "icon": "🏔️",
+      "minPoints": 10000,
+      "maxPoints": null,
+      "color": "#14532D",
+      "perks": [
+        "25% bonus points on all quests",
+        "All perks unlocked",
+        "Sustainability Ambassador status",
+        "Annual tree planting in your name",
+        "Exclusive Canopy events"
+      ]
+    }
+  ]
+}
+

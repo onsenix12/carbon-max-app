@@ -1,0 +1,45 @@
+{
+  "merchants": [
+    {
+      "id": "pho-street",
+      "name": "Pho Street",
+      "category": "Vietnamese",
+      "terminal": "Terminal 3",
+      "location": "#02-156",
+      "carbonRating": "A",
+      "description": "Authentic Vietnamese cuisine with plant-based options",
+      "walkTime": "3 min"
+    },
+    {
+      "id": "cedele",
+      "name": "Cedele",
+      "category": "Healthy Café",
+      "terminal": "Jewel",
+      "location": "#01-234",
+      "carbonRating": "A+",
+      "description": "Wholesome salads, sandwiches, and plant-forward dishes",
+      "walkTime": "5 min"
+    },
+    {
+      "id": "soup-spoon",
+      "name": "The Soup Spoon",
+      "category": "Soups & Salads",
+      "terminal": "Jewel",
+      "location": "#B2-045",
+      "carbonRating": "A",
+      "description": "Hearty soups made with sustainable ingredients",
+      "walkTime": "4 min"
+    },
+    {
+      "id": "green-party",
+      "name": "The Green Party",
+      "category": "Lifestyle",
+      "terminal": "Terminal 3",
+      "location": "#B2-089",
+      "carbonRating": "A+",
+      "description": "Sustainable lifestyle products and zero-waste essentials",
+      "walkTime": "6 min"
+    }
+  ]
+}
+

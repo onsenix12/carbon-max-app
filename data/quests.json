@@ -1,0 +1,44 @@
+{
+  "quests": [
+    {
+      "id": "jewel-green-plate",
+      "type": "merchant",
+      "mode": "jewel",
+      "title": "Green Plate Discovery",
+      "description": "Find and dine at a restaurant with a Carbon A or A+ rating",
+      "icon": "🍽️",
+      "basePoints": 75,
+      "bonusPoints": 40,
+      "bonusDescription": "Choose a plant-based meal",
+      "carbonFact": "Plant-based meals produce 50% less CO2 than meat-based meals",
+      "estimatedTime": "30 min"
+    },
+    {
+      "id": "departure-green-flight",
+      "type": "flight",
+      "mode": "departure",
+      "title": "Green Your Flight",
+      "description": "Calculate your flight emissions and contribute SAF to reduce your impact",
+      "icon": "✈️",
+      "basePoints": 150,
+      "bonusPoints": 200,
+      "bonusDescription": "Contribute 25% SAF coverage",
+      "carbonFact": "SAF reduces lifecycle emissions by up to 80% compared to conventional jet fuel",
+      "estimatedTime": "5 min"
+    },
+    {
+      "id": "transit-hydration",
+      "type": "eco-action",
+      "mode": "transit",
+      "title": "Hydration Station",
+      "description": "Find a water refill station and fill up your reusable bottle",
+      "icon": "💧",
+      "basePoints": 30,
+      "bonusPoints": 20,
+      "bonusDescription": "Use the station near your gate",
+      "carbonFact": "Each refill saves one 500ml plastic bottle (12g plastic, 100g CO2)",
+      "estimatedTime": "5 min"
+    }
+  ]
+}
+
