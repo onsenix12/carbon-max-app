@@ -4,6 +4,7 @@ import { useJourneyMode } from "@/hooks/useJourneyMode";
 import { JourneyMode } from "@/lib/carbonmax/types";
 import { MODE_CONFIGS } from "@/lib/carbonmax/constants";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 const MODE_COLORS: Record<JourneyMode, { bg: string; activeBg: string; taglineBg: string }> = {
   jewel: {
@@ -38,34 +39,49 @@ export function ModeSelector() {
           const isActive = mode === m;
 
           return (
-            <button
+            <motion.button
               key={m}
               onClick={() => setMode(m)}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
               className={cn(
-                "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-md",
-                "transition-all duration-200",
+                "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-md relative",
+                "transition-all duration-300",
                 isActive
                   ? "text-white shadow-md"
-                  : "text-muted-foreground hover:bg-muted hover:-translate-y-0.5"
+                  : "text-muted-foreground hover:bg-muted"
               )}
               style={isActive ? { backgroundColor: colors.activeBg } : undefined}
             >
-              <span className="text-lg">{config.icon}</span>
+              <motion.span
+                animate={isActive ? { rotate: [0, 360] } : {}}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="text-lg"
+              >
+                {config.icon}
+              </motion.span>
               <span className="font-display font-medium text-sm">{config.name}</span>
-            </button>
+            </motion.button>
           );
         })}
       </div>
 
       {/* Mode Tagline */}
-      <div
-        className="text-center py-2 px-4 rounded-md transition-all duration-300"
-        style={{ backgroundColor: MODE_COLORS[mode].taglineBg }}
-      >
-        <p className="text-sm font-medium text-foreground">
-          {modeConfig.icon} {modeConfig.tagline}
-        </p>
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={mode}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.3 }}
+          className="text-center py-2 px-4 rounded-md"
+          style={{ backgroundColor: MODE_COLORS[mode].taglineBg }}
+        >
+          <p className="text-sm font-medium text-foreground">
+            {modeConfig.icon} {modeConfig.tagline}
+          </p>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

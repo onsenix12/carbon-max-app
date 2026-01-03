@@ -3,6 +3,7 @@
 import { Quest } from "@/lib/carbonmax/types";
 import { cn } from "@/lib/utils";
 import { Clock, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface QuestCardProps {
   quest: Quest;
@@ -14,25 +15,29 @@ export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCar
   const totalPossiblePoints = quest.basePoints + (quest.bonusPoints || 0);
 
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.02, y: -4 }}
+      whileTap={{ scale: 0.98 }}
       className={cn(
         "group bg-white rounded-md p-4 shadow border border-border cursor-pointer",
-        "transition-all duration-200 hover:shadow-md hover:-translate-y-0.5",
+        "transition-all duration-300 hover:shadow-lg",
         isCompleted && "bg-success-light/30 border-success/30"
       )}
       onClick={() => onStartQuest(quest.id)}
     >
       <div className="flex gap-4">
         {/* Icon */}
-        <div
+        <motion.div
+          whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+          transition={{ duration: 0.5 }}
           className={cn(
             "w-14 h-14 rounded-lg flex items-center justify-center text-2xl flex-shrink-0",
-            "transition-transform duration-200 group-hover:scale-105",
-            isCompleted ? "bg-success/20" : "bg-muted"
+            "transition-all duration-300 group-hover:scale-110",
+            isCompleted ? "bg-success/20" : "bg-muted group-hover:bg-primary/10"
           )}
         >
           {isCompleted ? "✅" : quest.icon}
-        </div>
+        </motion.div>
 
         {/* Content */}
         <div className="flex-1 min-w-0">
@@ -75,10 +80,15 @@ export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCar
             )}
 
             {/* Arrow */}
-            <ChevronRight className="w-5 h-5 text-muted-foreground/50 ml-auto flex-shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
+            <motion.div
+              whileHover={{ x: 4 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <ChevronRight className="w-5 h-5 text-muted-foreground/50 ml-auto flex-shrink-0 group-hover:text-primary transition-colors" />
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

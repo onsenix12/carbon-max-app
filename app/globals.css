@@ -83,10 +83,15 @@
     border-color: hsl(var(--border));
   }
   
+  html {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+  
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: inherit;
   }
 }
 
@@ -292,6 +297,19 @@
   
   .safe-top {
     padding-top: env(safe-area-inset-top, 0);
+  }
+
+  /* Background patterns */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, currentColor 1px, transparent 1px),
+      linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 }
 
