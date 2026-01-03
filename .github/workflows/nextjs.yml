@@ -33,7 +33,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Detect package manager
         id: detect-package-manager
-        working-directory: ./carbonmax
         run: |
           if [ -f "${{ github.workspace }}/carbonmax/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
