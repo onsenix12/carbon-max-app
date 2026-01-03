@@ -38,7 +38,7 @@ It's worth **150 base points**, and if you contribute SAF, you can earn up to **
 
 Plus, you'll learn about Sustainable Aviation Fuel - Singapore is mandating 1% SAF from 2026!
 
-[Go to Quest Hub →](/carbonmax)`;
+[Go to Quest Hub →](/)`;
   }
 
   if (lower.includes("saf") || lower.includes("sustainable aviation") || lower.includes("fuel")) {
@@ -218,7 +218,7 @@ export default function ChatPage() {
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center gap-3">
             <motion.div whileHover={{ x: -2 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/carbonmax" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
                 <ArrowLeft className="w-5 h-5" />
               </Link>
             </motion.div>

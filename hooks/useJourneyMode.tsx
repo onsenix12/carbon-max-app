@@ -1,8 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { JourneyMode, ModeConfig } from "@/lib/carbonmax/types";
-import { MODE_CONFIGS } from "@/lib/carbonmax/constants";
+import { JourneyMode, ModeConfig } from "@/lib/types";
+import { MODE_CONFIGS } from "@/lib/constants";
 
 interface JourneyModeContextType {
   mode: JourneyMode;

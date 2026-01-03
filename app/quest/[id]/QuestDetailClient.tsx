@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useJourneyMode } from "@/hooks/useJourneyMode";
 import { useQuestProgress } from "@/hooks/useQuestProgress";
-import { Quest } from "@/lib/carbonmax/types";
-import { GreenPlateQuest } from "@/components/carbonmax/quests/GreenPlateQuest";
-import { GreenFlightQuest } from "@/components/carbonmax/quests/GreenFlightQuest";
-import { HydrationQuest } from "@/components/carbonmax/quests/HydrationQuest";
-import { QuestComplete } from "@/components/carbonmax/QuestComplete";
+import { Quest } from "@/lib/types";
+import { GreenPlateQuest } from "@/components/quests/GreenPlateQuest";
+import { GreenFlightQuest } from "@/components/quests/GreenFlightQuest";
+import { HydrationQuest } from "@/components/quests/HydrationQuest";
+import { QuestComplete } from "@/components/QuestComplete";
 import { ArrowLeft, Clock, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -48,7 +48,7 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
 
   const handleCloseCelebration = () => {
     setShowCelebration(false);
-    router.push("/carbonmax");
+    router.push("/");
   };
 
   const renderQuestContent = () => {
@@ -59,7 +59,7 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
           <h3 className="text-xl font-bold text-gray-900 mb-2">Quest Completed!</h3>
           <p className="text-gray-500 mb-6">You've already finished this quest.</p>
           <Link
-            href="/carbonmax"
+            href="/"
             className="inline-flex items-center gap-2 px-6 py-3 bg-eco-leaf text-white rounded-xl font-medium hover:bg-eco-forest transition-colors"
           >
             Back to Quests
@@ -86,7 +86,7 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
       <div className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <Link href="/carbonmax" className="flex items-center gap-2 text-gray-600">
+            <Link href="/" className="flex items-center gap-2 text-gray-600">
               <ArrowLeft className="w-5 h-5" />
               <span className="text-sm">Back</span>
             </Link>

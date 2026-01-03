@@ -1,8 +1,8 @@
 "use client";
 
 import { useJourneyMode } from "@/hooks/useJourneyMode";
-import { JourneyMode } from "@/lib/carbonmax/types";
-import { MODE_CONFIGS } from "@/lib/carbonmax/constants";
+import { JourneyMode } from "@/lib/types";
+import { MODE_CONFIGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -85,3 +85,4 @@ export function ModeSelector() {
     </div>
   );
 }
+

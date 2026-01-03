@@ -1,8 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { QuestProgress, UserImpact, UserTierProgress } from "@/lib/carbonmax/types";
-import { GREEN_TIERS } from "@/lib/carbonmax/constants";
+import { QuestProgress, UserImpact, UserTierProgress } from "@/lib/types";
+import { GREEN_TIERS } from "@/lib/constants";
 
 interface QuestProgressContextType {
   completedQuests: string[];

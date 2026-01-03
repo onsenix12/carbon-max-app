@@ -1,4 +1,4 @@
-import { Quest } from "@/lib/carbonmax/types";
+import { Quest } from "@/lib/types";
 import questsData from "@/data/quests.json";
 import Link from "next/link";
 import { QuestDetailClient } from "./QuestDetailClient";
@@ -26,7 +26,7 @@ export default async function QuestDetailPage({ params }: PageProps) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-500 mb-4">Quest not found</p>
-          <Link href="/carbonmax" className="text-eco-leaf font-medium">
+          <Link href="/" className="text-eco-leaf font-medium">
             Back to Quest Hub
           </Link>
         </div>

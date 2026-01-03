@@ -45,7 +45,7 @@ export function MyImpact() {
         </h3>
         <motion.div whileHover={{ x: 2 }} whileTap={{ scale: 0.95 }}>
           <Link
-            href="/carbonmax/impact"
+            href="/impact"
             className="text-sm text-primary font-medium flex items-center gap-1 hover:underline group"
           >
             Full Story <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -118,3 +118,4 @@ export function MyImpact() {
     </motion.div>
   );
 }
+

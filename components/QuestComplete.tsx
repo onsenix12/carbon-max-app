@@ -1,6 +1,6 @@
 "use client";
 
-import { Quest } from "@/lib/carbonmax/types";
+import { Quest } from "@/lib/types";
 import { useQuestProgress } from "@/hooks/useQuestProgress";
 import { X, Share2, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -146,3 +146,4 @@ export function QuestComplete({
     </AnimatePresence>
   );
 }
+

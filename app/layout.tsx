@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { JourneyModeProvider } from "@/hooks/useJourneyMode";
+import { QuestProgressProvider } from "@/hooks/useQuestProgress";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -31,7 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased">
-        {children}
+        <JourneyModeProvider>
+          <QuestProgressProvider>
+            {children}
+          </QuestProgressProvider>
+        </JourneyModeProvider>
       </body>
     </html>
   );

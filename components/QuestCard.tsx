@@ -1,6 +1,6 @@
 "use client";
 
-import { Quest } from "@/lib/carbonmax/types";
+import { Quest } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Clock, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -92,3 +92,4 @@ export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCar
     </motion.div>
   );
 }
+
