@@ -69,12 +69,12 @@
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
     
-    /* Gradients */
+    /* Gradients - Simplified single-hue gradients */
     --gradient-primary: linear-gradient(135deg, #10B981 0%, #059669 100%);
     --gradient-secondary: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
     --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-    --gradient-success: linear-gradient(135deg, #10B981 0%, #14B8A6 50%, #3B82F6 100%);
-    --gradient-achievement: linear-gradient(135deg, #F59E0B 0%, #8B5CF6 100%);
+    --gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    --gradient-achievement: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   }
 }
 
@@ -88,12 +88,12 @@
   }
   
   body {
-    background: linear-gradient(180deg, #F0FDF4 0%, #ECFDF5 50%, #FFFFFF 100%);
-    background-attachment: fixed;
+    background: #F8FAFC;
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
     font-family: inherit;
     min-height: 100vh;
+    line-height: 1.6;
   }
 }
 
@@ -125,19 +125,22 @@
     background: linear-gradient(180deg, #FFFBEB 0%, #FFFFFF 50%);
   }
 
-  /* Premium Card - cleaner shadows */
+  /* Premium Card - Glassmorphism */
   .card-premium {
-    background: white;
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 1.5rem;
     padding: 1.5rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
-    border: 1px solid rgba(0,0,0,0.04);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
   }
   
   .card-premium:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08);
     transform: translateY(-2px);
-    transition: all 0.3s ease;
   }
 
   /* Premium Button */
@@ -187,8 +190,13 @@
   .text-subtitle {
     font-size: 1.125rem;
     color: #6B7280;
-    line-height: 1.6;
+    line-height: 1.7;
     font-weight: 400;
+  }
+  
+  /* Body text with improved line height */
+  body, p {
+    line-height: 1.7;
   }
 
   /* Badge - minimal */
@@ -307,19 +315,22 @@
     font-weight: 600;
   }
 
-  /* EcoQuest Card Styles */
+  /* EcoQuest Card Styles - Updated to glassmorphism */
   .card-base {
-    background: white;
-    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--radius-xl);
     padding: 1.5rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    border: 1px solid hsl(var(--border));
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
   }
 
   .card-base:hover {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08);
     transform: translateY(-2px);
-    transition: all 0.2s ease;
   }
 
   /* Badge Styles */

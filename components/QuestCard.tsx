@@ -19,33 +19,35 @@ export function QuestCard({ quest, completed, onStart }: QuestCardProps) {
       whileHover={{ scale: completed ? 1 : 1.01 }}
       whileTap={{ scale: completed ? 1 : 0.99 }}
       className={cn(
-        "w-full text-left card-premium",
+        "w-full text-left card-premium relative",
         completed && "opacity-60"
       )}
     >
-      <div className="flex items-start gap-4">
-        {/* Icon */}
-        <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-2xl flex-shrink-0">
-          {completed ? <Check className="w-6 h-6 text-green-600" /> : quest.icon}
+      {/* Points badge - top right */}
+      <div className="absolute top-4 right-4">
+        <span className="badge-minimal badge-success">
+          +{quest.basePoints} pts
+        </span>
+      </div>
+
+      <div className="flex items-start gap-4 pr-20">
+        {/* Icon - larger and more prominent */}
+        <div className="w-14 h-14 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center text-3xl flex-shrink-0 shadow-sm">
+          {completed ? <Check className="w-7 h-7 text-green-600" /> : quest.icon}
         </div>
         
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <h3 className="font-display font-semibold text-gray-900 mb-1">{quest.title}</h3>
-          <p className="text-sm text-gray-500 line-clamp-1">{quest.description}</p>
+          <h3 className="font-display font-bold text-gray-900 mb-1.5 text-lg">{quest.title}</h3>
+          <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">{quest.description}</p>
           
           {/* Meta row */}
-          <div className="flex items-center gap-3 mt-3">
-            <span className="badge-minimal badge-success">
-              +{quest.basePoints} pts
-            </span>
-            {quest.estimatedTime && (
-              <span className="flex items-center gap-1 text-xs text-gray-400">
-                <Clock className="w-3.5 h-3.5" />
-                {quest.estimatedTime}
-              </span>
-            )}
-          </div>
+          {quest.estimatedTime && (
+            <div className="flex items-center gap-1 mt-3">
+              <Clock className="w-3.5 h-3.5 text-gray-400" />
+              <span className="text-xs text-gray-500">{quest.estimatedTime}</span>
+            </div>
+          )}
         </div>
         
         {/* Arrow */}

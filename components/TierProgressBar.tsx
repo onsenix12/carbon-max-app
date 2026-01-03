@@ -21,33 +21,23 @@ export function TierProgressBar() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      whileHover={{ scale: 1.02, y: -2 }}
-      className="card-base"
+      whileHover={{ scale: 1.01, y: -1 }}
+      className="card-premium"
     >
       {/* Tier Header */}
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
-          <motion.span
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="text-2xl"
-          >
-            {currentTier.icon}
-          </motion.span>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+            <span className="text-xl">{currentTier.icon}</span>
+          </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-display font-bold text-foreground">{currentTier.name}</span>
+              <span className="font-display font-bold text-gray-900 text-lg">{currentTier.name}</span>
               {nextTier && (
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-muted-foreground"
-                >
-                  →
-                </motion.span>
-              )}
-              {nextTier && (
-                <span className="text-muted-foreground text-sm">{nextTier.name}</span>
+                <>
+                  <span className="text-gray-400">→</span>
+                  <span className="text-gray-500 text-sm font-medium">{nextTier.name}</span>
+                </>
               )}
             </div>
           </div>
@@ -55,63 +45,42 @@ export function TierProgressBar() {
         <div className="text-right">
           <motion.span
             key={totalPoints}
-            initial={{ scale: 1.2 }}
+            initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="font-mono font-bold text-primary"
+            className="font-mono font-bold text-primary text-lg"
           >
             {totalPoints.toLocaleString()}
           </motion.span>
           {nextTier && (
-            <span className="text-muted-foreground text-sm"> / {nextTier.minPoints.toLocaleString()} pts</span>
+            <span className="text-gray-500 text-sm"> / {nextTier.minPoints.toLocaleString()}</span>
           )}
         </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="progress-bar mb-2 overflow-hidden rounded-full">
+      {/* Progress Bar - cleaner design */}
+      <div className="relative h-2.5 bg-gray-100 rounded-full overflow-hidden mb-3">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${animatedProgress}%` }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="progress-fill h-full"
+          className="h-full rounded-full"
+          style={{
+            background: "linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%)"
+          }}
         />
       </div>
 
-      {/* Progress Text */}
+      {/* Progress Text - simplified */}
       {nextTier ? (
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="text-xs text-muted-foreground text-center"
-        >
-          <motion.span
-            animate={{ rotate: [0, 15, -15, 0] }}
-            transition={{ duration: 2, repeat: Infinity, repeatDelay: 2 }}
-            className="inline-block"
-          >
-            🎯
-          </motion.span>{" "}
-          <span className="font-medium font-mono">{pointsToNextTier}</span> pts to unlock{" "}
-          <span className="font-medium">{nextTier.name}</span> tier
-        </motion.p>
+        <p className="text-xs text-gray-600 text-center">
+          <span className="font-mono font-semibold text-gray-900">{pointsToNextTier}</span> pts to unlock{" "}
+          <span className="font-semibold text-gray-900">{nextTier.name}</span>
+        </p>
       ) : (
-        <motion.p
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
-          className="text-xs text-success-dark text-center font-medium"
-        >
-          <motion.span
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="inline-block"
-          >
-            🏆
-          </motion.span>{" "}
+        <p className="text-xs text-success-dark text-center font-semibold">
           Maximum tier achieved!
-        </motion.p>
+        </p>
       )}
     </motion.div>
   );
