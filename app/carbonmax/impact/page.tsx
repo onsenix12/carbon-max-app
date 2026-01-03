@@ -12,34 +12,34 @@ export default function ImpactPage() {
       icon: <TreePine className="w-6 h-6" />,
       value: `${userImpact.co2Avoided.toFixed(1)} kg`,
       label: "CO₂ Avoided",
-      color: "text-eco-leaf",
-      bgColor: "bg-eco-lime/30",
+      color: "text-primary",
+      bgColor: "bg-success-light",
     },
     {
       icon: <Droplets className="w-6 h-6" />,
       value: `${userImpact.plasticSaved}g`,
       label: "Plastic Saved",
-      color: "text-mode-transit",
-      bgColor: "bg-mode-transit-accent",
+      color: "text-accent-teal",
+      bgColor: "bg-accent-teal/20",
     },
     {
       icon: <Plane className="w-6 h-6" />,
       value: completedQuests.length.toString(),
       label: "Quests Done",
-      color: "text-mode-departure",
-      bgColor: "bg-mode-departure-accent",
+      color: "text-secondary",
+      bgColor: "bg-secondary-100",
     },
     {
       icon: <ShoppingBag className="w-6 h-6" />,
       value: userImpact.totalPointsEarned.toLocaleString(),
       label: "Eco-Points",
-      color: "text-mode-jewel-dark",
-      bgColor: "bg-mode-jewel-accent",
+      color: "text-accent-gold",
+      bgColor: "bg-accent-gold/20",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-eco-leaf to-eco-forest">
+    <div className="min-h-screen bg-gradient-to-b from-primary to-success-dark">
       {/* Header */}
       <div className="sticky top-0 z-10">
         <div className="max-w-md mx-auto px-4 py-3">
@@ -59,7 +59,7 @@ export default function ImpactPage() {
       {/* Hero */}
       <div className="max-w-md mx-auto px-4 pt-8 pb-12 text-center text-white">
         <div className="text-6xl mb-4">🌍</div>
-        <h1 className="text-3xl font-bold mb-2">Your Impact Story</h1>
+        <h1 className="font-display text-3xl font-bold mb-2">Your Impact Story</h1>
         <p className="text-white/80">
           Every action counts. Here's what you've achieved.
         </p>
@@ -77,7 +77,7 @@ export default function ImpactPage() {
                 <div className={`${stat.color} flex justify-center mb-2`}>
                   {stat.icon}
                 </div>
-                <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+                <div className="font-mono text-2xl font-bold text-gray-900">{stat.value}</div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
               </div>
             ))}
@@ -85,11 +85,11 @@ export default function ImpactPage() {
 
           {/* Tree Equivalent */}
           {userImpact.treesEquivalent > 0 && (
-            <div className="bg-eco-lime/30 rounded-2xl p-6 text-center mb-8">
+            <div className="bg-success-light rounded-2xl p-6 text-center mb-8">
               <div className="text-4xl mb-3">🌳</div>
               <p className="text-gray-900">
                 Your impact equals{" "}
-                <span className="font-bold text-eco-forest text-2xl">
+                <span className="font-mono font-bold text-success-dark text-2xl">
                   {userImpact.treesEquivalent.toFixed(1)}
                 </span>{" "}
                 trees
@@ -106,14 +106,14 @@ export default function ImpactPage() {
               <div className="flex items-center gap-3">
                 <span className="text-3xl">{tierProgress.currentTier.icon}</span>
                 <div>
-                  <div className="font-bold text-gray-900">
+                  <div className="font-display font-bold text-gray-900">
                     {tierProgress.currentTier.name}
                   </div>
                   <div className="text-sm text-gray-500">Current Tier</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="font-bold text-eco-leaf">
+                <div className="font-mono font-bold text-primary">
                   {tierProgress.totalPoints.toLocaleString()}
                 </div>
                 <div className="text-sm text-gray-500">Eco-Points</div>
@@ -122,9 +122,9 @@ export default function ImpactPage() {
 
             {tierProgress.nextTier && (
               <>
-                <div className="h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
+                <div className="progress-bar mb-2">
                   <div
-                    className="h-full bg-gradient-to-r from-eco-leaf to-eco-mint transition-all duration-500"
+                    className="progress-fill transition-all duration-500"
                     style={{ width: `${tierProgress.progressPercent}%` }}
                   />
                 </div>
@@ -140,13 +140,13 @@ export default function ImpactPage() {
           {userImpact.questsCompleted === 0 && (
             <div className="text-center py-8">
               <div className="text-5xl mb-4">🌱</div>
-              <h3 className="font-bold text-gray-900 mb-2">Start Your Journey</h3>
+              <h3 className="font-display font-bold text-gray-900 mb-2">Start Your Journey</h3>
               <p className="text-gray-500 mb-6">
                 Complete your first quest to begin building your impact story!
               </p>
               <Link
                 href="/carbonmax"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-eco-leaf text-white rounded-xl font-medium"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium"
               >
                 Explore Quests
               </Link>
