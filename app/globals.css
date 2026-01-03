@@ -85,10 +85,11 @@
   
   html {
     font-family: var(--font-sans), system-ui, sans-serif;
+    background: transparent;
   }
   
   body {
-    background: #F8FAFC;
+    background: transparent;
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
     font-family: inherit;

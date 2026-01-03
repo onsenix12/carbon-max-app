@@ -21,8 +21,18 @@ export default function QuestHubPage() {
   const quests = (questsData.quests as Quest[]).filter((q) => q.mode === mode);
   const availableCount = quests.filter((q) => !isQuestCompleted(q.id)).length;
 
+  // Mode-specific background colors
+  const modeBackgrounds: Record<string, string> = {
+    jewel: "#FFFBEB",
+    departure: "#EFF6FF",
+    transit: "#ECFDF5",
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen transition-colors duration-500"
+      style={{ backgroundColor: modeBackgrounds[mode] || modeBackgrounds.transit }}
+    >
       {/* Clean Header */}
       <header className="bg-white/70 backdrop-blur-xl border-b border-border/50 sticky top-0 z-50">
         <div className="max-w-lg mx-auto px-5 py-4">
