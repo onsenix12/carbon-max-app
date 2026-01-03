@@ -33,8 +33,8 @@ export default function QuestHubPage() {
       className="min-h-screen transition-colors duration-500"
       style={{ backgroundColor: modeBackgrounds[mode] || modeBackgrounds.transit }}
     >
-      {/* Clean Header */}
-      <header className="bg-white/70 backdrop-blur-xl border-b border-border/50 sticky top-0 z-50">
+      {/* Header with glassmorphism */}
+      <header className="glass-strong border-b border-border sticky top-0 z-50">
         <div className="max-w-lg mx-auto px-5 py-4">
           <h1 className="font-display font-bold text-xl text-foreground text-center">CarbonMax</h1>
         </div>
@@ -94,10 +94,10 @@ export default function QuestHubPage() {
         </motion.section>
       </main>
 
-      {/* Floating Chat Button - cleaner */}
+      {/* Floating Chat Button - using design system */}
       <Link
         href="/chat"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg hover:bg-primary-dark hover:scale-105 transition-all"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-[#10B981] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#059669] hover:scale-105 transition-all duration-200"
       >
         <MessageCircle className="w-6 h-6" />
       </Link>

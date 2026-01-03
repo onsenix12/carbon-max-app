@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Quest, Merchant } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { MapPin, Check, Lightbulb } from "lucide-react";
+import { GlassCard } from "@/components/GlassCard";
+import { Button } from "@/components/Button";
 
 // Mock merchants data
 const RESTAURANTS: Merchant[] = [
@@ -66,14 +68,13 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
         <h3 className="font-display font-semibold text-foreground mb-3">Choose a Green Restaurant</h3>
         <div className="space-y-3">
           {RESTAURANTS.map((restaurant) => (
-            <button
-              key={restaurant.id}
+            <GlassCard
               onClick={() => setSelectedRestaurant(restaurant.id)}
               className={cn(
-                "w-full text-left p-4 rounded-md border-2 transition-all",
+                "w-full text-left p-4 cursor-pointer transition-all",
                 selectedRestaurant === restaurant.id
-                  ? "border-primary bg-success-light"
-                  : "border-border bg-white hover:border-border-strong"
+                  ? "ring-2 ring-[#10B981] bg-[#10B981]/10"
+                  : "hover:glass-strong"
               )}
             >
               <div className="flex items-start justify-between">
@@ -104,7 +105,7 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
                   <p className="text-sm text-foreground">{restaurant.description}</p>
                 </div>
               )}
-            </button>
+            </GlassCard>
           ))}
         </div>
       </div>
@@ -113,13 +114,14 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
       <div>
         <h3 className="font-display font-semibold text-foreground mb-3">Quest Objectives</h3>
         <div className="space-y-3">
-          <label
+          <GlassCard
             className={cn(
-              "flex items-center gap-3 p-4 rounded-md border transition-all cursor-pointer",
+              "flex items-center gap-3 p-4 cursor-pointer transition-all",
               !selectedRestaurant && "opacity-50 cursor-not-allowed",
-              atRestaurant ? "border-primary bg-success-light" : "border-border bg-white"
+              atRestaurant && "ring-2 ring-[#10B981] bg-[#10B981]/10"
             )}
           >
+            <label className="flex items-center gap-3 flex-1 cursor-pointer">
             <input
               type="checkbox"
               checked={atRestaurant}
@@ -131,16 +133,18 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
               <span className="font-medium text-foreground">I'm at the restaurant</span>
               <p className="text-sm text-muted-foreground">Check in when you arrive</p>
             </div>
-            <span className="text-sm text-primary font-medium">+{quest.basePoints} pts</span>
-          </label>
+            <span className="text-sm text-[#10B981] font-medium">+{quest.basePoints} pts</span>
+            </label>
+          </GlassCard>
 
-          <label
+          <GlassCard
             className={cn(
-              "flex items-center gap-3 p-4 rounded-md border transition-all cursor-pointer",
+              "flex items-center gap-3 p-4 cursor-pointer transition-all",
               !atRestaurant && "opacity-50 cursor-not-allowed",
-              orderedPlantBased ? "border-primary bg-success-light" : "border-border bg-white"
+              orderedPlantBased && "ring-2 ring-[#10B981] bg-[#10B981]/10"
             )}
           >
+            <label className="flex items-center gap-3 flex-1 cursor-pointer">
             <input
               type="checkbox"
               checked={orderedPlantBased}
@@ -152,37 +156,34 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
               <span className="font-medium text-foreground">I ordered plant-based</span>
               <p className="text-sm text-muted-foreground">Bonus for sustainable choice!</p>
             </div>
-            <span className="text-sm text-warning font-medium">+{quest.bonusPoints} bonus</span>
-          </label>
+            <span className="text-sm text-[#F59E0B] font-medium">+{quest.bonusPoints} bonus</span>
+            </label>
+          </GlassCard>
         </div>
       </div>
 
       {/* Max's Tip */}
-      <div className="bg-success-light rounded-md p-4">
+      <GlassCard className="p-4 bg-[#10B981]/10">
         <div className="flex gap-3">
-          <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+          <Lightbulb className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
           <div>
-            <p className="font-medium text-success-dark text-sm">Max's Tip</p>
+            <p className="font-medium text-[#10B981] text-sm">Max's Tip</p>
             <p className="text-sm text-foreground mt-1">
               Ask for the plant-based options — most green restaurants have great ones that taste amazing!
             </p>
           </div>
         </div>
-      </div>
+      </GlassCard>
 
       {/* Complete Button */}
-      <button
+      <Button
         onClick={handleComplete}
         disabled={!canComplete}
-        className={cn(
-          "w-full py-4 rounded-lg font-semibold text-white transition-all",
-          canComplete
-            ? "btn-primary"
-            : "bg-muted text-muted-foreground cursor-not-allowed"
-        )}
+        variant="primary"
+        className="w-full"
       >
         {canComplete ? `Complete Quest (+${totalPoints} pts)` : "Complete objectives to finish"}
-      </button>
+      </Button>
     </div>
   );
 }

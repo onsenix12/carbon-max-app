@@ -6,12 +6,13 @@ import { QuestProgressProvider } from "@/hooks/useQuestProgress";
 
 const inter = Inter({ 
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // Design system font weights
   variable: "--font-sans",
 });
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["400", "500", "600", "700"], // Design system: Regular 400, Medium 500, Semibold 600, Bold 700
   variable: "--font-display",
 });
 

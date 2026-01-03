@@ -4,6 +4,7 @@ import { useQuestProgress } from "@/hooks/useQuestProgress";
 import { Leaf, Droplets, Award } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { GlassCard } from "./GlassCard";
 
 export function MyImpact() {
   const { userImpact } = useQuestProgress();
@@ -15,10 +16,10 @@ export function MyImpact() {
   ];
 
   return (
-    <div className="card-base">
+    <GlassCard className="p-6">
       <div className="flex items-center justify-between mb-5">
         <h3 className="font-display font-semibold text-foreground">My Impact</h3>
-        <Link href="/impact" className="text-sm text-primary font-medium hover:underline transition-colors flex items-center gap-1">
+        <Link href="/impact" className="text-sm text-[#10B981] font-medium hover:underline transition-colors flex items-center gap-1">
           Full Story →
         </Link>
       </div>
@@ -44,7 +45,7 @@ export function MyImpact() {
           Complete your first quest to start tracking your impact!
         </p>
       )}
-    </div>
+    </GlassCard>
   );
 }
 

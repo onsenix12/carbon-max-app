@@ -12,6 +12,9 @@ import { QuestComplete } from "@/components/QuestComplete";
 import { ArrowLeft, Clock, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { GlassCard } from "@/components/GlassCard";
+import { Badge } from "@/components/Badge";
+import { Button } from "@/components/Button";
 
 interface QuestDetailClientProps {
   quest: Quest;
@@ -58,12 +61,9 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
           <div className="text-6xl mb-4">✅</div>
           <h3 className="text-xl font-bold text-foreground mb-2">Quest Completed!</h3>
           <p className="text-muted-foreground mb-6">You've already finished this quest.</p>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors"
-          >
+          <Button onClick={() => router.push("/")}>
             Back to Quests
-          </Link>
+          </Button>
         </div>
       );
     }
@@ -82,30 +82,25 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
 
   return (
     <div className={cn("min-h-screen", colors.bg)}>
-      {/* Header */}
-      <div className="bg-white shadow-sm sticky top-0 z-10 border-b border-border">
+      {/* Header with glassmorphism */}
+      <div className="glass-strong border-b border-border sticky top-0 z-10">
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span className="text-sm">Back</span>
             </Link>
-            <span
-              className={cn(
-                "px-3 py-1 rounded-full text-sm font-medium text-white",
-                colors.accent
-              )}
-              style={{
-                backgroundColor:
-                  quest.mode === "jewel"
-                    ? "#F59E0B"
-                    : quest.mode === "departure"
-                    ? "#3B82F6"
-                    : "#10B981",
-              }}
+            <Badge
+              variant={
+                quest.mode === "jewel"
+                  ? "warning"
+                  : quest.mode === "departure"
+                  ? "info"
+                  : "success"
+              }
             >
               {quest.mode.charAt(0).toUpperCase() + quest.mode.slice(1)}
-            </span>
+            </Badge>
           </div>
         </div>
       </div>
@@ -136,16 +131,16 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
           </div>
         </div>
 
-        {/* Carbon Fact */}
-        <div className="bg-white rounded-md p-4 mb-6 border border-border">
+        {/* Carbon Fact - using glass card */}
+        <GlassCard className="p-4 mb-6">
           <div className="flex gap-3">
-            <Lightbulb className="w-5 h-5 text-warning flex-shrink-0 mt-0.5" />
+            <Lightbulb className="w-5 h-5 text-[#F59E0B] flex-shrink-0 mt-0.5" />
             <div>
               <p className="font-medium text-foreground text-sm">Carbon Fact</p>
               <p className="text-sm text-muted-foreground mt-1">{quest.carbonFact}</p>
             </div>
           </div>
-        </div>
+        </GlassCard>
 
         {/* Quest-Specific Content */}
         {renderQuestContent()}

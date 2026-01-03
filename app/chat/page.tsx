@@ -6,6 +6,9 @@ import { ArrowLeft, Send, Leaf } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { GlassCard } from "@/components/GlassCard";
+import { Input } from "@/components/Input";
+import { Button } from "@/components/Button";
 
 interface Message {
   id: string;
@@ -208,12 +211,12 @@ export default function ChatPage() {
         }}
       />
 
-      {/* Header */}
+      {/* Header with glassmorphism */}
       <motion.div 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="bg-white/95 backdrop-blur-xl shadow-sm sticky top-0 z-10 relative"
+        className="glass-strong shadow-sm sticky top-0 z-10 relative"
       >
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center gap-3">
@@ -263,8 +266,8 @@ export default function ChatPage() {
                   className={cn(
                     "max-w-[85%] rounded-2xl px-4 py-3 shadow-sm",
                     message.role === "user"
-                      ? "bg-primary text-white"
-                      : "bg-white border border-border"
+                      ? "bg-[#10B981] text-white"
+                      : "glass"
                   )}
                 >
                   <p
@@ -290,7 +293,7 @@ export default function ChatPage() {
               exit={{ opacity: 0 }}
               className="flex justify-start"
             >
-              <div className="bg-white border border-border rounded-2xl px-4 py-3 shadow-sm">
+              <div className="glass rounded-2xl px-4 py-3 shadow-sm">
                 <div className="flex gap-1">
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
@@ -336,7 +339,7 @@ export default function ChatPage() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleQuickQuestion(question)}
-                  className="px-3 py-1.5 bg-white border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors shadow-sm hover:shadow-md"
+                  className="px-3 py-1.5 glass rounded-full text-sm text-foreground hover:glass-strong transition-all shadow-sm hover:shadow-md"
                 >
                   {question}
                 </motion.button>
@@ -351,25 +354,24 @@ export default function ChatPage() {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.2 }}
-        className="bg-white/95 backdrop-blur-xl border-t shadow-lg relative z-10"
+        className="glass-strong border-t shadow-lg relative z-10"
       >
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex gap-2">
-            <motion.input
-              whileFocus={{ scale: 1.02 }}
+            <Input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
               placeholder="Ask Max anything..."
-              className="flex-1 px-4 py-2 border border-border rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              className="flex-1"
             />
             <motion.button
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => handleSend()}
               disabled={!input.trim() || isTyping}
-              className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
+              className="w-10 h-10 bg-[#10B981] text-white rounded-full flex items-center justify-center hover:bg-[#059669] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
             >
               <Send className="w-4 h-4" />
             </motion.button>

@@ -160,12 +160,13 @@ export default function ImpactPage() {
           background: "radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%)",
         }}
       />
-      {/* Header */}
+      {/* Header with glassmorphism */}
       <motion.div 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="sticky top-0 z-10 backdrop-blur-xl bg-primary/90"
+        className="sticky top-0 z-10 glass-strong"
+        style={{ backgroundColor: 'rgba(16, 185, 129, 0.9)' }}
       >
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
@@ -217,12 +218,12 @@ export default function ImpactPage() {
 
       {/* Stats Cards */}
       <div className="max-w-md mx-auto px-4 relative z-10">
-        <motion.div 
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="bg-white/95 backdrop-blur-xl rounded-t-3xl pt-8 pb-4 px-4 -mt-4 shadow-2xl"
-        >
+          <motion.div 
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="glass-strong rounded-t-3xl pt-8 pb-4 px-4 -mt-4 shadow-2xl"
+          >
           <div ref={statsRef} className="grid grid-cols-2 gap-4 mb-8">
             {impactStats.map((stat, index) => (
               <motion.div
@@ -387,11 +388,10 @@ export default function ImpactPage() {
                 Complete your first quest to begin building your impact story!
               </p>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link
-                  href="/"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-shadow"
-                >
-                  Explore Quests
+                <Link href="/">
+                  <Button variant="primary">
+                    Explore Quests
+                  </Button>
                 </Link>
               </motion.div>
             </motion.div>

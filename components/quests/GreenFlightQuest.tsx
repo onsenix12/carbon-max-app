@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Quest } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Plane, Leaf, Info, Check, Lightbulb } from "lucide-react";
+import { GlassCard } from "@/components/GlassCard";
+import { Button } from "@/components/Button";
 
 interface GreenFlightQuestProps {
   quest: Quest;
@@ -57,7 +59,7 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
   return (
     <div className="space-y-6">
       {/* Flight Details */}
-      <div className="bg-white rounded-md p-4 border border-border">
+      <GlassCard className="p-4">
         <h3 className="font-display font-semibold text-foreground mb-4">Your Flight</h3>
         
         <div className="flex items-center justify-between mb-4">
@@ -90,14 +92,15 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
             <div className="font-medium text-rating-a">⭐ {FLIGHT_DATA.efficiency}</div>
           </div>
         </div>
-      </div>
+      </GlassCard>
 
       {/* Calculate Button or Results */}
       {!calculated ? (
-        <button
+        <Button
           onClick={handleCalculate}
           disabled={calculating}
-          className="w-full py-4 bg-secondary text-white rounded-lg font-semibold hover:bg-secondary-dark transition-colors disabled:opacity-70"
+          variant="primary"
+          className="w-full"
         >
           {calculating ? (
             <span className="flex items-center justify-center gap-2">
@@ -107,11 +110,11 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
           ) : (
             "Calculate My Emissions"
           )}
-        </button>
+        </Button>
       ) : (
         <>
           {/* Emissions Results */}
-          <div className="bg-warning-light rounded-md p-4 border border-warning/20">
+          <GlassCard className="p-4 bg-[#F59E0B]/10">
             <h3 className="font-display font-semibold text-foreground mb-3 flex items-center gap-2">
               <Check className="w-5 h-5 text-primary" />
               Emissions Calculated
@@ -129,18 +132,18 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
                 </span>
                 <span className="font-medium">+{FLIGHT_DATA.withRF - FLIGHT_DATA.baseEmissions} kg</span>
               </div>
-              <div className="flex justify-between pt-2 border-t border-warning/20">
+              <div className="flex justify-between pt-2 border-t border-[#F59E0B]/20">
                 <span className="font-semibold text-foreground">Total impact</span>
-                <span className="font-bold text-warning-dark">{FLIGHT_DATA.withRF} kg CO₂e</span>
+                <span className="font-bold text-[#F59E0B]">{FLIGHT_DATA.withRF} kg CO₂e</span>
               </div>
             </div>
 
-            <div className="mt-3 pt-3 border-t border-warning/20">
-              <p className="text-sm text-warning-dark">
+            <div className="mt-3 pt-3 border-t border-[#F59E0B]/20">
+              <p className="text-sm text-[#F59E0B]">
                 💡 That's like charging your phone <strong>193,000 times</strong>
               </p>
             </div>
-          </div>
+          </GlassCard>
 
           {/* SAF Options */}
           <div>
@@ -154,14 +157,14 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
 
             <div className="space-y-3">
               {SAF_OPTIONS.map((option) => (
-                <button
+                <GlassCard
                   key={option.percent}
                   onClick={() => setSelectedSAF(option.percent)}
                   className={cn(
-                    "w-full text-left p-4 rounded-md border-2 transition-all",
+                    "w-full text-left p-4 cursor-pointer transition-all",
                     selectedSAF === option.percent
-                      ? "border-primary bg-success-light"
-                      : "border-border bg-white hover:border-border-strong"
+                      ? "ring-2 ring-[#10B981] bg-[#10B981]/10"
+                      : "hover:glass-strong"
                   )}
                 >
                   <div className="flex items-center justify-between">
@@ -177,47 +180,43 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
                     </div>
                     <div className="text-right">
                       {option.bonusPoints > 0 ? (
-                        <span className="text-primary font-semibold">+{option.bonusPoints} bonus</span>
+                        <span className="text-[#10B981] font-semibold">+{option.bonusPoints} bonus</span>
                       ) : (
                         <span className="text-muted-foreground">No bonus</span>
                       )}
                     </div>
                   </div>
-                </button>
+                </GlassCard>
               ))}
             </div>
           </div>
 
           {/* Singapore Mandate Info */}
-          <div className="bg-info-light rounded-md p-4 border border-info/20">
+          <GlassCard className="p-4 bg-[#3B82F6]/10">
             <div className="flex gap-3">
               <span className="text-2xl">🇸🇬</span>
               <div>
-                <p className="font-medium text-info-dark text-sm">Singapore SAF Mandate</p>
-                <p className="text-sm text-info-dark mt-1">
+                <p className="font-medium text-[#3B82F6] text-sm">Singapore SAF Mandate</p>
+                <p className="text-sm text-[#3B82F6] mt-1">
                   Singapore requires 1% SAF from 2026, rising to 3-5% by 2030. You're ahead of the curve!
                 </p>
               </div>
             </div>
-          </div>
+          </GlassCard>
         </>
       )}
 
       {/* Complete Button */}
-      <button
+      <Button
         onClick={handleComplete}
         disabled={!canComplete}
-        className={cn(
-          "w-full py-4 rounded-lg font-semibold text-white transition-all",
-          canComplete
-            ? "btn-primary"
-            : "bg-muted text-muted-foreground cursor-not-allowed"
-        )}
+        variant="primary"
+        className="w-full"
       >
         {canComplete
           ? `Complete Quest (+${totalPoints} pts)`
           : "Calculate emissions to continue"}
-      </button>
+      </Button>
     </div>
   );
 }

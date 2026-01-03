@@ -4,97 +4,113 @@
 
 @layer base {
   :root {
-    /* Background & Surface */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    
+    /* Design System Colors - From DESIGN_SYSTEM.md */
     /* Primary - Emerald Green */
-    --primary: 160 84% 39%;
-    --primary-foreground: 210 40% 98%;
-    --primary-light: 160 61% 52%;
-    --primary-dark: 161 94% 30%;
-    --primary-50: 152 81% 96%;
-    --primary-100: 149 80% 90%;
+    --primary: #10B981;
+    --primary-foreground: #ffffff;
     
-    /* Secondary - Sky Blue */
-    --secondary: 217 91% 60%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --secondary-light: 217 91% 68%;
-    --secondary-dark: 217 91% 53%;
-    --secondary-50: 214 100% 97%;
-    --secondary-100: 214 95% 93%;
+    /* Background & Surface */
+    --background: #F8FAFC;
+    --foreground: #1F2937;
+    --muted-foreground: #6B7280;
     
-    /* Accent Colors */
-    --accent-gold: 38 92% 50%;
-    --accent-gold-light: 45 93% 65%;
-    --accent-purple: 258 90% 66%;
-    --accent-purple-light: 258 89% 76%;
-    --accent-teal: 168 76% 42%;
-    --accent-teal-light: 170 71% 67%;
+    /* Card */
+    --card: rgba(255, 255, 255, 0.7);
+    --card-foreground: #1F2937;
     
-    /* Semantic */
-    --success: 160 84% 39%;
-    --success-light: 149 80% 90%;
-    --success-dark: 163 94% 24%;
-    --warning: 38 92% 50%;
-    --warning-light: 48 96% 89%;
-    --warning-dark: 28 80% 32%;
-    --error: 0 84% 60%;
-    --error-light: 0 86% 93%;
-    --error-dark: 0 74% 42%;
-    --info: 217 91% 60%;
-    --info-light: 214 95% 93%;
-    --info-dark: 224 76% 48%;
+    /* Popover */
+    --popover: rgba(255, 255, 255, 0.7);
+    --popover-foreground: #1F2937;
     
-    /* Neutrals */
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 13% 91%;
-    --border-strong: 216 12% 84%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 160 84% 39%;
+    /* Secondary */
+    --secondary: rgba(255, 255, 255, 0.5);
+    --secondary-foreground: #1F2937;
     
-    /* Spacing & Radius */
-    --radius: 0.5rem;
+    /* Muted */
+    --muted: #E5E7EB;
+    
+    /* Accent */
+    --accent: #10B981;
+    --accent-foreground: #ffffff;
+    
+    /* Semantic Colors */
+    --success: #10B981;
+    --success-light: #34D399;
+    --warning: #F59E0B;
+    --info: #3B82F6;
+    --error: #EF4444;
+    
+    /* Destructive */
+    --destructive: #EF4444;
+    --destructive-foreground: #ffffff;
+    
+    /* Border */
+    --border: rgba(255, 255, 255, 0.3);
+    
+    /* Input */
+    --input: transparent;
+    --input-background: rgba(255, 255, 255, 0.5);
+    
+    /* Ring */
+    --ring: #10B981;
+    
+    /* Radius - Design System specifies 24px (rounded-3xl) for cards, 16px (rounded-2xl) for components */
+    --radius: 1.5rem; /* 24px */
     --radius-sm: 0.25rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1rem;
+    --radius-md: 1rem; /* 16px */
+    --radius-lg: 1.5rem;
     --radius-xl: 1.5rem;
-    
-    /* Gradients - Simplified single-hue gradients */
-    --gradient-primary: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    --gradient-secondary: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-    --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-    --gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    --gradient-achievement: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   }
 }
 
 @layer base {
   * {
-    border-color: hsl(var(--border));
+    border-color: var(--border);
   }
   
   html {
-    font-family: var(--font-sans), system-ui, sans-serif;
-    background: transparent;
+    font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+    background: var(--background);
   }
   
   body {
-    background: transparent;
-    color: hsl(var(--foreground));
+    background: var(--background);
+    color: var(--foreground);
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: inherit;
+    font-family: 'Inter', system-ui, sans-serif;
     min-height: 100vh;
     line-height: 1.6;
+  }
+  
+  /* Typography - Poppins for headings, Inter for body */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), 'Poppins', system-ui, sans-serif;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism - Design System - Must be in utilities layer to use with @apply */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .glass-light {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -105,43 +121,22 @@
     margin-left: auto;
     margin-right: auto;
     min-height: 100vh;
-    background-color: white;
+    background-color: var(--background);
   }
   
-  /* Premium Clean Background */
-  .bg-clean {
-    background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%);
-  }
-  
-  /* Subtle accent backgrounds - much softer */
-  .bg-accent-subtle-green {
-    background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 50%);
-  }
-  
-  .bg-accent-subtle-blue {
-    background: linear-gradient(180deg, #EFF6FF 0%, #FFFFFF 50%);
-  }
-  
-  .bg-accent-subtle-amber {
-    background: linear-gradient(180deg, #FFFBEB 0%, #FFFFFF 50%);
-  }
-
-  /* Premium Card - Glassmorphism */
+  /* Glass Card - 24px border radius as per design system */
   .card-premium {
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
+    border-radius: 1.5rem; /* rounded-3xl */
+    transition: all 0.2s ease-out;
   }
   
   .card-premium:hover {
     background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
+    transform: scale(1.02);
   }
 
   /* Premium Button */
@@ -290,51 +285,66 @@
     color: #EAB308;
   }
   
-  /* EcoQuest Button Styles */
+  /* Button Styles - Design System (16px radius for components) */
   .btn-primary {
-    background: var(--gradient-primary);
+    background: var(--primary);
     color: white;
     padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md); /* 16px */
     font-weight: 600;
     font-size: 1rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    transition: all 0.2s ease;
+    transition: all 0.2s ease-out;
   }
 
   .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    background: #059669;
+    transform: scale(1.02);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.95);
   }
 
   .btn-secondary {
-    background: hsl(var(--muted));
-    color: hsl(var(--primary));
-    border: 2px solid hsl(var(--primary));
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--foreground);
     padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md); /* 16px */
     font-weight: 600;
+    transition: all 0.2s ease-out;
   }
 
-  /* EcoQuest Card Styles - Updated to glassmorphism */
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.95);
+  }
+
+  /* Card Base - Uses glassmorphism with 24px radius */
   .card-base {
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: var(--radius-xl);
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
+    border-radius: 1.5rem; /* rounded-3xl */
+    transition: all 0.2s ease-out;
   }
 
   .card-base:hover {
     background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
+    transform: scale(1.02);
   }
 
-  /* Badge Styles */
+  /* Badge Styles - Design System */
   .badge {
     display: inline-flex;
     align-items: center;
@@ -346,15 +356,26 @@
     letter-spacing: 0.025em;
   }
 
-  .badge-gold {
-    background: var(--gradient-accent);
+  .badge-success {
+    background: var(--success);
     color: white;
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+  }
+
+  .badge-warning {
+    background: var(--warning);
+    color: white;
   }
 
   .badge-info {
-    background: hsl(var(--info-light));
-    color: hsl(var(--info-dark));
+    background: var(--info);
+    color: white;
+  }
+
+  .badge-default {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
   /* Impact Stat Styles */
@@ -366,14 +387,14 @@
     font-family: var(--font-mono);
     font-size: 2.25rem;
     font-weight: 700;
-    color: hsl(var(--primary));
+    color: var(--primary);
     display: block;
     margin-bottom: 0.5rem;
   }
 
   .impact-label {
     font-size: 0.875rem;
-    color: hsl(var(--muted-foreground));
+    color: var(--muted-foreground);
     text-transform: uppercase;
     letter-spacing: 0.025em;
   }
@@ -384,17 +405,17 @@
     filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.2));
   }
 
-  /* Progress Bar */
+  /* Progress Bar - Design System */
   .progress-bar {
     height: 0.5rem;
-    background: hsl(var(--muted));
+    background: var(--muted);
     border-radius: 9999px;
     overflow: hidden;
   }
 
   .progress-fill {
     height: 100%;
-    background: var(--gradient-primary);
+    background: var(--primary);
     border-radius: 9999px;
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
