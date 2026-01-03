@@ -1,95 +1,59 @@
 "use client";
 
 import { Quest } from "@/lib/types";
-import { cn } from "@/lib/utils";
-import { Clock, ChevronRight } from "lucide-react";
+import { Clock, ChevronRight, Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface QuestCardProps {
   quest: Quest;
-  isCompleted?: boolean;
-  onStartQuest: (questId: string) => void;
+  completed: boolean;
+  onStart: () => void;
 }
 
-export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCardProps) {
-  const totalPossiblePoints = quest.basePoints + (quest.bonusPoints || 0);
-
+export function QuestCard({ quest, completed, onStart }: QuestCardProps) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.02, y: -4 }}
-      whileTap={{ scale: 0.98 }}
+    <motion.button
+      onClick={onStart}
+      disabled={completed}
+      whileHover={{ scale: completed ? 1 : 1.01 }}
+      whileTap={{ scale: completed ? 1 : 0.99 }}
       className={cn(
-        "group bg-white rounded-md p-4 shadow border border-border cursor-pointer",
-        "transition-all duration-300 hover:shadow-lg",
-        isCompleted && "bg-success-light/30 border-success/30"
+        "w-full text-left card-premium",
+        completed && "opacity-60"
       )}
-      onClick={() => onStartQuest(quest.id)}
     >
-      <div className="flex gap-4">
+      <div className="flex items-start gap-4">
         {/* Icon */}
-        <motion.div
-          whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-          transition={{ duration: 0.5 }}
-          className={cn(
-            "w-14 h-14 rounded-lg flex items-center justify-center text-2xl flex-shrink-0",
-            "transition-all duration-300 group-hover:scale-110",
-            isCompleted ? "bg-success/20" : "bg-muted group-hover:bg-primary/10"
-          )}
-        >
-          {isCompleted ? "✅" : quest.icon}
-        </motion.div>
-
+        <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-2xl flex-shrink-0">
+          {completed ? <Check className="w-6 h-6 text-green-600" /> : quest.icon}
+        </div>
+        
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-2">
-            <div className="min-w-0">
-              <h3 className="font-display font-semibold text-foreground truncate">
-                {quest.title}
-              </h3>
-              <p className="text-sm text-muted-foreground line-clamp-2 mt-0.5">
-                {quest.description}
-              </p>
-            </div>
-          </div>
-
-          {/* Meta Row */}
+          <h3 className="font-semibold text-gray-900 mb-1">{quest.title}</h3>
+          <p className="text-sm text-gray-500 line-clamp-1">{quest.description}</p>
+          
+          {/* Meta row */}
           <div className="flex items-center gap-3 mt-3">
-            {/* Points Badge */}
-            <span
-              className={cn(
-                "badge",
-                isCompleted ? "badge-success" : "bg-success-light text-success-dark"
-              )}
-            >
-              {isCompleted ? "Completed" : `+${quest.basePoints} pts`}
+            <span className="badge-minimal badge-success">
+              +{quest.basePoints} pts
             </span>
-
-            {/* Bonus Indicator */}
-            {!isCompleted && quest.bonusPoints && (
-              <span className="text-xs text-muted-foreground">
-                Up to +{totalPossiblePoints}
-              </span>
-            )}
-
-            {/* Time Estimate */}
             {quest.estimatedTime && (
-              <span className="text-xs text-muted-foreground flex items-center gap-1">
-                <Clock className="w-3 h-3" />
+              <span className="flex items-center gap-1 text-xs text-gray-400">
+                <Clock className="w-3.5 h-3.5" />
                 {quest.estimatedTime}
               </span>
             )}
-
-            {/* Arrow */}
-            <motion.div
-              whileHover={{ x: 4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <ChevronRight className="w-5 h-5 text-muted-foreground/50 ml-auto flex-shrink-0 group-hover:text-primary transition-colors" />
-            </motion.div>
           </div>
         </div>
+        
+        {/* Arrow */}
+        {!completed && (
+          <ChevronRight className="w-5 h-5 text-gray-300 flex-shrink-0 mt-1" />
+        )}
       </div>
-    </motion.div>
+    </motion.button>
   );
 }
 

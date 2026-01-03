@@ -105,7 +105,109 @@
     background-color: white;
   }
   
-  /* Card styles */
+  /* Premium Clean Background */
+  .bg-clean {
+    background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%);
+  }
+  
+  /* Subtle accent backgrounds - much softer */
+  .bg-accent-subtle-green {
+    background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 50%);
+  }
+  
+  .bg-accent-subtle-blue {
+    background: linear-gradient(180deg, #EFF6FF 0%, #FFFFFF 50%);
+  }
+  
+  .bg-accent-subtle-amber {
+    background: linear-gradient(180deg, #FFFBEB 0%, #FFFFFF 50%);
+  }
+
+  /* Premium Card - cleaner shadows */
+  .card-premium {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  
+  .card-premium:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+
+  /* Premium Button */
+  .btn-premium {
+    background: #111827;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-premium:hover {
+    background: #1F2937;
+    transform: scale(1.02);
+  }
+
+  /* Secondary button - outline style */
+  .btn-outline {
+    background: transparent;
+    color: #111827;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1.5px solid #E5E7EB;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-outline:hover {
+    border-color: #111827;
+    background: #F9FAFB;
+  }
+
+  /* Large display text */
+  .text-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: #111827;
+  }
+
+  /* Subtitle text */
+  .text-subtitle {
+    font-size: 1.125rem;
+    color: #6B7280;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* Badge - minimal */
+  .badge-minimal {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #F3F4F6;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .badge-success {
+    background: #ECFDF5;
+    color: #047857;
+  }
+  
+  /* Legacy card styles - kept for compatibility */
   .quest-card {
     background-color: white;
     border-radius: var(--radius-md);
@@ -230,11 +332,6 @@
     letter-spacing: 0.025em;
   }
 
-  .badge-success {
-    background: hsl(var(--success-light));
-    color: hsl(var(--success-dark));
-  }
-
   .badge-gold {
     background: var(--gradient-accent);
     color: white;
@@ -297,19 +394,6 @@
   
   .safe-top {
     padding-top: env(safe-area-inset-top, 0);
-  }
-
-  /* Background patterns */
-  .bg-grid-pattern {
-    background-image: 
-      linear-gradient(to right, currentColor 1px, transparent 1px),
-      linear-gradient(to bottom, currentColor 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-
-  .bg-dot-pattern {
-    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
-    background-size: 20px 20px;
   }
 }
 
