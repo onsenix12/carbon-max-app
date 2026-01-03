@@ -2,7 +2,7 @@
 
 import { Quest } from "@/lib/carbonmax/types";
 import { cn } from "@/lib/utils";
-import { Clock, ChevronRight, Check } from "lucide-react";
+import { Clock, ChevronRight } from "lucide-react";
 
 interface QuestCardProps {
   quest: Quest;
@@ -16,8 +16,9 @@ export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCar
   return (
     <div
       className={cn(
-        "quest-card cursor-pointer",
-        isCompleted && "bg-eco-lime/10 border-eco-leaf/30"
+        "group bg-white rounded-md p-4 shadow border border-border cursor-pointer",
+        "transition-all duration-200 hover:shadow-md hover:-translate-y-0.5",
+        isCompleted && "bg-success-light/30 border-success/30"
       )}
       onClick={() => onStartQuest(quest.id)}
     >
@@ -25,8 +26,9 @@ export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCar
         {/* Icon */}
         <div
           className={cn(
-            "w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0",
-            isCompleted ? "bg-eco-leaf/20" : "bg-gray-100"
+            "w-14 h-14 rounded-lg flex items-center justify-center text-2xl flex-shrink-0",
+            "transition-transform duration-200 group-hover:scale-105",
+            isCompleted ? "bg-success/20" : "bg-muted"
           )}
         >
           {isCompleted ? "✅" : quest.icon}
@@ -36,8 +38,10 @@ export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCar
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <h3 className="font-semibold text-gray-900 truncate">{quest.title}</h3>
-              <p className="text-sm text-gray-500 line-clamp-2 mt-0.5">
+              <h3 className="font-display font-semibold text-foreground truncate">
+                {quest.title}
+              </h3>
+              <p className="text-sm text-muted-foreground line-clamp-2 mt-0.5">
                 {quest.description}
               </p>
             </div>
@@ -48,8 +52,8 @@ export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCar
             {/* Points Badge */}
             <span
               className={cn(
-                "points-badge",
-                isCompleted && "bg-eco-leaf/20 text-eco-forest"
+                "badge",
+                isCompleted ? "badge-success" : "bg-success-light text-success-dark"
               )}
             >
               {isCompleted ? "Completed" : `+${quest.basePoints} pts`}
@@ -57,25 +61,24 @@ export function QuestCard({ quest, isCompleted = false, onStartQuest }: QuestCar
 
             {/* Bonus Indicator */}
             {!isCompleted && quest.bonusPoints && (
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-muted-foreground">
                 Up to +{totalPossiblePoints}
               </span>
             )}
 
             {/* Time Estimate */}
             {quest.estimatedTime && (
-              <span className="text-xs text-gray-400 flex items-center gap-1">
+              <span className="text-xs text-muted-foreground flex items-center gap-1">
                 <Clock className="w-3 h-3" />
                 {quest.estimatedTime}
               </span>
             )}
 
             {/* Arrow */}
-            <ChevronRight className="w-5 h-5 text-gray-300 ml-auto flex-shrink-0" />
+            <ChevronRight className="w-5 h-5 text-muted-foreground/50 ml-auto flex-shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
           </div>
         </div>
       </div>
     </div>
   );
 }
-
