@@ -22,11 +22,11 @@ export default function QuestHubPage() {
   const availableCount = quests.filter((q) => !isQuestCompleted(q.id)).length;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-background">
       {/* Clean Header */}
-      <header className="bg-white/70 backdrop-blur-xl border-b border-gray-100/50 sticky top-0 z-50">
+      <header className="bg-white/70 backdrop-blur-xl border-b border-border/50 sticky top-0 z-50">
         <div className="max-w-lg mx-auto px-5 py-4">
-          <h1 className="font-display font-bold text-xl text-gray-900 text-center">CarbonMax</h1>
+          <h1 className="font-display font-bold text-xl text-foreground text-center">CarbonMax</h1>
         </div>
       </header>
 
@@ -58,8 +58,8 @@ export default function QuestHubPage() {
           transition={{ duration: 0.4, delay: 0.2 }}
         >
           <div className="flex items-baseline justify-between mb-5">
-            <h2 className="font-display text-2xl font-bold text-gray-900">Active Quests</h2>
-            <span className="text-sm text-gray-600 font-medium">{availableCount} available</span>
+            <h2 className="font-display text-2xl font-bold text-foreground">Active Quests</h2>
+            <span className="text-sm text-muted-foreground font-medium">{availableCount} available</span>
           </div>
           
           <div className="space-y-3">
@@ -87,7 +87,7 @@ export default function QuestHubPage() {
       {/* Floating Chat Button - cleaner */}
       <Link
         href="/chat"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-gray-900 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-800 hover:scale-105 transition-all"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg hover:bg-primary-dark hover:scale-105 transition-all"
       >
         <MessageCircle className="w-6 h-6" />
       </Link>

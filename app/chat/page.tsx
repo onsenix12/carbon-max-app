@@ -218,7 +218,7 @@ export default function ChatPage() {
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center gap-3">
             <motion.div whileHover={{ x: -2 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
                 <ArrowLeft className="w-5 h-5" />
               </Link>
             </motion.div>
@@ -295,17 +295,17 @@ export default function ChatPage() {
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
-                    className="w-2 h-2 bg-gray-400 rounded-full"
+                    className="w-2 h-2 bg-muted-foreground rounded-full"
                   />
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
-                    className="w-2 h-2 bg-gray-400 rounded-full"
+                    className="w-2 h-2 bg-muted-foreground rounded-full"
                   />
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
-                    className="w-2 h-2 bg-gray-400 rounded-full"
+                    className="w-2 h-2 bg-muted-foreground rounded-full"
                   />
                 </div>
               </div>

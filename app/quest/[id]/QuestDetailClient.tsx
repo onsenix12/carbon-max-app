@@ -56,11 +56,11 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
       return (
         <div className="text-center py-12">
           <div className="text-6xl mb-4">✅</div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">Quest Completed!</h3>
-          <p className="text-gray-500 mb-6">You've already finished this quest.</p>
+          <h3 className="text-xl font-bold text-foreground mb-2">Quest Completed!</h3>
+          <p className="text-muted-foreground mb-6">You've already finished this quest.</p>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-eco-leaf text-white rounded-xl font-medium hover:bg-eco-forest transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors"
           >
             Back to Quests
           </Link>
@@ -76,17 +76,17 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
       case "transit-hydration":
         return <HydrationQuest quest={quest} onComplete={handleComplete} />;
       default:
-        return <div className="text-center py-8 text-gray-500">Quest content not available</div>;
+        return <div className="text-center py-8 text-muted-foreground">Quest content not available</div>;
     }
   };
 
   return (
     <div className={cn("min-h-screen", colors.bg)}>
       {/* Header */}
-      <div className="bg-white shadow-sm sticky top-0 z-10">
+      <div className="bg-white shadow-sm sticky top-0 z-10 border-b border-border">
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 text-gray-600">
+            <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span className="text-sm">Back</span>
             </Link>
@@ -98,10 +98,10 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
               style={{
                 backgroundColor:
                   quest.mode === "jewel"
-                    ? "#F5A623"
+                    ? "#F59E0B"
                     : quest.mode === "departure"
-                    ? "#1E3A8A"
-                    : "#0D9488",
+                    ? "#3B82F6"
+                    : "#10B981",
               }}
             >
               {quest.mode.charAt(0).toUpperCase() + quest.mode.slice(1)}
@@ -114,8 +114,8 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
       <div className="max-w-md mx-auto px-4 pt-6 pb-4">
         <div className="text-center mb-6">
           <div className="text-5xl mb-3">{quest.icon}</div>
-          <h1 className="text-2xl font-bold text-gray-900">{quest.title}</h1>
-          <p className="text-gray-500 mt-2">{quest.description}</p>
+          <h1 className="text-2xl font-display font-bold text-foreground">{quest.title}</h1>
+          <p className="text-muted-foreground mt-2">{quest.description}</p>
 
           {/* Meta */}
           <div className="flex items-center justify-center gap-4 mt-4">
@@ -123,12 +123,12 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
               +{quest.basePoints} pts
             </span>
             {quest.bonusPoints && (
-              <span className="text-sm text-amber-600">
+              <span className="text-sm text-warning">
                 Up to +{quest.basePoints + quest.bonusPoints}
               </span>
             )}
             {quest.estimatedTime && (
-              <span className="text-sm text-gray-400 flex items-center gap-1">
+              <span className="text-sm text-muted-foreground flex items-center gap-1">
                 <Clock className="w-4 h-4" />
                 {quest.estimatedTime}
               </span>
@@ -137,12 +137,12 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
         </div>
 
         {/* Carbon Fact */}
-        <div className="bg-white rounded-xl p-4 mb-6 border border-gray-100">
+        <div className="bg-white rounded-md p-4 mb-6 border border-border">
           <div className="flex gap-3">
-            <Lightbulb className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+            <Lightbulb className="w-5 h-5 text-warning flex-shrink-0 mt-0.5" />
             <div>
-              <p className="font-medium text-gray-900 text-sm">Carbon Fact</p>
-              <p className="text-sm text-gray-600 mt-1">{quest.carbonFact}</p>
+              <p className="font-medium text-foreground text-sm">Carbon Fact</p>
+              <p className="text-sm text-muted-foreground mt-1">{quest.carbonFact}</p>
             </div>
           </div>
         </div>

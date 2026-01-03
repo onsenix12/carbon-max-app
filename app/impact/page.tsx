@@ -244,7 +244,7 @@ export default function ImpactPage() {
                 >
                   {stat.icon}
                 </motion.div>
-                <div className="font-mono text-2xl font-bold text-gray-900">
+                <div className="font-mono text-2xl font-bold text-foreground">
                   {isStatsInView ? (
                     <AnimatedCounter 
                       value={stat.value} 
@@ -255,7 +255,7 @@ export default function ImpactPage() {
                     stat.valueDisplay(0)
                   )}
                 </div>
-                <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -283,7 +283,7 @@ export default function ImpactPage() {
               >
                 🌳
               </motion.div>
-              <p className="text-gray-900">
+              <p className="text-foreground">
                 Your impact equals{" "}
                 <span className="font-mono font-bold text-success-dark text-2xl">
                   {isStatsInView ? (
@@ -297,7 +297,7 @@ export default function ImpactPage() {
                 </span>{" "}
                 trees
               </p>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 absorbing CO₂ for an entire year
               </p>
             </motion.div>
@@ -309,7 +309,7 @@ export default function ImpactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
             whileHover={{ scale: 1.02 }}
-            className="border border-gray-200 rounded-2xl p-4 mb-8 shadow-sm hover:shadow-md transition-shadow"
+            className="border border-border rounded-2xl p-4 mb-8 shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
@@ -321,10 +321,10 @@ export default function ImpactPage() {
                   {tierProgress.currentTier.icon}
                 </motion.span>
                 <div>
-                  <div className="font-display font-bold text-gray-900">
+                  <div className="font-display font-bold text-foreground">
                     {tierProgress.currentTier.name}
                   </div>
-                  <div className="text-sm text-gray-500">Current Tier</div>
+                  <div className="text-sm text-muted-foreground">Current Tier</div>
                 </div>
               </div>
               <div className="text-right">
@@ -338,7 +338,7 @@ export default function ImpactPage() {
                     "0"
                   )}
                 </div>
-                <div className="text-sm text-gray-500">Eco-Points</div>
+                <div className="text-sm text-muted-foreground">Eco-Points</div>
               </div>
             </div>
 
@@ -352,7 +352,7 @@ export default function ImpactPage() {
                     className="progress-fill h-full"
                   />
                 </div>
-                <p className="text-xs text-gray-500 text-center">
+                <p className="text-xs text-muted-foreground text-center">
                   {tierProgress.pointsToNextTier} pts to{" "}
                   {tierProgress.nextTier.icon} {tierProgress.nextTier.name}
                 </p>
@@ -382,8 +382,8 @@ export default function ImpactPage() {
               >
                 🌱
               </motion.div>
-              <h3 className="font-display font-bold text-gray-900 mb-2">Start Your Journey</h3>
-              <p className="text-gray-500 mb-6">
+              <h3 className="font-display font-bold text-foreground mb-2">Start Your Journey</h3>
+              <p className="text-muted-foreground mb-6">
                 Complete your first quest to begin building your impact story!
               </p>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -405,7 +405,7 @@ export default function ImpactPage() {
               transition={{ duration: 0.5, delay: 0.9 }}
               className="text-center py-4"
             >
-              <p className="text-gray-500 text-sm">
+              <p className="text-muted-foreground text-sm">
                 "Every small action adds up to big change." 🌿
               </p>
             </motion.div>
