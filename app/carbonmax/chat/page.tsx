@@ -165,7 +165,7 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-muted flex flex-col">
       {/* Header */}
       <div className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-md mx-auto px-4 py-3">
@@ -174,13 +174,13 @@ export default function ChatPage() {
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-eco-leaf rounded-full flex items-center justify-center">
-                <Leaf className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <h1 className="font-semibold text-gray-900">Ask Max</h1>
-                <p className="text-xs text-gray-500">Your sustainability guide</p>
-              </div>
+            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+              <Leaf className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <h1 className="font-display font-semibold text-foreground">Ask Max</h1>
+              <p className="text-xs text-muted-foreground">Your sustainability guide</p>
+            </div>
             </div>
           </div>
         </div>
@@ -201,14 +201,14 @@ export default function ChatPage() {
                 className={cn(
                   "max-w-[85%] rounded-2xl px-4 py-3",
                   message.role === "user"
-                    ? "bg-eco-leaf text-white"
-                    : "bg-white border border-gray-200"
+                    ? "bg-primary text-white"
+                    : "bg-white border border-border"
                 )}
               >
                 <p
                   className={cn(
                     "text-sm whitespace-pre-wrap",
-                    message.role === "user" ? "text-white" : "text-gray-700"
+                    message.role === "user" ? "text-white" : "text-foreground"
                   )}
                   dangerouslySetInnerHTML={{
                     __html: message.content
@@ -222,7 +222,7 @@ export default function ChatPage() {
 
           {isTyping && (
             <div className="flex justify-start">
-              <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3">
+              <div className="bg-white border border-border rounded-2xl px-4 py-3">
                 <div className="flex gap-1">
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:0.1s]" />
@@ -244,7 +244,7 @@ export default function ChatPage() {
               <button
                 key={question}
                 onClick={() => handleQuickQuestion(question)}
-                className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                className="px-3 py-1.5 bg-white border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors"
               >
                 {question}
               </button>
@@ -263,12 +263,12 @@ export default function ChatPage() {
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
               placeholder="Ask Max anything..."
-              className="flex-1 px-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-eco-leaf focus:border-transparent"
+              className="flex-1 px-4 py-2 border border-border rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
             <button
               onClick={() => handleSend()}
               disabled={!input.trim() || isTyping}
-              className="w-10 h-10 bg-eco-leaf text-white rounded-full flex items-center justify-center hover:bg-eco-forest transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="w-4 h-4" />
             </button>

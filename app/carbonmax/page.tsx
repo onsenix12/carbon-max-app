@@ -10,16 +10,20 @@ import { MyImpact } from "@/components/carbonmax/MyImpact";
 import { ArrowLeft, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
-// Import quest data
 import questsData from "@/data/quests.json";
 import { Quest } from "@/lib/carbonmax/types";
 
+const MODE_BACKGROUNDS: Record<string, string> = {
+  jewel: "bg-[#FFFBEB]",
+  departure: "bg-[#EFF6FF]",
+  transit: "bg-[#ECFDF5]",
+};
+
 export default function QuestHubPage() {
   const router = useRouter();
-  const { mode, modeConfig } = useJourneyMode();
+  const { mode } = useJourneyMode();
   const { isQuestCompleted } = useQuestProgress();
 
-  // Filter quests by current mode
   const quests = (questsData.quests as Quest[]).filter((q) => q.mode === mode);
   const availableCount = quests.filter((q) => !isQuestCompleted(q.id)).length;
 
@@ -27,43 +31,34 @@ export default function QuestHubPage() {
     router.push(`/carbonmax/quest/${questId}`);
   };
 
-  // Dynamic background color based on mode
-  const bgColor =
-    mode === "jewel"
-      ? "bg-mode-jewel-bg"
-      : mode === "departure"
-      ? "bg-mode-departure-bg"
-      : "bg-mode-transit-bg";
+  const bgColor = MODE_BACKGROUNDS[mode] || MODE_BACKGROUNDS.transit;
 
   return (
     <div className={`min-h-screen ${bgColor} transition-colors duration-300`}>
       {/* Header */}
-      <div className="bg-white shadow-sm sticky top-0 z-10">
+      <div className="bg-white shadow-sm sticky top-0 z-10 border-b border-border">
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 text-gray-600">
+            <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span className="text-sm">Back</span>
             </Link>
-            <h1 className="font-bold text-lg text-gray-900">CarbonMax</h1>
-            <div className="w-16" /> {/* Spacer for centering */}
+            <h1 className="font-display font-bold text-lg text-foreground">CarbonMax</h1>
+            <div className="w-16" />
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-md mx-auto px-4 py-6 space-y-6 pb-24">
-        {/* Tier Progress */}
         <TierProgressBar />
-
-        {/* Mode Selector */}
         <ModeSelector />
 
         {/* Active Quests Section */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <h2 className="font-semibold text-gray-900">Active Quests</h2>
-            <span className="text-sm text-gray-500">
+            <h2 className="font-display font-semibold text-foreground">Active Quests</h2>
+            <span className="text-sm text-muted-foreground">
               {availableCount} available
             </span>
           </div>
@@ -79,8 +74,8 @@ export default function QuestHubPage() {
                 />
               ))
             ) : (
-              <div className="text-center py-8 bg-white rounded-2xl">
-                <p className="text-gray-500">No quests available for this mode</p>
+              <div className="text-center py-8 card-base">
+                <p className="text-muted-foreground">No quests available for this mode</p>
               </div>
             )}
           </div>
@@ -88,7 +83,7 @@ export default function QuestHubPage() {
 
         {/* My Impact Section */}
         <div>
-          <h2 className="font-semibold text-gray-900 mb-3">My Impact</h2>
+          <h2 className="font-display font-semibold text-foreground mb-3">My Impact</h2>
           <MyImpact />
         </div>
       </div>
@@ -96,11 +91,10 @@ export default function QuestHubPage() {
       {/* Floating Ask Max Button */}
       <Link
         href="/carbonmax/chat"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-eco-leaf text-white rounded-full shadow-lg flex items-center justify-center hover:bg-eco-forest transition-colors"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-dark hover:-translate-y-1 transition-all duration-200"
       >
         <MessageCircle className="w-6 h-6" />
       </Link>
     </div>
   );
 }
-
