@@ -5,11 +5,6 @@ import { QuestProgressProvider } from "@/hooks/useQuestProgress";
 import { Search, Star, MapPin, Plane, ShoppingBag, User } from "lucide-react";
 
 export default function HomePage() {
-  // #region agent log
-  if (typeof window !== 'undefined') {
-    fetch('http://127.0.0.1:7243/ingest/ff043c46-ebaa-49ee-a75d-5e6b254857f8',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/page.tsx:6',message:'HomePage component rendered (client)',data:{timestamp:new Date().toISOString()},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-  }
-  // #endregion
   return (
     <QuestProgressProvider>
       <div className="min-h-screen bg-gray-100">

@@ -49,9 +49,6 @@ function calculateTierProgress(points: number): UserTierProgress {
 }
 
 export function QuestProgressProvider({ children }: { children: ReactNode }) {
-  // #region agent log
-  fetch('http://127.0.0.1:7243/ingest/ff043c46-ebaa-49ee-a75d-5e6b254857f8',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'hooks/useQuestProgress.tsx:51',message:'QuestProgressProvider initialized',data:{timestamp:new Date().toISOString()},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-  // #endregion
   const [questProgress, setQuestProgress] = useState<Record<string, QuestProgress>>({});
   const [totalPoints, setTotalPoints] = useState(0);
   const [userImpact, setUserImpact] = useState<UserImpact>({
@@ -65,9 +62,6 @@ export function QuestProgressProvider({ children }: { children: ReactNode }) {
 
   // Load from localStorage
   useEffect(() => {
-    // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/ff043c46-ebaa-49ee-a75d-5e6b254857f8',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'hooks/useQuestProgress.tsx:64',message:'useEffect localStorage load started',data:{hasStorage:typeof window !== 'undefined' && typeof localStorage !== 'undefined'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-    // #endregion
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
@@ -75,24 +69,11 @@ export function QuestProgressProvider({ children }: { children: ReactNode }) {
         setQuestProgress(data.questProgress || {});
         setTotalPoints(data.totalPoints || 0);
         setUserImpact(data.userImpact || userImpact);
-        // #region agent log
-        fetch('http://127.0.0.1:7243/ingest/ff043c46-ebaa-49ee-a75d-5e6b254857f8',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'hooks/useQuestProgress.tsx:69',message:'localStorage data loaded successfully',data:{hasData:true,points:data.totalPoints || 0},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-        // #endregion
       } catch (e) {
-        // #region agent log
-        fetch('http://127.0.0.1:7243/ingest/ff043c46-ebaa-49ee-a75d-5e6b254857f8',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'hooks/useQuestProgress.tsx:73',message:'localStorage parse error',data:{error:String(e)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
-        // #endregion
         console.error("Failed to parse quest progress:", e);
       }
-    } else {
-      // #region agent log
-      fetch('http://127.0.0.1:7243/ingest/ff043c46-ebaa-49ee-a75d-5e6b254857f8',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'hooks/useQuestProgress.tsx:76',message:'localStorage empty (first run)',data:{hasData:false},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-      // #endregion
     }
     setIsHydrated(true);
-    // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/ff043c46-ebaa-49ee-a75d-5e6b254857f8',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'hooks/useQuestProgress.tsx:77',message:'hydration complete',data:{isHydrated:true},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-    // #endregion
   }, []);
 
   // Save to localStorage
