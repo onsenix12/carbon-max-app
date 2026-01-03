@@ -26,37 +26,37 @@ export function MyImpact() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+    <div className="card-base">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-          <span>🌍</span> My Impact
+        <h3 className="font-display font-semibold text-foreground flex items-center gap-2">
+          <span className="impact-icon text-2xl">🌍</span> My Impact
         </h3>
         <Link
           href="/carbonmax/impact"
-          className="text-sm text-eco-leaf font-medium flex items-center gap-1 hover:underline"
+          className="text-sm text-primary font-medium flex items-center gap-1 hover:underline group"
         >
-          Full Story <ChevronRight className="w-4 h-4" />
+          Full Story <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-3 gap-4 mb-4">
         {stats.map((stat, index) => (
-          <div key={index} className="text-center">
-            <div className="text-xl mb-1">{stat.icon}</div>
-            <div className="font-bold text-gray-900">{stat.value}</div>
-            <div className="text-xs text-gray-500">{stat.label}</div>
+          <div key={index} className="impact-stat">
+            <div className="text-xl mb-1 filter drop-shadow-sm">{stat.icon}</div>
+            <div className="font-mono font-bold text-foreground">{stat.value}</div>
+            <div className="text-xs text-muted-foreground">{stat.label}</div>
           </div>
         ))}
       </div>
 
       {/* Trees Equivalent */}
       {userImpact.treesEquivalent > 0 && (
-        <div className="bg-eco-lime/30 rounded-xl p-3 text-center">
-          <p className="text-sm text-eco-forest">
+        <div className="bg-success-light rounded-lg p-3 text-center">
+          <p className="text-sm text-success-dark">
             🌳 Equivalent to{" "}
-            <span className="font-bold">
+            <span className="font-mono font-bold">
               {userImpact.treesEquivalent.toFixed(1)} trees
             </span>{" "}
             absorbing CO₂ for a year
@@ -67,7 +67,7 @@ export function MyImpact() {
       {/* Empty State */}
       {userImpact.questsCompleted === 0 && (
         <div className="text-center py-4">
-          <p className="text-gray-500 text-sm">
+          <p className="text-muted-foreground text-sm">
             Complete your first quest to start tracking your impact!
           </p>
         </div>
@@ -75,4 +75,3 @@ export function MyImpact() {
     </div>
   );
 }
-
