@@ -5,6 +5,7 @@ import { ArrowLeft, Share2, TreePine, Droplets, Plane, ShoppingBag } from "lucid
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { Button } from "@/components/Button";
 
 // Animated Counter Component
 function AnimatedCounter({ 
