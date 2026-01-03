@@ -63,7 +63,7 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
     <div className="space-y-6">
       {/* Restaurant Selection */}
       <div>
-        <h3 className="font-semibold text-gray-900 mb-3">Choose a Green Restaurant</h3>
+        <h3 className="font-display font-semibold text-gray-900 mb-3">Choose a Green Restaurant</h3>
         <div className="space-y-3">
           {RESTAURANTS.map((restaurant) => (
             <button
@@ -111,7 +111,7 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
 
       {/* Quest Objectives */}
       <div>
-        <h3 className="font-semibold text-gray-900 mb-3">Quest Objectives</h3>
+        <h3 className="font-display font-semibold text-gray-900 mb-3">Quest Objectives</h3>
         <div className="space-y-3">
           <label
             className={cn(

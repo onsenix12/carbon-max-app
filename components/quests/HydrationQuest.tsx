@@ -59,7 +59,7 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
     <div className="space-y-6">
       {/* Station Selection */}
       <div>
-        <h3 className="font-semibold text-gray-900 mb-2">Find a Refill Station</h3>
+        <h3 className="font-display font-semibold text-gray-900 mb-2">Find a Refill Station</h3>
         <p className="text-sm text-gray-500 mb-4">
           Changi has 50+ free water refill stations across all terminals
         </p>
@@ -106,7 +106,7 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
 
       {/* Quest Objectives */}
       <div>
-        <h3 className="font-semibold text-gray-900 mb-3">Quest Objectives</h3>
+        <h3 className="font-display font-semibold text-gray-900 mb-3">Quest Objectives</h3>
         <div className="space-y-3">
           <label
             className={cn(

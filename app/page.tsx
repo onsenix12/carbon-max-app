@@ -33,7 +33,7 @@ export default function QuestHubPage() {
       {/* Clean Header */}
       <header className="bg-white/80 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-lg mx-auto px-5 py-4">
-          <h1 className="font-semibold text-lg text-gray-900 text-center">CarbonMax</h1>
+          <h1 className="font-display font-semibold text-lg text-gray-900 text-center">CarbonMax</h1>
         </div>
       </header>
 
@@ -65,7 +65,7 @@ export default function QuestHubPage() {
           transition={{ duration: 0.4, delay: 0.2 }}
         >
           <div className="flex items-baseline justify-between mb-4">
-            <h2 className="text-xl font-semibold text-gray-900">Active Quests</h2>
+            <h2 className="font-display text-xl font-semibold text-gray-900">Active Quests</h2>
             <span className="text-sm text-gray-500">{availableCount} available</span>
           </div>
           

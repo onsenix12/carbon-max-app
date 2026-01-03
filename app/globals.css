@@ -88,10 +88,12 @@
   }
   
   body {
-    background-color: hsl(var(--background));
+    background: linear-gradient(180deg, #F0FDF4 0%, #ECFDF5 50%, #FFFFFF 100%);
+    background-attachment: fixed;
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
     font-family: inherit;
+    min-height: 100vh;
   }
 }
 

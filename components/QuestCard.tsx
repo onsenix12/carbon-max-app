@@ -31,7 +31,7 @@ export function QuestCard({ quest, completed, onStart }: QuestCardProps) {
         
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-gray-900 mb-1">{quest.title}</h3>
+          <h3 className="font-display font-semibold text-gray-900 mb-1">{quest.title}</h3>
           <p className="text-sm text-gray-500 line-clamp-1">{quest.description}</p>
           
           {/* Meta row */}

@@ -17,7 +17,7 @@ export function MyImpact() {
   return (
     <div className="card-premium">
       <div className="flex items-center justify-between mb-5">
-        <h3 className="font-semibold text-gray-900">My Impact</h3>
+        <h3 className="font-display font-semibold text-gray-900">My Impact</h3>
         <Link href="/impact" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
           Full Story →
         </Link>
@@ -33,7 +33,7 @@ export function MyImpact() {
             className="text-center"
           >
             <stat.icon className="w-5 h-5 text-gray-400 mx-auto mb-2" />
-            <p className="text-xl font-semibold text-gray-900">{stat.value}</p>
+            <p className="font-mono text-xl font-semibold text-gray-900">{stat.value}</p>
             <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
           </motion.div>
         ))}

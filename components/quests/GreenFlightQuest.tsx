@@ -58,7 +58,7 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
     <div className="space-y-6">
       {/* Flight Details */}
       <div className="bg-white rounded-xl p-4 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-4">Your Flight</h3>
+        <h3 className="font-display font-semibold text-gray-900 mb-4">Your Flight</h3>
         
         <div className="flex items-center justify-between mb-4">
           <div className="text-center">
@@ -112,7 +112,7 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
         <>
           {/* Emissions Results */}
           <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
-            <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+            <h3 className="font-display font-semibold text-gray-900 mb-3 flex items-center gap-2">
               <Check className="w-5 h-5 text-eco-leaf" />
               Emissions Calculated
             </h3>
@@ -144,7 +144,7 @@ export function GreenFlightQuest({ quest, onComplete }: GreenFlightQuestProps) {
 
           {/* SAF Options */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+            <h3 className="font-display font-semibold text-gray-900 mb-3 flex items-center gap-2">
               <Leaf className="w-5 h-5 text-eco-leaf" />
               Reduce with SAF
             </h3>
