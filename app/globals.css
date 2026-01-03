@@ -4,26 +4,77 @@
 
 @layer base {
   :root {
+    /* Background & Surface */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 142 76% 36%;
+    
+    /* Primary - Emerald Green */
+    --primary: 160 84% 39%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
+    --primary-light: 160 61% 52%;
+    --primary-dark: 161 94% 30%;
+    --primary-50: 152 81% 96%;
+    --primary-100: 149 80% 90%;
+    
+    /* Secondary - Sky Blue */
+    --secondary: 217 91% 60%;
     --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-light: 217 91% 68%;
+    --secondary-dark: 217 91% 53%;
+    --secondary-50: 214 100% 97%;
+    --secondary-100: 214 95% 93%;
+    
+    /* Accent Colors */
+    --accent-gold: 38 92% 50%;
+    --accent-gold-light: 45 93% 65%;
+    --accent-purple: 258 90% 66%;
+    --accent-purple-light: 258 89% 76%;
+    --accent-teal: 168 76% 42%;
+    --accent-teal-light: 170 71% 67%;
+    
+    /* Semantic */
+    --success: 160 84% 39%;
+    --success-light: 149 80% 90%;
+    --success-dark: 163 94% 24%;
+    --warning: 38 92% 50%;
+    --warning-light: 48 96% 89%;
+    --warning-dark: 28 80% 32%;
+    --error: 0 84% 60%;
+    --error-light: 0 86% 93%;
+    --error-dark: 0 74% 42%;
+    --info: 217 91% 60%;
+    --info-light: 214 95% 93%;
+    --info-dark: 224 76% 48%;
+    
+    /* Neutrals */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
+    --border: 220 13% 91%;
+    --border-strong: 216 12% 84%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 142 76% 36%;
-    --radius: 0.75rem;
+    --ring: 160 84% 39%;
+    
+    /* Spacing & Radius */
+    --radius: 0.5rem;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    --gradient-secondary: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    --gradient-success: linear-gradient(135deg, #10B981 0%, #14B8A6 50%, #3B82F6 100%);
+    --gradient-achievement: linear-gradient(135deg, #F59E0B 0%, #8B5CF6 100%);
   }
 }
 
@@ -123,6 +174,117 @@
     background-color: rgb(234 179 8 / 0.2);
     color: #EAB308;
   }
+  
+  /* EcoQuest Button Styles */
+  .btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-secondary {
+    background: hsl(var(--muted));
+    color: hsl(var(--primary));
+    border: 2px solid hsl(var(--primary));
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+  }
+
+  /* EcoQuest Card Styles */
+  .card-base {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .card-base:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+  }
+
+  /* Badge Styles */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .badge-success {
+    background: hsl(var(--success-light));
+    color: hsl(var(--success-dark));
+  }
+
+  .badge-gold {
+    background: var(--gradient-accent);
+    color: white;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+  }
+
+  .badge-info {
+    background: hsl(var(--info-light));
+    color: hsl(var(--info-dark));
+  }
+
+  /* Impact Stat Styles */
+  .impact-stat {
+    text-align: center;
+  }
+
+  .impact-value {
+    font-family: var(--font-mono);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: hsl(var(--primary));
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .impact-label {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .impact-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+    filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.2));
+  }
+
+  /* Progress Bar */
+  .progress-bar {
+    height: 0.5rem;
+    background: hsl(var(--muted));
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: 9999px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 @layer utilities {
@@ -135,3 +297,37 @@
     padding-top: env(safe-area-inset-top, 0);
   }
 }
+
+/* Animation Keyframes */
+@keyframes celebrate {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 20px 10px rgba(16, 185, 129, 0.2); }
+}
+
+@keyframes flicker {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.1); filter: brightness(1.3); }
+}
+
+@keyframes levelUp {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; }
+}
+
+.animate-celebrate { animation: celebrate 0.5s ease-out; }
+.animate-shimmer { animation: shimmer 3s infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s infinite; }
+.animate-flicker { animation: flicker 1.5s infinite; }
+.animate-level-up { animation: levelUp 0.8s ease-out; }
