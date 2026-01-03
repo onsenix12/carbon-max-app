@@ -6,7 +6,7 @@ export const MODE_CONFIGS: Record<string, ModeConfig> = {
     name: "Jewel",
     icon: "🟡",
     tagline: "Discover Green Treasures",
-    color: "mode-jewel",
+    color: "accent-gold",
     bgColor: "mode-jewel-bg",
   },
   departure: {
@@ -14,15 +14,15 @@ export const MODE_CONFIGS: Record<string, ModeConfig> = {
     name: "Departure",
     icon: "🔵",
     tagline: "Leave Lighter",
-    color: "mode-departure",
+    color: "secondary",
     bgColor: "mode-departure-bg",
   },
   transit: {
     id: "transit",
     name: "Transit",
-    icon: "🩵",
+    icon: "🟢",
     tagline: "Green While You Wait",
-    color: "mode-transit",
+    color: "primary",
     bgColor: "mode-transit-bg",
   },
 };
