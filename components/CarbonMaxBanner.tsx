@@ -19,71 +19,36 @@ export function CarbonMaxBanner() {
   return (
     <Link href={ROUTES.CARBONMAX} className="block group">
       <motion.div
-        whileHover={{ scale: 1.02, y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary to-success-dark p-5 text-white shadow-lg hover:shadow-xl transition-shadow"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
+        className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-sky-200 via-sky-100 to-white p-6 shadow-lg"
       >
-        {/* Shimmer overlay */}
-        <motion.div
-          animate={{
-            x: ["-100%", "200%"],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatDelay: 2,
-            ease: "linear",
-          }}
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-        />
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl" />
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/10 rounded-full blur-xl" />
         
         {/* Content */}
         <div className="relative z-10">
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-3">
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                transition={{ duration: 0.5 }}
-                className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm"
-              >
-                <Leaf className="w-6 h-6" />
-              </motion.div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="font-display font-bold text-lg">CarbonMax</h3>
-                  <motion.div
-                    animate={{ rotate: [0, 180, 360] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  >
-                    <Sparkles className="w-4 h-4 text-accent-gold-light" />
-                  </motion.div>
-                </div>
-                <p className="text-sm text-white/80">
-                  {totalPoints > 0
-                    ? `${totalPoints.toLocaleString()} eco-points earned`
-                    : "Start your green journey"}
-                </p>
-              </div>
-            </div>
-            <motion.div
-              whileHover={{ x: 4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <ChevronRight className="w-5 h-5 text-white/60" />
-            </motion.div>
+          <div className="mb-4">
+            <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">WELCOME TO</p>
+            <h2 className="font-display font-bold text-4xl text-gray-900 mb-2">
+              <span className="text-primary">CARBON</span>
+              <span className="text-yellow-500">MAX</span>
+            </h2>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              Complete quests, earn eco-points, and unlock green tiers to receive sustainable rewards!
+            </p>
           </div>
 
-          {/* CTA */}
-          <div className="mt-4 flex items-center justify-between">
-            <span className="text-sm text-white/70">Complete quests • Earn rewards</span>
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-3 py-1 bg-white/20 rounded-lg text-sm font-medium backdrop-blur-sm hover:bg-white/30 shadow-sm"
-            >
-              Explore →
-            </motion.span>
-          </div>
+          {/* CTA Button */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 transition-colors"
+          >
+            <span>SWIPE DOWN TO PLAY</span>
+            <ChevronRight className="w-5 h-5 rotate-90" />
+          </motion.button>
         </div>
       </motion.div>
     </Link>

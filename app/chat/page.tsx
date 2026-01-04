@@ -17,7 +17,7 @@ interface Message {
   content: string;
 }
 
-const WELCOME_MESSAGE = `Hi! I'm Max, your sustainability guide. 🌿
+const WELCOME_MESSAGE = `Hi! I'm CarbonMax, your sustainability guide. 🌿
 
 I can help you:
 • Find the best quests for you
@@ -273,7 +273,7 @@ export default function ChatPage() {
                 <Leaf className="w-4 h-4 text-white" />
               </motion.div>
               <div>
-                <h1 className="font-display font-semibold text-foreground">Ask Max</h1>
+                <h1 className="font-display font-semibold text-foreground">Ask CarbonMax</h1>
                 <p className="text-xs text-muted-foreground">Your sustainability guide</p>
               </div>
             </div>
