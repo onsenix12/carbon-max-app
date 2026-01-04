@@ -1,18 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Explicitly set runtime to Node.js (default, but explicit is better)
 export const runtime = 'nodejs';
 
-// Handle CORS preflight requests
-export async function OPTIONS(request: NextRequest) {
+export async function OPTIONS() {
   return new NextResponse(null, {
     status: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     },
   });
+}
+
+export async function GET() {
+  return NextResponse.json({ status: 'Chat API is running' });
 }
 
 export async function POST(request: NextRequest) {
@@ -22,6 +24,7 @@ export async function POST(request: NextRequest) {
     const apiKey = process.env.CLAUDE_API_KEY;
     
     if (!apiKey) {
+      console.error('CLAUDE_API_KEY is not set');
       return NextResponse.json(
         { error: 'Claude API key is not configured' },
         { status: 500 }
@@ -29,7 +32,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Format messages for Claude API
-    // Claude API expects messages with content as string for text messages
     const formattedMessages = messages
       .filter((msg: { role: string; content: string }) => msg.role !== 'system')
       .map((msg: { role: string; content: string }) => ({
@@ -43,10 +45,10 @@ export async function POST(request: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': apiKey,
-        'anthropic-version': '2024-10-22',
+        'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'claude-sonnet-4-20250514',
         max_tokens: 1024,
         messages: formattedMessages,
         system: `You are Max, a friendly and knowledgeable sustainability guide for CarbonMax, a gamified carbon reduction platform at Changi Airport in Singapore. 
@@ -63,7 +65,7 @@ Keep responses concise, friendly, and helpful. Use emojis sparingly but appropri
 
     if (!response.ok) {
       const errorData = await response.text();
-      console.error('Claude API error:', errorData);
+      console.error('Claude API error:', response.status, errorData);
       return NextResponse.json(
         { error: 'Failed to get response from Claude API', details: errorData },
         { status: response.status }
@@ -71,8 +73,6 @@ Keep responses concise, friendly, and helpful. Use emojis sparingly but appropri
     }
 
     const data = await response.json();
-    
-    // Extract the text content from Claude's response
     const content = data.content?.[0]?.text || 'Sorry, I could not generate a response.';
 
     return NextResponse.json({ content });
@@ -84,4 +84,3 @@ Keep responses concise, friendly, and helpful. Use emojis sparingly but appropri
     );
   }
 }
-

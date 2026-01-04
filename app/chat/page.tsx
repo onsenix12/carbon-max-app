@@ -163,18 +163,8 @@ export default function ChatPage() {
         },
       ];
 
-      // Call Claude API - use environment variable or fallback to relative path
-      // Note: For GitHub Pages deployment, NEXT_PUBLIC_API_URL must be set to your Vercel function URL
-      let apiUrl = process.env.NEXT_PUBLIC_API_URL || "/api/chat";
-      
-      // Remove trailing slash if present
-      apiUrl = apiUrl.replace(/\/$/, '');
-      
-      if (!process.env.NEXT_PUBLIC_API_URL && typeof window !== 'undefined') {
-        console.warn('NEXT_PUBLIC_API_URL not set. API calls may fail on static hosting. Set it to your Vercel function URL.');
-      }
-      
-      const response = await fetch(apiUrl, {
+      // Call Claude API - use relative path for Vercel deployment
+      const response = await fetch('/api/chat', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
