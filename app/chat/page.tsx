@@ -287,7 +287,16 @@ export default function ChatPage() {
                 />
               </motion.div>
               <div>
-                <h1 className="font-display font-semibold text-foreground">Ask CarbonMax</h1>
+                <h1 className="font-display font-semibold text-foreground flex items-center gap-2">
+                  Ask Carbon<span className="text-[#10B981]">Max</span>
+                  <Image 
+                    src="/logo.png" 
+                    alt="CarbonMax Logo" 
+                    width={24} 
+                    height={24}
+                    className="object-contain"
+                  />
+                </h1>
                 <p className="text-xs text-muted-foreground">Your sustainability guide</p>
               </div>
             </div>
@@ -416,7 +425,7 @@ export default function ChatPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
-              placeholder="Ask Max anything..."
+              placeholder="Ask CarbonMax anything..."
               className="flex-1"
             />
             <motion.button
