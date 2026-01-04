@@ -40,7 +40,6 @@ export default function QuestHubPage() {
         <div className="max-w-lg mx-auto px-5 py-4">
           <div className="flex items-center justify-center gap-2">
             <h1 className="font-display font-semibold text-foreground flex items-center gap-2">
-              Carbon<span className="text-[#10B981]">Max</span>
               <Image 
                 src="/logo.png" 
                 alt="CarbonMax Logo" 
@@ -48,6 +47,7 @@ export default function QuestHubPage() {
                 height={24}
                 className="object-contain"
               />
+              <span>Carbon</span><span className="text-[#10B981]">Max</span>
             </h1>
           </div>
         </div>
