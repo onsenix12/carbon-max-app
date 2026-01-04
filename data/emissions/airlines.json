@@ -1,0 +1,389 @@
+{
+  "metadata": {
+    "description": "Airline emissions data for CAG Operations Dashboard",
+    "dataSource": "Simulated based on flight schedules and aircraft efficiency data",
+    "date": "2026-01-04",
+    "version": "1.0.0"
+  },
+  "summary": {
+    "totalAirlines": 42,
+    "totalFlights": 948,
+    "totalEmissions": 1026.3,
+    "avgEmissionsPerFlight": 1.08,
+    "safAdoptionRate": 0.82
+  },
+  "airlines": [
+    {
+      "airlineCode": "SQ",
+      "airlineName": "Singapore Airlines",
+      "country": "Singapore",
+      "alliance": "Star Alliance",
+      "flights": 142,
+      "passengers": 38420,
+      "totalEmissions": 312.4,
+      "avgEmissionsPerFlight": 2.20,
+      "co2PerPassenger": 8.13,
+      "safUsagePercent": 1.2,
+      "trend": "down",
+      "trendPercent": -3.2,
+      "fleetMix": {
+        "A350-900": 45,
+        "B777-300ER": 38,
+        "A380-800": 24,
+        "B787-10": 35
+      },
+      "avgTaxiTime": 13.2,
+      "performance": {
+        "rating": "A",
+        "efficiencyScore": 85,
+        "vsIndustryAvg": -8.2
+      }
+    },
+    {
+      "airlineCode": "CX",
+      "airlineName": "Cathay Pacific",
+      "country": "Hong Kong",
+      "alliance": "Oneworld",
+      "flights": 89,
+      "passengers": 22250,
+      "totalEmissions": 198.4,
+      "avgEmissionsPerFlight": 2.23,
+      "co2PerPassenger": 8.92,
+      "safUsagePercent": 0.8,
+      "trend": "stable",
+      "trendPercent": 0.4,
+      "fleetMix": {
+        "A350-900": 42,
+        "B777-300ER": 28,
+        "A350-1000": 19
+      },
+      "avgTaxiTime": 13.8,
+      "performance": {
+        "rating": "A",
+        "efficiencyScore": 82,
+        "vsIndustryAvg": -5.4
+      }
+    },
+    {
+      "airlineCode": "EK",
+      "airlineName": "Emirates",
+      "country": "UAE",
+      "alliance": "None",
+      "flights": 72,
+      "passengers": 24120,
+      "totalEmissions": 156.2,
+      "avgEmissionsPerFlight": 2.17,
+      "co2PerPassenger": 6.48,
+      "safUsagePercent": 0.5,
+      "trend": "up",
+      "trendPercent": 2.1,
+      "fleetMix": {
+        "A380-800": 48,
+        "B777-300ER": 24
+      },
+      "avgTaxiTime": 14.2,
+      "performance": {
+        "rating": "B",
+        "efficiencyScore": 76,
+        "vsIndustryAvg": 1.2
+      }
+    },
+    {
+      "airlineCode": "QF",
+      "airlineName": "Qantas",
+      "country": "Australia",
+      "alliance": "Oneworld",
+      "flights": 58,
+      "passengers": 15080,
+      "totalEmissions": 124.8,
+      "avgEmissionsPerFlight": 2.15,
+      "co2PerPassenger": 8.28,
+      "safUsagePercent": 1.5,
+      "trend": "down",
+      "trendPercent": -4.8,
+      "fleetMix": {
+        "A330-300": 22,
+        "B787-9": 24,
+        "A380-800": 12
+      },
+      "avgTaxiTime": 13.4,
+      "performance": {
+        "rating": "A",
+        "efficiencyScore": 88,
+        "vsIndustryAvg": -9.6
+      }
+    },
+    {
+      "airlineCode": "JL",
+      "airlineName": "Japan Airlines",
+      "country": "Japan",
+      "alliance": "Oneworld",
+      "flights": 54,
+      "passengers": 13770,
+      "totalEmissions": 112.3,
+      "avgEmissionsPerFlight": 2.08,
+      "co2PerPassenger": 8.16,
+      "safUsagePercent": 0.9,
+      "trend": "down",
+      "trendPercent": -2.4,
+      "fleetMix": {
+        "B787-9": 32,
+        "B777-300ER": 22
+      },
+      "avgTaxiTime": 12.8,
+      "performance": {
+        "rating": "A",
+        "efficiencyScore": 86,
+        "vsIndustryAvg": -7.8
+      }
+    },
+    {
+      "airlineCode": "TR",
+      "airlineName": "Scoot",
+      "country": "Singapore",
+      "alliance": "None (SIA subsidiary)",
+      "flights": 86,
+      "passengers": 28810,
+      "totalEmissions": 98.6,
+      "avgEmissionsPerFlight": 1.15,
+      "co2PerPassenger": 3.42,
+      "safUsagePercent": 0.3,
+      "trend": "stable",
+      "trendPercent": 0.2,
+      "fleetMix": {
+        "B787-8": 28,
+        "B787-9": 34,
+        "A320neo": 24
+      },
+      "avgTaxiTime": 12.4,
+      "performance": {
+        "rating": "A+",
+        "efficiencyScore": 92,
+        "vsIndustryAvg": -15.2
+      }
+    },
+    {
+      "airlineCode": "GA",
+      "airlineName": "Garuda Indonesia",
+      "country": "Indonesia",
+      "alliance": "SkyTeam",
+      "flights": 48,
+      "passengers": 11040,
+      "totalEmissions": 108.2,
+      "avgEmissionsPerFlight": 2.25,
+      "co2PerPassenger": 9.80,
+      "safUsagePercent": 0.2,
+      "trend": "up",
+      "trendPercent": 3.6,
+      "fleetMix": {
+        "B777-300ER": 18,
+        "A330-300": 22,
+        "B737-800": 8
+      },
+      "avgTaxiTime": 14.6,
+      "performance": {
+        "rating": "C",
+        "efficiencyScore": 68,
+        "vsIndustryAvg": 8.4
+      }
+    },
+    {
+      "airlineCode": "TG",
+      "airlineName": "Thai Airways",
+      "country": "Thailand",
+      "alliance": "Star Alliance",
+      "flights": 52,
+      "passengers": 12480,
+      "totalEmissions": 114.8,
+      "avgEmissionsPerFlight": 2.21,
+      "co2PerPassenger": 9.20,
+      "safUsagePercent": 0.4,
+      "trend": "stable",
+      "trendPercent": -0.8,
+      "fleetMix": {
+        "B777-300ER": 24,
+        "A350-900": 18,
+        "B787-9": 10
+      },
+      "avgTaxiTime": 14.0,
+      "performance": {
+        "rating": "B",
+        "efficiencyScore": 74,
+        "vsIndustryAvg": 3.2
+      }
+    },
+    {
+      "airlineCode": "MH",
+      "airlineName": "Malaysia Airlines",
+      "country": "Malaysia",
+      "alliance": "Oneworld",
+      "flights": 64,
+      "passengers": 15360,
+      "totalEmissions": 134.4,
+      "avgEmissionsPerFlight": 2.10,
+      "co2PerPassenger": 8.75,
+      "safUsagePercent": 0.3,
+      "trend": "up",
+      "trendPercent": 1.8,
+      "fleetMix": {
+        "A350-900": 28,
+        "A330-300": 24,
+        "B737-800": 12
+      },
+      "avgTaxiTime": 13.6,
+      "performance": {
+        "rating": "B",
+        "efficiencyScore": 78,
+        "vsIndustryAvg": 0.6
+      }
+    },
+    {
+      "airlineCode": "PR",
+      "airlineName": "Philippine Airlines",
+      "country": "Philippines",
+      "alliance": "None",
+      "flights": 38,
+      "passengers": 8740,
+      "totalEmissions": 89.3,
+      "avgEmissionsPerFlight": 2.35,
+      "co2PerPassenger": 10.22,
+      "safUsagePercent": 0.1,
+      "trend": "up",
+      "trendPercent": 4.2,
+      "fleetMix": {
+        "A350-900": 12,
+        "B777-300ER": 14,
+        "A321neo": 12
+      },
+      "avgTaxiTime": 15.2,
+      "performance": {
+        "rating": "C",
+        "efficiencyScore": 64,
+        "vsIndustryAvg": 12.4
+      }
+    },
+    {
+      "airlineCode": "NH",
+      "airlineName": "All Nippon Airways",
+      "country": "Japan",
+      "alliance": "Star Alliance",
+      "flights": 46,
+      "passengers": 12420,
+      "totalEmissions": 94.8,
+      "avgEmissionsPerFlight": 2.06,
+      "co2PerPassenger": 7.63,
+      "safUsagePercent": 1.1,
+      "trend": "down",
+      "trendPercent": -3.8,
+      "fleetMix": {
+        "B787-9": 28,
+        "B787-10": 12,
+        "B777-300ER": 6
+      },
+      "avgTaxiTime": 12.6,
+      "performance": {
+        "rating": "A",
+        "efficiencyScore": 89,
+        "vsIndustryAvg": -10.2
+      }
+    },
+    {
+      "airlineCode": "KE",
+      "airlineName": "Korean Air",
+      "country": "South Korea",
+      "alliance": "SkyTeam",
+      "flights": 42,
+      "passengers": 11340,
+      "totalEmissions": 88.2,
+      "avgEmissionsPerFlight": 2.10,
+      "co2PerPassenger": 7.78,
+      "safUsagePercent": 0.7,
+      "trend": "down",
+      "trendPercent": -1.6,
+      "fleetMix": {
+        "A380-800": 8,
+        "B787-9": 22,
+        "B777-300ER": 12
+      },
+      "avgTaxiTime": 13.4,
+      "performance": {
+        "rating": "A",
+        "efficiencyScore": 84,
+        "vsIndustryAvg": -6.8
+      }
+    },
+    {
+      "airlineCode": "VN",
+      "airlineName": "Vietnam Airlines",
+      "country": "Vietnam",
+      "alliance": "SkyTeam",
+      "flights": 36,
+      "passengers": 8640,
+      "totalEmissions": 78.5,
+      "avgEmissionsPerFlight": 2.18,
+      "co2PerPassenger": 9.08,
+      "safUsagePercent": 0.2,
+      "trend": "stable",
+      "trendPercent": 0.6,
+      "fleetMix": {
+        "A350-900": 16,
+        "B787-9": 12,
+        "A321neo": 8
+      },
+      "avgTaxiTime": 14.2,
+      "performance": {
+        "rating": "B",
+        "efficiencyScore": 75,
+        "vsIndustryAvg": 2.4
+      }
+    },
+    {
+      "airlineCode": "CI",
+      "airlineName": "China Airlines",
+      "country": "Taiwan",
+      "alliance": "SkyTeam",
+      "flights": 34,
+      "passengers": 8840,
+      "totalEmissions": 71.4,
+      "avgEmissionsPerFlight": 2.10,
+      "co2PerPassenger": 8.08,
+      "safUsagePercent": 0.4,
+      "trend": "stable",
+      "trendPercent": -0.4,
+      "fleetMix": {
+        "A350-900": 18,
+        "B777-300ER": 10,
+        "A321neo": 6
+      },
+      "avgTaxiTime": 13.8,
+      "performance": {
+        "rating": "B",
+        "efficiencyScore": 79,
+        "vsIndustryAvg": -0.2
+      }
+    },
+    {
+      "airlineCode": "3K",
+      "airlineName": "Jetstar Asia",
+      "country": "Singapore",
+      "alliance": "None",
+      "flights": 32,
+      "passengers": 6080,
+      "totalEmissions": 38.4,
+      "avgEmissionsPerFlight": 1.20,
+      "co2PerPassenger": 6.32,
+      "safUsagePercent": 0.2,
+      "trend": "down",
+      "trendPercent": -2.2,
+      "fleetMix": {
+        "A320-200": 32
+      },
+      "avgTaxiTime": 11.8,
+      "performance": {
+        "rating": "A",
+        "efficiencyScore": 87,
+        "vsIndustryAvg": -8.6
+      }
+    }
+  ]
+}

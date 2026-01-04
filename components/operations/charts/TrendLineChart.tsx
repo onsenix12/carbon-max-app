@@ -1,0 +1,198 @@
+// components/operations/charts/TrendLineChart.tsx
+
+'use client';
+
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+
+interface DataPoint {
+  label: string;
+  value: number;
+  target?: number;
+}
+
+interface TrendLineChartProps {
+  data: DataPoint[];
+  height?: number;
+  showTarget?: boolean;
+  valueFormatter?: (value: number) => string;
+  className?: string;
+}
+
+export function TrendLineChart({
+  data,
+  height = 200,
+  showTarget = true,
+  valueFormatter = (v) => v.toLocaleString(),
+  className,
+}: TrendLineChartProps) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  
+  const values = data.map(d => d.value);
+  const targets = data.map(d => d.target || 0).filter(t => t > 0);
+  const allValues = [...values, ...targets];
+  
+  const maxValue = Math.max(...allValues) * 1.1;
+  const minValue = Math.min(...allValues) * 0.9;
+  const range = maxValue - minValue;
+  
+  const padding = { top: 20, right: 20, bottom: 40, left: 60 };
+  const chartWidth = 100; // percentage
+  const chartHeight = height - padding.top - padding.bottom;
+  
+  const getY = (value: number) => {
+    return chartHeight - ((value - minValue) / range) * chartHeight + padding.top;
+  };
+  
+  const getX = (index: number) => {
+    return (index / (data.length - 1)) * (100 - 15) + 7.5; // percentage with padding
+  };
+  
+  // Generate path for actual values
+  const actualPath = data.map((d, i) => {
+    const x = getX(i);
+    const y = getY(d.value);
+    return `${i === 0 ? 'M' : 'L'} ${x}% ${y}`;
+  }).join(' ');
+  
+  // Generate path for target line
+  const targetPath = showTarget && data[0]?.target
+    ? data.map((d, i) => {
+        const x = getX(i);
+        const y = getY(d.target || 0);
+        return `${i === 0 ? 'M' : 'L'} ${x}% ${y}`;
+      }).join(' ')
+    : '';
+  
+  return (
+    <div className={cn('relative', className)}>
+      <svg
+        width="100%"
+        height={height}
+        className="overflow-visible"
+      >
+        {/* Grid Lines */}
+        {[0, 0.25, 0.5, 0.75, 1].map((ratio) => {
+          const y = padding.top + chartHeight * (1 - ratio);
+          const value = minValue + range * ratio;
+          return (
+            <g key={ratio}>
+              <line
+                x1="7.5%"
+                y1={y}
+                x2="92.5%"
+                y2={y}
+                stroke="#e2e8f0"
+                strokeDasharray="4 4"
+              />
+              <text
+                x="5%"
+                y={y}
+                fontSize="11"
+                fill="#94a3b8"
+                textAnchor="end"
+                dominantBaseline="middle"
+              >
+                {valueFormatter(Math.round(value))}
+              </text>
+            </g>
+          );
+        })}
+        
+        {/* Target Line */}
+        {targetPath && (
+          <path
+            d={targetPath}
+            fill="none"
+            stroke="#94a3b8"
+            strokeWidth="2"
+            strokeDasharray="6 4"
+          />
+        )}
+        
+        {/* Actual Line */}
+        <path
+          d={actualPath}
+          fill="none"
+          stroke="#10b981"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        
+        {/* Data Points */}
+        {data.map((d, i) => {
+          const x = getX(i);
+          const y = getY(d.value);
+          const isHovered = hoveredIndex === i;
+          
+          return (
+            <g key={i}>
+              <circle
+                cx={`${x}%`}
+                cy={y}
+                r={isHovered ? 6 : 4}
+                fill="#10b981"
+                stroke="white"
+                strokeWidth="2"
+                className="cursor-pointer transition-all duration-150"
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              />
+              
+              {/* X-axis label */}
+              <text
+                x={`${x}%`}
+                y={height - 10}
+                fontSize="11"
+                fill="#64748b"
+                textAnchor="middle"
+              >
+                {d.label}
+              </text>
+              
+              {/* Tooltip */}
+              {isHovered && (
+                <g>
+                  <rect
+                    x={`${x - 5}%`}
+                    y={y - 35}
+                    width="10%"
+                    height="24"
+                    rx="4"
+                    fill="#1e293b"
+                  />
+                  <text
+                    x={`${x}%`}
+                    y={y - 20}
+                    fontSize="12"
+                    fill="white"
+                    textAnchor="middle"
+                    fontWeight="500"
+                  >
+                    {valueFormatter(d.value)}
+                  </text>
+                </g>
+              )}
+            </g>
+          );
+        })}
+      </svg>
+      
+      {/* Legend */}
+      <div className="flex items-center justify-center gap-6 mt-2">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-0.5 bg-emerald-500 rounded" />
+          <span className="text-xs text-slate-500">Actual</span>
+        </div>
+        {showTarget && (
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-0.5 bg-slate-400 rounded" style={{ strokeDasharray: '4 4' }} />
+            <span className="text-xs text-slate-500">Target</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+

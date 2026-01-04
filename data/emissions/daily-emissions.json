@@ -1,0 +1,1850 @@
+{
+  "metadata": {
+    "description": "30-day simulated daily emissions data for CAG Operations Dashboard",
+    "dataSource": "Simulated based on CAG FY21/22 Sustainability Report",
+    "period": {
+      "start": "2025-12-05",
+      "end": "2026-01-04"
+    },
+    "baseline": {
+      "annualTotal": 582414,
+      "dailyAverage": 1596,
+      "scope1Percent": 0.1,
+      "scope2Percent": 18.2,
+      "scope3Percent": 81.6
+    },
+    "generatedAt": "2026-01-04T00:00:00Z",
+    "version": "1.0.0"
+  },
+  "dailyEmissions": [
+    {
+      "date": "2025-12-05",
+      "dayOfWeek": "Friday",
+      "scope1": {
+        "vehicles": 0.94,
+        "generators": 0.82,
+        "refrigerants": 0.31,
+        "total": 2.07
+      },
+      "scope2": {
+        "t1": 42.8,
+        "t2": 34.1,
+        "t3": 71.2,
+        "t4": 22.8,
+        "jewel": 56.9,
+        "airside": 57.1,
+        "total": 284.9
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 798.2,
+          "taxi": 196.8,
+          "apu": 108.4,
+          "total": 1103.4
+        },
+        "tenants": {
+          "fnb": 67.8,
+          "retail": 40.2,
+          "services": 22.1,
+          "total": 130.1
+        },
+        "groundTransport": {
+          "taxi": 22.8,
+          "mrt": 16.3,
+          "bus": 13.0,
+          "privateCar": 13.0,
+          "total": 65.1
+        },
+        "total": 1298.6
+      },
+      "totalEmissions": 1585.6,
+      "vsLastWeek": -2.1,
+      "vsTarget": -0.7,
+      "carbonMaxActivity": {
+        "questsCompleted": 842,
+        "co2Avoided": 2358,
+        "greenMealsServed": 337,
+        "plasticBottlesAvoided": 1179,
+        "safContributionsCount": 84,
+        "safLitersAttributed": 4200,
+        "activeUsers": 3789
+      },
+      "operationalData": {
+        "flights": 1018,
+        "passengers": 184521,
+        "avgTaxiTime": 13.8,
+        "temperature": 29.2
+      }
+    },
+    {
+      "date": "2025-12-06",
+      "dayOfWeek": "Saturday",
+      "scope1": {
+        "vehicles": 0.98,
+        "generators": 0.85,
+        "refrigerants": 0.32,
+        "total": 2.15
+      },
+      "scope2": {
+        "t1": 44.1,
+        "t2": 35.2,
+        "t3": 73.4,
+        "t4": 23.5,
+        "jewel": 68.3,
+        "airside": 54.2,
+        "total": 298.7
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 758.4,
+          "taxi": 187.0,
+          "apu": 103.0,
+          "total": 1048.4
+        },
+        "tenants": {
+          "fnb": 81.4,
+          "retail": 48.2,
+          "services": 22.8,
+          "total": 152.4
+        },
+        "groundTransport": {
+          "taxi": 24.1,
+          "mrt": 17.2,
+          "bus": 13.8,
+          "privateCar": 13.8,
+          "total": 68.9
+        },
+        "total": 1269.7
+      },
+      "totalEmissions": 1570.6,
+      "vsLastWeek": -1.8,
+      "vsTarget": -1.6,
+      "carbonMaxActivity": {
+        "questsCompleted": 1024,
+        "co2Avoided": 2867,
+        "greenMealsServed": 410,
+        "plasticBottlesAvoided": 1434,
+        "safContributionsCount": 102,
+        "safLitersAttributed": 5100,
+        "activeUsers": 4608
+      },
+      "operationalData": {
+        "flights": 968,
+        "passengers": 198432,
+        "avgTaxiTime": 13.2,
+        "temperature": 30.1
+      }
+    },
+    {
+      "date": "2025-12-07",
+      "dayOfWeek": "Sunday",
+      "scope1": {
+        "vehicles": 0.91,
+        "generators": 0.79,
+        "refrigerants": 0.30,
+        "total": 2.00
+      },
+      "scope2": {
+        "t1": 43.2,
+        "t2": 34.4,
+        "t3": 71.9,
+        "t4": 23.0,
+        "jewel": 70.1,
+        "airside": 52.8,
+        "total": 295.4
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 742.1,
+          "taxi": 183.0,
+          "apu": 100.8,
+          "total": 1025.9
+        },
+        "tenants": {
+          "fnb": 83.9,
+          "retail": 49.7,
+          "services": 23.5,
+          "total": 157.1
+        },
+        "groundTransport": {
+          "taxi": 23.4,
+          "mrt": 16.7,
+          "bus": 13.4,
+          "privateCar": 13.4,
+          "total": 66.9
+        },
+        "total": 1249.9
+      },
+      "totalEmissions": 1547.3,
+      "vsLastWeek": -3.2,
+      "vsTarget": -3.1,
+      "carbonMaxActivity": {
+        "questsCompleted": 1156,
+        "co2Avoided": 3237,
+        "greenMealsServed": 462,
+        "plasticBottlesAvoided": 1618,
+        "safContributionsCount": 116,
+        "safLitersAttributed": 5800,
+        "activeUsers": 5202
+      },
+      "operationalData": {
+        "flights": 948,
+        "passengers": 201847,
+        "avgTaxiTime": 12.9,
+        "temperature": 29.8
+      }
+    },
+    {
+      "date": "2025-12-08",
+      "dayOfWeek": "Monday",
+      "scope1": {
+        "vehicles": 0.96,
+        "generators": 0.84,
+        "refrigerants": 0.32,
+        "total": 2.12
+      },
+      "scope2": {
+        "t1": 44.8,
+        "t2": 35.7,
+        "t3": 74.6,
+        "t4": 23.9,
+        "jewel": 58.2,
+        "airside": 58.4,
+        "total": 295.6
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 812.4,
+          "taxi": 200.3,
+          "apu": 110.3,
+          "total": 1123.0
+        },
+        "tenants": {
+          "fnb": 68.2,
+          "retail": 40.4,
+          "services": 22.2,
+          "total": 130.8
+        },
+        "groundTransport": {
+          "taxi": 22.5,
+          "mrt": 16.1,
+          "bus": 12.9,
+          "privateCar": 12.9,
+          "total": 64.4
+        },
+        "total": 1318.2
+      },
+      "totalEmissions": 1615.9,
+      "vsLastWeek": 1.2,
+      "vsTarget": 1.2,
+      "carbonMaxActivity": {
+        "questsCompleted": 756,
+        "co2Avoided": 2117,
+        "greenMealsServed": 302,
+        "plasticBottlesAvoided": 1058,
+        "safContributionsCount": 76,
+        "safLitersAttributed": 3800,
+        "activeUsers": 3402
+      },
+      "operationalData": {
+        "flights": 1042,
+        "passengers": 182156,
+        "avgTaxiTime": 14.2,
+        "temperature": 28.9
+      }
+    },
+    {
+      "date": "2025-12-09",
+      "dayOfWeek": "Tuesday",
+      "scope1": {
+        "vehicles": 0.93,
+        "generators": 0.81,
+        "refrigerants": 0.31,
+        "total": 2.05
+      },
+      "scope2": {
+        "t1": 43.5,
+        "t2": 34.7,
+        "t3": 72.4,
+        "t4": 23.2,
+        "jewel": 57.1,
+        "airside": 57.3,
+        "total": 288.2
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 789.6,
+          "taxi": 194.7,
+          "apu": 107.2,
+          "total": 1091.5
+        },
+        "tenants": {
+          "fnb": 66.9,
+          "retail": 39.6,
+          "services": 21.8,
+          "total": 128.3
+        },
+        "groundTransport": {
+          "taxi": 22.1,
+          "mrt": 15.8,
+          "bus": 12.6,
+          "privateCar": 12.6,
+          "total": 63.1
+        },
+        "total": 1282.9
+      },
+      "totalEmissions": 1573.2,
+      "vsLastWeek": -0.8,
+      "vsTarget": -1.4,
+      "carbonMaxActivity": {
+        "questsCompleted": 812,
+        "co2Avoided": 2274,
+        "greenMealsServed": 325,
+        "plasticBottlesAvoided": 1137,
+        "safContributionsCount": 81,
+        "safLitersAttributed": 4050,
+        "activeUsers": 3654
+      },
+      "operationalData": {
+        "flights": 1008,
+        "passengers": 179842,
+        "avgTaxiTime": 13.6,
+        "temperature": 29.4
+      }
+    },
+    {
+      "date": "2025-12-10",
+      "dayOfWeek": "Wednesday",
+      "scope1": {
+        "vehicles": 0.97,
+        "generators": 0.85,
+        "refrigerants": 0.32,
+        "total": 2.14
+      },
+      "scope2": {
+        "t1": 45.2,
+        "t2": 36.0,
+        "t3": 75.2,
+        "t4": 24.1,
+        "jewel": 58.8,
+        "airside": 59.0,
+        "total": 298.3
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 821.8,
+          "taxi": 202.6,
+          "apu": 111.6,
+          "total": 1136.0
+        },
+        "tenants": {
+          "fnb": 69.1,
+          "retail": 40.9,
+          "services": 22.5,
+          "total": 132.5
+        },
+        "groundTransport": {
+          "taxi": 23.2,
+          "mrt": 16.6,
+          "bus": 13.3,
+          "privateCar": 13.3,
+          "total": 66.4
+        },
+        "total": 1334.9
+      },
+      "totalEmissions": 1635.3,
+      "vsLastWeek": 2.4,
+      "vsTarget": 2.5,
+      "carbonMaxActivity": {
+        "questsCompleted": 789,
+        "co2Avoided": 2209,
+        "greenMealsServed": 316,
+        "plasticBottlesAvoided": 1105,
+        "safContributionsCount": 79,
+        "safLitersAttributed": 3950,
+        "activeUsers": 3551
+      },
+      "operationalData": {
+        "flights": 1056,
+        "passengers": 186234,
+        "avgTaxiTime": 14.8,
+        "temperature": 30.2
+      }
+    },
+    {
+      "date": "2025-12-11",
+      "dayOfWeek": "Thursday",
+      "scope1": {
+        "vehicles": 0.92,
+        "generators": 0.80,
+        "refrigerants": 0.30,
+        "total": 2.02
+      },
+      "scope2": {
+        "t1": 43.1,
+        "t2": 34.3,
+        "t3": 71.7,
+        "t4": 23.0,
+        "jewel": 56.4,
+        "airside": 56.6,
+        "total": 285.1
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 778.9,
+          "taxi": 192.1,
+          "apu": 105.8,
+          "total": 1076.8
+        },
+        "tenants": {
+          "fnb": 66.2,
+          "retail": 39.2,
+          "services": 21.6,
+          "total": 127.0
+        },
+        "groundTransport": {
+          "taxi": 21.9,
+          "mrt": 15.6,
+          "bus": 12.5,
+          "privateCar": 12.5,
+          "total": 62.5
+        },
+        "total": 1266.3
+      },
+      "totalEmissions": 1553.4,
+      "vsLastWeek": -2.7,
+      "vsTarget": -2.7,
+      "carbonMaxActivity": {
+        "questsCompleted": 867,
+        "co2Avoided": 2428,
+        "greenMealsServed": 347,
+        "plasticBottlesAvoided": 1214,
+        "safContributionsCount": 87,
+        "safLitersAttributed": 4350,
+        "activeUsers": 3902
+      },
+      "operationalData": {
+        "flights": 992,
+        "passengers": 181456,
+        "avgTaxiTime": 13.4,
+        "temperature": 29.1
+      }
+    },
+    {
+      "date": "2025-12-12",
+      "dayOfWeek": "Friday",
+      "scope1": {
+        "vehicles": 0.99,
+        "generators": 0.86,
+        "refrigerants": 0.33,
+        "total": 2.18
+      },
+      "scope2": {
+        "t1": 45.8,
+        "t2": 36.5,
+        "t3": 76.2,
+        "t4": 24.4,
+        "jewel": 59.6,
+        "airside": 59.8,
+        "total": 302.3
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 834.2,
+          "taxi": 205.7,
+          "apu": 113.3,
+          "total": 1153.2
+        },
+        "tenants": {
+          "fnb": 70.2,
+          "retail": 41.6,
+          "services": 22.9,
+          "total": 134.7
+        },
+        "groundTransport": {
+          "taxi": 23.8,
+          "mrt": 17.0,
+          "bus": 13.6,
+          "privateCar": 13.6,
+          "total": 68.0
+        },
+        "total": 1355.9
+      },
+      "totalEmissions": 1660.4,
+      "vsLastWeek": 4.7,
+      "vsTarget": 4.0,
+      "carbonMaxActivity": {
+        "questsCompleted": 923,
+        "co2Avoided": 2584,
+        "greenMealsServed": 369,
+        "plasticBottlesAvoided": 1292,
+        "safContributionsCount": 92,
+        "safLitersAttributed": 4600,
+        "activeUsers": 4154
+      },
+      "operationalData": {
+        "flights": 1068,
+        "passengers": 189567,
+        "avgTaxiTime": 15.1,
+        "temperature": 30.5
+      }
+    },
+    {
+      "date": "2025-12-13",
+      "dayOfWeek": "Saturday",
+      "scope1": {
+        "vehicles": 0.95,
+        "generators": 0.83,
+        "refrigerants": 0.31,
+        "total": 2.09
+      },
+      "scope2": {
+        "t1": 44.4,
+        "t2": 35.4,
+        "t3": 73.9,
+        "t4": 23.7,
+        "jewel": 71.2,
+        "airside": 54.8,
+        "total": 303.4
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 762.8,
+          "taxi": 188.1,
+          "apu": 103.6,
+          "total": 1054.5
+        },
+        "tenants": {
+          "fnb": 84.6,
+          "retail": 50.1,
+          "services": 23.7,
+          "total": 158.4
+        },
+        "groundTransport": {
+          "taxi": 24.5,
+          "mrt": 17.5,
+          "bus": 14.0,
+          "privateCar": 14.0,
+          "total": 70.0
+        },
+        "total": 1282.9
+      },
+      "totalEmissions": 1588.4,
+      "vsLastWeek": 1.1,
+      "vsTarget": -0.5,
+      "carbonMaxActivity": {
+        "questsCompleted": 1089,
+        "co2Avoided": 3049,
+        "greenMealsServed": 436,
+        "plasticBottlesAvoided": 1525,
+        "safContributionsCount": 109,
+        "safLitersAttributed": 5450,
+        "activeUsers": 4901
+      },
+      "operationalData": {
+        "flights": 972,
+        "passengers": 202134,
+        "avgTaxiTime": 13.4,
+        "temperature": 29.7
+      }
+    },
+    {
+      "date": "2025-12-14",
+      "dayOfWeek": "Sunday",
+      "scope1": {
+        "vehicles": 0.89,
+        "generators": 0.77,
+        "refrigerants": 0.29,
+        "total": 1.95
+      },
+      "scope2": {
+        "t1": 42.6,
+        "t2": 33.9,
+        "t3": 70.9,
+        "t4": 22.7,
+        "jewel": 72.8,
+        "airside": 53.4,
+        "total": 296.3
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 738.4,
+          "taxi": 182.0,
+          "apu": 100.3,
+          "total": 1020.7
+        },
+        "tenants": {
+          "fnb": 86.8,
+          "retail": 51.4,
+          "services": 24.3,
+          "total": 162.5
+        },
+        "groundTransport": {
+          "taxi": 23.8,
+          "mrt": 17.0,
+          "bus": 13.6,
+          "privateCar": 13.6,
+          "total": 68.0
+        },
+        "total": 1251.2
+      },
+      "totalEmissions": 1549.5,
+      "vsLastWeek": 0.1,
+      "vsTarget": -2.9,
+      "carbonMaxActivity": {
+        "questsCompleted": 1198,
+        "co2Avoided": 3354,
+        "greenMealsServed": 479,
+        "plasticBottlesAvoided": 1677,
+        "safContributionsCount": 120,
+        "safLitersAttributed": 6000,
+        "activeUsers": 5391
+      },
+      "operationalData": {
+        "flights": 942,
+        "passengers": 205678,
+        "avgTaxiTime": 12.8,
+        "temperature": 29.3
+      }
+    },
+    {
+      "date": "2025-12-15",
+      "dayOfWeek": "Monday",
+      "scope1": {
+        "vehicles": 0.94,
+        "generators": 0.82,
+        "refrigerants": 0.31,
+        "total": 2.07
+      },
+      "scope2": {
+        "t1": 44.2,
+        "t2": 35.2,
+        "t3": 73.6,
+        "t4": 23.6,
+        "jewel": 57.6,
+        "airside": 57.8,
+        "total": 292.0
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 802.1,
+          "taxi": 197.8,
+          "apu": 108.9,
+          "total": 1108.8
+        },
+        "tenants": {
+          "fnb": 67.4,
+          "retail": 39.9,
+          "services": 22.0,
+          "total": 129.3
+        },
+        "groundTransport": {
+          "taxi": 22.3,
+          "mrt": 15.9,
+          "bus": 12.7,
+          "privateCar": 12.7,
+          "total": 63.6
+        },
+        "total": 1301.7
+      },
+      "totalEmissions": 1595.8,
+      "vsLastWeek": -1.2,
+      "vsTarget": 0.0,
+      "carbonMaxActivity": {
+        "questsCompleted": 734,
+        "co2Avoided": 2055,
+        "greenMealsServed": 294,
+        "plasticBottlesAvoided": 1028,
+        "safContributionsCount": 73,
+        "safLitersAttributed": 3650,
+        "activeUsers": 3303
+      },
+      "operationalData": {
+        "flights": 1028,
+        "passengers": 180234,
+        "avgTaxiTime": 14.0,
+        "temperature": 28.6
+      }
+    },
+    {
+      "date": "2025-12-16",
+      "dayOfWeek": "Tuesday",
+      "scope1": {
+        "vehicles": 0.91,
+        "generators": 0.79,
+        "refrigerants": 0.30,
+        "total": 2.00
+      },
+      "scope2": {
+        "t1": 42.9,
+        "t2": 34.2,
+        "t3": 71.4,
+        "t4": 22.9,
+        "jewel": 55.9,
+        "airside": 56.1,
+        "total": 283.4
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 776.4,
+          "taxi": 191.4,
+          "apu": 105.4,
+          "total": 1073.2
+        },
+        "tenants": {
+          "fnb": 65.6,
+          "retail": 38.9,
+          "services": 21.4,
+          "total": 125.9
+        },
+        "groundTransport": {
+          "taxi": 21.6,
+          "mrt": 15.4,
+          "bus": 12.3,
+          "privateCar": 12.3,
+          "total": 61.6
+        },
+        "total": 1260.7
+      },
+      "totalEmissions": 1546.1,
+      "vsLastWeek": -1.7,
+      "vsTarget": -3.1,
+      "carbonMaxActivity": {
+        "questsCompleted": 798,
+        "co2Avoided": 2234,
+        "greenMealsServed": 319,
+        "plasticBottlesAvoided": 1117,
+        "safContributionsCount": 80,
+        "safLitersAttributed": 4000,
+        "activeUsers": 3591
+      },
+      "operationalData": {
+        "flights": 996,
+        "passengers": 177856,
+        "avgTaxiTime": 13.2,
+        "temperature": 29.0
+      }
+    },
+    {
+      "date": "2025-12-17",
+      "dayOfWeek": "Wednesday",
+      "scope1": {
+        "vehicles": 0.96,
+        "generators": 0.84,
+        "refrigerants": 0.32,
+        "total": 2.12
+      },
+      "scope2": {
+        "t1": 44.6,
+        "t2": 35.5,
+        "t3": 74.2,
+        "t4": 23.8,
+        "jewel": 58.1,
+        "airside": 58.3,
+        "total": 294.5
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 808.6,
+          "taxi": 199.4,
+          "apu": 109.8,
+          "total": 1117.8
+        },
+        "tenants": {
+          "fnb": 68.4,
+          "retail": 40.5,
+          "services": 22.3,
+          "total": 131.2
+        },
+        "groundTransport": {
+          "taxi": 22.8,
+          "mrt": 16.3,
+          "bus": 13.0,
+          "privateCar": 13.0,
+          "total": 65.1
+        },
+        "total": 1314.1
+      },
+      "totalEmissions": 1610.7,
+      "vsLastWeek": -1.5,
+      "vsTarget": 0.9,
+      "carbonMaxActivity": {
+        "questsCompleted": 823,
+        "co2Avoided": 2304,
+        "greenMealsServed": 329,
+        "plasticBottlesAvoided": 1152,
+        "safContributionsCount": 82,
+        "safLitersAttributed": 4100,
+        "activeUsers": 3704
+      },
+      "operationalData": {
+        "flights": 1034,
+        "passengers": 183567,
+        "avgTaxiTime": 14.4,
+        "temperature": 29.8
+      }
+    },
+    {
+      "date": "2025-12-18",
+      "dayOfWeek": "Thursday",
+      "scope1": {
+        "vehicles": 0.93,
+        "generators": 0.81,
+        "refrigerants": 0.31,
+        "total": 2.05
+      },
+      "scope2": {
+        "t1": 43.4,
+        "t2": 34.6,
+        "t3": 72.2,
+        "t4": 23.1,
+        "jewel": 56.6,
+        "airside": 56.8,
+        "total": 286.7
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 786.2,
+          "taxi": 193.9,
+          "apu": 106.8,
+          "total": 1086.9
+        },
+        "tenants": {
+          "fnb": 66.6,
+          "retail": 39.4,
+          "services": 21.7,
+          "total": 127.7
+        },
+        "groundTransport": {
+          "taxi": 22.2,
+          "mrt": 15.9,
+          "bus": 12.7,
+          "privateCar": 12.7,
+          "total": 63.5
+        },
+        "total": 1278.1
+      },
+      "totalEmissions": 1566.8,
+      "vsLastWeek": 0.9,
+      "vsTarget": -1.8,
+      "carbonMaxActivity": {
+        "questsCompleted": 856,
+        "co2Avoided": 2397,
+        "greenMealsServed": 342,
+        "plasticBottlesAvoided": 1198,
+        "safContributionsCount": 86,
+        "safLitersAttributed": 4300,
+        "activeUsers": 3852
+      },
+      "operationalData": {
+        "flights": 1006,
+        "passengers": 181234,
+        "avgTaxiTime": 13.6,
+        "temperature": 29.2
+      }
+    },
+    {
+      "date": "2025-12-19",
+      "dayOfWeek": "Friday",
+      "scope1": {
+        "vehicles": 0.98,
+        "generators": 0.85,
+        "refrigerants": 0.32,
+        "total": 2.15
+      },
+      "scope2": {
+        "t1": 45.4,
+        "t2": 36.2,
+        "t3": 75.6,
+        "t4": 24.2,
+        "jewel": 59.2,
+        "airside": 59.4,
+        "total": 300.0
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 824.8,
+          "taxi": 203.4,
+          "apu": 112.0,
+          "total": 1140.2
+        },
+        "tenants": {
+          "fnb": 69.6,
+          "retail": 41.2,
+          "services": 22.7,
+          "total": 133.5
+        },
+        "groundTransport": {
+          "taxi": 23.5,
+          "mrt": 16.8,
+          "bus": 13.4,
+          "privateCar": 13.4,
+          "total": 67.1
+        },
+        "total": 1340.8
+      },
+      "totalEmissions": 1642.9,
+      "vsLastWeek": -1.1,
+      "vsTarget": 2.9,
+      "carbonMaxActivity": {
+        "questsCompleted": 912,
+        "co2Avoided": 2554,
+        "greenMealsServed": 365,
+        "plasticBottlesAvoided": 1277,
+        "safContributionsCount": 91,
+        "safLitersAttributed": 4550,
+        "activeUsers": 4104
+      },
+      "operationalData": {
+        "flights": 1052,
+        "passengers": 187456,
+        "avgTaxiTime": 14.6,
+        "temperature": 30.1
+      }
+    },
+    {
+      "date": "2025-12-20",
+      "dayOfWeek": "Saturday",
+      "scope1": {
+        "vehicles": 0.96,
+        "generators": 0.84,
+        "refrigerants": 0.32,
+        "total": 2.12
+      },
+      "scope2": {
+        "t1": 44.8,
+        "t2": 35.7,
+        "t3": 74.6,
+        "t4": 23.9,
+        "jewel": 73.4,
+        "airside": 55.2,
+        "total": 307.6
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 768.2,
+          "taxi": 189.4,
+          "apu": 104.3,
+          "total": 1061.9
+        },
+        "tenants": {
+          "fnb": 87.2,
+          "retail": 51.7,
+          "services": 24.5,
+          "total": 163.4
+        },
+        "groundTransport": {
+          "taxi": 25.1,
+          "mrt": 17.9,
+          "bus": 14.3,
+          "privateCar": 14.3,
+          "total": 71.6
+        },
+        "total": 1296.9
+      },
+      "totalEmissions": 1606.6,
+      "vsLastWeek": 1.1,
+      "vsTarget": 0.7,
+      "carbonMaxActivity": {
+        "questsCompleted": 1134,
+        "co2Avoided": 3175,
+        "greenMealsServed": 454,
+        "plasticBottlesAvoided": 1588,
+        "safContributionsCount": 113,
+        "safLitersAttributed": 5650,
+        "activeUsers": 5103
+      },
+      "operationalData": {
+        "flights": 978,
+        "passengers": 208934,
+        "avgTaxiTime": 13.6,
+        "temperature": 30.3
+      }
+    },
+    {
+      "date": "2025-12-21",
+      "dayOfWeek": "Sunday",
+      "scope1": {
+        "vehicles": 0.90,
+        "generators": 0.78,
+        "refrigerants": 0.30,
+        "total": 1.98
+      },
+      "scope2": {
+        "t1": 43.0,
+        "t2": 34.3,
+        "t3": 71.6,
+        "t4": 22.9,
+        "jewel": 74.6,
+        "airside": 53.8,
+        "total": 300.2
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 745.6,
+          "taxi": 183.8,
+          "apu": 101.2,
+          "total": 1030.6
+        },
+        "tenants": {
+          "fnb": 89.4,
+          "retail": 53.0,
+          "services": 25.1,
+          "total": 167.5
+        },
+        "groundTransport": {
+          "taxi": 24.2,
+          "mrt": 17.3,
+          "bus": 13.8,
+          "privateCar": 13.8,
+          "total": 69.1
+        },
+        "total": 1267.2
+      },
+      "totalEmissions": 1569.4,
+      "vsLastWeek": 1.3,
+      "vsTarget": -1.7,
+      "carbonMaxActivity": {
+        "questsCompleted": 1245,
+        "co2Avoided": 3486,
+        "greenMealsServed": 498,
+        "plasticBottlesAvoided": 1743,
+        "safContributionsCount": 125,
+        "safLitersAttributed": 6250,
+        "activeUsers": 5603
+      },
+      "operationalData": {
+        "flights": 952,
+        "passengers": 212456,
+        "avgTaxiTime": 13.0,
+        "temperature": 29.6
+      }
+    },
+    {
+      "date": "2025-12-22",
+      "dayOfWeek": "Monday",
+      "scope1": {
+        "vehicles": 0.97,
+        "generators": 0.85,
+        "refrigerants": 0.32,
+        "total": 2.14
+      },
+      "scope2": {
+        "t1": 45.6,
+        "t2": 36.3,
+        "t3": 75.9,
+        "t4": 24.3,
+        "jewel": 59.4,
+        "airside": 59.6,
+        "total": 301.1
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 828.4,
+          "taxi": 204.2,
+          "apu": 112.5,
+          "total": 1145.1
+        },
+        "tenants": {
+          "fnb": 69.8,
+          "retail": 41.4,
+          "services": 22.8,
+          "total": 134.0
+        },
+        "groundTransport": {
+          "taxi": 23.6,
+          "mrt": 16.9,
+          "bus": 13.5,
+          "privateCar": 13.5,
+          "total": 67.5
+        },
+        "total": 1346.6
+      },
+      "totalEmissions": 1649.9,
+      "vsLastWeek": 3.4,
+      "vsTarget": 3.4,
+      "carbonMaxActivity": {
+        "questsCompleted": 778,
+        "co2Avoided": 2178,
+        "greenMealsServed": 311,
+        "plasticBottlesAvoided": 1089,
+        "safContributionsCount": 78,
+        "safLitersAttributed": 3900,
+        "activeUsers": 3501
+      },
+      "operationalData": {
+        "flights": 1062,
+        "passengers": 186789,
+        "avgTaxiTime": 15.2,
+        "temperature": 29.4
+      }
+    },
+    {
+      "date": "2025-12-23",
+      "dayOfWeek": "Tuesday",
+      "scope1": {
+        "vehicles": 0.99,
+        "generators": 0.86,
+        "refrigerants": 0.33,
+        "total": 2.18
+      },
+      "scope2": {
+        "t1": 46.2,
+        "t2": 36.8,
+        "t3": 76.9,
+        "t4": 24.6,
+        "jewel": 60.2,
+        "airside": 60.4,
+        "total": 305.1
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 842.6,
+          "taxi": 207.8,
+          "apu": 114.4,
+          "total": 1164.8
+        },
+        "tenants": {
+          "fnb": 71.2,
+          "retail": 42.2,
+          "services": 23.2,
+          "total": 136.6
+        },
+        "groundTransport": {
+          "taxi": 24.2,
+          "mrt": 17.3,
+          "bus": 13.8,
+          "privateCar": 13.8,
+          "total": 69.1
+        },
+        "total": 1370.5
+      },
+      "totalEmissions": 1677.8,
+      "vsLastWeek": 8.5,
+      "vsTarget": 5.1,
+      "carbonMaxActivity": {
+        "questsCompleted": 845,
+        "co2Avoided": 2366,
+        "greenMealsServed": 338,
+        "plasticBottlesAvoided": 1183,
+        "safContributionsCount": 85,
+        "safLitersAttributed": 4250,
+        "activeUsers": 3803
+      },
+      "operationalData": {
+        "flights": 1078,
+        "passengers": 192345,
+        "avgTaxiTime": 15.8,
+        "temperature": 30.2
+      }
+    },
+    {
+      "date": "2025-12-24",
+      "dayOfWeek": "Wednesday",
+      "scope1": {
+        "vehicles": 0.94,
+        "generators": 0.82,
+        "refrigerants": 0.31,
+        "total": 2.07
+      },
+      "scope2": {
+        "t1": 44.4,
+        "t2": 35.4,
+        "t3": 73.9,
+        "t4": 23.7,
+        "jewel": 67.8,
+        "airside": 58.2,
+        "total": 303.4
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 856.8,
+          "taxi": 211.2,
+          "apu": 116.3,
+          "total": 1184.3
+        },
+        "tenants": {
+          "fnb": 78.4,
+          "retail": 46.4,
+          "services": 24.8,
+          "total": 149.6
+        },
+        "groundTransport": {
+          "taxi": 25.6,
+          "mrt": 18.3,
+          "bus": 14.6,
+          "privateCar": 14.6,
+          "total": 73.1
+        },
+        "total": 1407.0
+      },
+      "totalEmissions": 1712.5,
+      "vsLastWeek": 6.3,
+      "vsTarget": 7.3,
+      "carbonMaxActivity": {
+        "questsCompleted": 1067,
+        "co2Avoided": 2988,
+        "greenMealsServed": 427,
+        "plasticBottlesAvoided": 1494,
+        "safContributionsCount": 107,
+        "safLitersAttributed": 5350,
+        "activeUsers": 4802
+      },
+      "operationalData": {
+        "flights": 1098,
+        "passengers": 198765,
+        "avgTaxiTime": 16.2,
+        "temperature": 29.8
+      }
+    },
+    {
+      "date": "2025-12-25",
+      "dayOfWeek": "Thursday",
+      "scope1": {
+        "vehicles": 0.88,
+        "generators": 0.77,
+        "refrigerants": 0.29,
+        "total": 1.94
+      },
+      "scope2": {
+        "t1": 41.8,
+        "t2": 33.3,
+        "t3": 69.6,
+        "t4": 22.3,
+        "jewel": 76.2,
+        "airside": 52.4,
+        "total": 295.6
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 724.8,
+          "taxi": 178.7,
+          "apu": 98.4,
+          "total": 1001.9
+        },
+        "tenants": {
+          "fnb": 92.4,
+          "retail": 54.8,
+          "services": 25.9,
+          "total": 173.1
+        },
+        "groundTransport": {
+          "taxi": 23.8,
+          "mrt": 17.0,
+          "bus": 13.6,
+          "privateCar": 13.6,
+          "total": 68.0
+        },
+        "total": 1243.0
+      },
+      "totalEmissions": 1540.5,
+      "vsLastWeek": -1.7,
+      "vsTarget": -3.5,
+      "carbonMaxActivity": {
+        "questsCompleted": 1312,
+        "co2Avoided": 3674,
+        "greenMealsServed": 525,
+        "plasticBottlesAvoided": 1837,
+        "safContributionsCount": 131,
+        "safLitersAttributed": 6550,
+        "activeUsers": 5904
+      },
+      "operationalData": {
+        "flights": 924,
+        "passengers": 218934,
+        "avgTaxiTime": 12.4,
+        "temperature": 29.1
+      }
+    },
+    {
+      "date": "2025-12-26",
+      "dayOfWeek": "Friday",
+      "scope1": {
+        "vehicles": 0.95,
+        "generators": 0.83,
+        "refrigerants": 0.31,
+        "total": 2.09
+      },
+      "scope2": {
+        "t1": 44.6,
+        "t2": 35.5,
+        "t3": 74.2,
+        "t4": 23.8,
+        "jewel": 68.4,
+        "airside": 56.8,
+        "total": 303.3
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 798.4,
+          "taxi": 196.8,
+          "apu": 108.4,
+          "total": 1103.6
+        },
+        "tenants": {
+          "fnb": 82.6,
+          "retail": 48.9,
+          "services": 23.2,
+          "total": 154.7
+        },
+        "groundTransport": {
+          "taxi": 24.8,
+          "mrt": 17.7,
+          "bus": 14.2,
+          "privateCar": 14.2,
+          "total": 70.9
+        },
+        "total": 1329.2
+      },
+      "totalEmissions": 1634.6,
+      "vsLastWeek": -0.5,
+      "vsTarget": 2.4,
+      "carbonMaxActivity": {
+        "questsCompleted": 1023,
+        "co2Avoided": 2864,
+        "greenMealsServed": 409,
+        "plasticBottlesAvoided": 1432,
+        "safContributionsCount": 102,
+        "safLitersAttributed": 5100,
+        "activeUsers": 4604
+      },
+      "operationalData": {
+        "flights": 1024,
+        "passengers": 196234,
+        "avgTaxiTime": 14.2,
+        "temperature": 29.6
+      }
+    },
+    {
+      "date": "2025-12-27",
+      "dayOfWeek": "Saturday",
+      "scope1": {
+        "vehicles": 0.97,
+        "generators": 0.84,
+        "refrigerants": 0.32,
+        "total": 2.13
+      },
+      "scope2": {
+        "t1": 45.2,
+        "t2": 36.0,
+        "t3": 75.2,
+        "t4": 24.1,
+        "jewel": 75.8,
+        "airside": 55.6,
+        "total": 311.9
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 772.4,
+          "taxi": 190.4,
+          "apu": 104.9,
+          "total": 1067.7
+        },
+        "tenants": {
+          "fnb": 91.2,
+          "retail": 54.0,
+          "services": 25.6,
+          "total": 170.8
+        },
+        "groundTransport": {
+          "taxi": 25.8,
+          "mrt": 18.4,
+          "bus": 14.7,
+          "privateCar": 14.7,
+          "total": 73.6
+        },
+        "total": 1312.1
+      },
+      "totalEmissions": 1626.1,
+      "vsLastWeek": 1.2,
+      "vsTarget": 1.9,
+      "carbonMaxActivity": {
+        "questsCompleted": 1189,
+        "co2Avoided": 3329,
+        "greenMealsServed": 476,
+        "plasticBottlesAvoided": 1665,
+        "safContributionsCount": 119,
+        "safLitersAttributed": 5950,
+        "activeUsers": 5351
+      },
+      "operationalData": {
+        "flights": 984,
+        "passengers": 215678,
+        "avgTaxiTime": 13.8,
+        "temperature": 30.4
+      }
+    },
+    {
+      "date": "2025-12-28",
+      "dayOfWeek": "Sunday",
+      "scope1": {
+        "vehicles": 0.91,
+        "generators": 0.79,
+        "refrigerants": 0.30,
+        "total": 2.00
+      },
+      "scope2": {
+        "t1": 43.4,
+        "t2": 34.6,
+        "t3": 72.2,
+        "t4": 23.1,
+        "jewel": 77.4,
+        "airside": 54.2,
+        "total": 304.9
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 752.6,
+          "taxi": 185.6,
+          "apu": 102.2,
+          "total": 1040.4
+        },
+        "tenants": {
+          "fnb": 93.8,
+          "retail": 55.6,
+          "services": 26.3,
+          "total": 175.7
+        },
+        "groundTransport": {
+          "taxi": 24.9,
+          "mrt": 17.8,
+          "bus": 14.2,
+          "privateCar": 14.2,
+          "total": 71.1
+        },
+        "total": 1287.2
+      },
+      "totalEmissions": 1594.1,
+      "vsLastWeek": 1.6,
+      "vsTarget": -0.1,
+      "carbonMaxActivity": {
+        "questsCompleted": 1278,
+        "co2Avoided": 3578,
+        "greenMealsServed": 511,
+        "plasticBottlesAvoided": 1789,
+        "safContributionsCount": 128,
+        "safLitersAttributed": 6400,
+        "activeUsers": 5751
+      },
+      "operationalData": {
+        "flights": 958,
+        "passengers": 218456,
+        "avgTaxiTime": 13.2,
+        "temperature": 29.8
+      }
+    },
+    {
+      "date": "2025-12-29",
+      "dayOfWeek": "Monday",
+      "scope1": {
+        "vehicles": 0.94,
+        "generators": 0.82,
+        "refrigerants": 0.31,
+        "total": 2.07
+      },
+      "scope2": {
+        "t1": 44.2,
+        "t2": 35.2,
+        "t3": 73.6,
+        "t4": 23.6,
+        "jewel": 58.4,
+        "airside": 58.2,
+        "total": 293.2
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 814.2,
+          "taxi": 200.8,
+          "apu": 110.6,
+          "total": 1125.6
+        },
+        "tenants": {
+          "fnb": 68.6,
+          "retail": 40.6,
+          "services": 22.4,
+          "total": 131.6
+        },
+        "groundTransport": {
+          "taxi": 22.9,
+          "mrt": 16.4,
+          "bus": 13.1,
+          "privateCar": 13.1,
+          "total": 65.5
+        },
+        "total": 1322.7
+      },
+      "totalEmissions": 1617.9,
+      "vsLastWeek": -1.9,
+      "vsTarget": 1.4,
+      "carbonMaxActivity": {
+        "questsCompleted": 756,
+        "co2Avoided": 2117,
+        "greenMealsServed": 302,
+        "plasticBottlesAvoided": 1058,
+        "safContributionsCount": 76,
+        "safLitersAttributed": 3800,
+        "activeUsers": 3402
+      },
+      "operationalData": {
+        "flights": 1042,
+        "passengers": 184567,
+        "avgTaxiTime": 14.4,
+        "temperature": 29.0
+      }
+    },
+    {
+      "date": "2025-12-30",
+      "dayOfWeek": "Tuesday",
+      "scope1": {
+        "vehicles": 0.92,
+        "generators": 0.80,
+        "refrigerants": 0.30,
+        "total": 2.02
+      },
+      "scope2": {
+        "t1": 43.6,
+        "t2": 34.7,
+        "t3": 72.6,
+        "t4": 23.2,
+        "jewel": 57.2,
+        "airside": 57.4,
+        "total": 288.7
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 792.4,
+          "taxi": 195.4,
+          "apu": 107.6,
+          "total": 1095.4
+        },
+        "tenants": {
+          "fnb": 67.2,
+          "retail": 39.8,
+          "services": 21.9,
+          "total": 128.9
+        },
+        "groundTransport": {
+          "taxi": 22.4,
+          "mrt": 16.0,
+          "bus": 12.8,
+          "privateCar": 12.8,
+          "total": 64.0
+        },
+        "total": 1288.3
+      },
+      "totalEmissions": 1579.0,
+      "vsLastWeek": 2.1,
+      "vsTarget": -1.1,
+      "carbonMaxActivity": {
+        "questsCompleted": 812,
+        "co2Avoided": 2274,
+        "greenMealsServed": 325,
+        "plasticBottlesAvoided": 1137,
+        "safContributionsCount": 81,
+        "safLitersAttributed": 4050,
+        "activeUsers": 3654
+      },
+      "operationalData": {
+        "flights": 1014,
+        "passengers": 180234,
+        "avgTaxiTime": 13.8,
+        "temperature": 29.4
+      }
+    },
+    {
+      "date": "2025-12-31",
+      "dayOfWeek": "Wednesday",
+      "scope1": {
+        "vehicles": 0.98,
+        "generators": 0.85,
+        "refrigerants": 0.32,
+        "total": 2.15
+      },
+      "scope2": {
+        "t1": 45.8,
+        "t2": 36.5,
+        "t3": 76.2,
+        "t4": 24.4,
+        "jewel": 72.6,
+        "airside": 58.4,
+        "total": 313.9
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 832.6,
+          "taxi": 205.3,
+          "apu": 113.1,
+          "total": 1151.0
+        },
+        "tenants": {
+          "fnb": 86.4,
+          "retail": 51.2,
+          "services": 24.2,
+          "total": 161.8
+        },
+        "groundTransport": {
+          "taxi": 26.2,
+          "mrt": 18.7,
+          "bus": 15.0,
+          "privateCar": 15.0,
+          "total": 74.9
+        },
+        "total": 1387.7
+      },
+      "totalEmissions": 1703.8,
+      "vsLastWeek": 5.8,
+      "vsTarget": 6.8,
+      "carbonMaxActivity": {
+        "questsCompleted": 1345,
+        "co2Avoided": 3766,
+        "greenMealsServed": 538,
+        "plasticBottlesAvoided": 1883,
+        "safContributionsCount": 135,
+        "safLitersAttributed": 6750,
+        "activeUsers": 6053
+      },
+      "operationalData": {
+        "flights": 1068,
+        "passengers": 224567,
+        "avgTaxiTime": 15.4,
+        "temperature": 30.2
+      }
+    },
+    {
+      "date": "2026-01-01",
+      "dayOfWeek": "Thursday",
+      "scope1": {
+        "vehicles": 0.87,
+        "generators": 0.76,
+        "refrigerants": 0.29,
+        "total": 1.92
+      },
+      "scope2": {
+        "t1": 41.4,
+        "t2": 33.0,
+        "t3": 68.9,
+        "t4": 22.1,
+        "jewel": 78.2,
+        "airside": 52.8,
+        "total": 296.4
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 718.4,
+          "taxi": 177.2,
+          "apu": 97.6,
+          "total": 993.2
+        },
+        "tenants": {
+          "fnb": 94.6,
+          "retail": 56.0,
+          "services": 26.5,
+          "total": 177.1
+        },
+        "groundTransport": {
+          "taxi": 24.2,
+          "mrt": 17.3,
+          "bus": 13.8,
+          "privateCar": 13.8,
+          "total": 69.1
+        },
+        "total": 1239.4
+      },
+      "totalEmissions": 1537.7,
+      "vsLastWeek": -6.8,
+      "vsTarget": -3.7,
+      "carbonMaxActivity": {
+        "questsCompleted": 1389,
+        "co2Avoided": 3889,
+        "greenMealsServed": 556,
+        "plasticBottlesAvoided": 1945,
+        "safContributionsCount": 139,
+        "safLitersAttributed": 6950,
+        "activeUsers": 6251
+      },
+      "operationalData": {
+        "flights": 916,
+        "passengers": 228934,
+        "avgTaxiTime": 12.2,
+        "temperature": 28.8
+      }
+    },
+    {
+      "date": "2026-01-02",
+      "dayOfWeek": "Friday",
+      "scope1": {
+        "vehicles": 0.93,
+        "generators": 0.81,
+        "refrigerants": 0.31,
+        "total": 2.05
+      },
+      "scope2": {
+        "t1": 43.8,
+        "t2": 34.9,
+        "t3": 72.9,
+        "t4": 23.3,
+        "jewel": 62.4,
+        "airside": 57.2,
+        "total": 294.5
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 786.8,
+          "taxi": 194.0,
+          "apu": 106.9,
+          "total": 1087.7
+        },
+        "tenants": {
+          "fnb": 72.4,
+          "retail": 42.9,
+          "services": 23.6,
+          "total": 138.9
+        },
+        "groundTransport": {
+          "taxi": 23.2,
+          "mrt": 16.6,
+          "bus": 13.3,
+          "privateCar": 13.3,
+          "total": 66.4
+        },
+        "total": 1293.0
+      },
+      "totalEmissions": 1589.5,
+      "vsLastWeek": -2.8,
+      "vsTarget": -0.4,
+      "carbonMaxActivity": {
+        "questsCompleted": 923,
+        "co2Avoided": 2584,
+        "greenMealsServed": 369,
+        "plasticBottlesAvoided": 1292,
+        "safContributionsCount": 92,
+        "safLitersAttributed": 4600,
+        "activeUsers": 4154
+      },
+      "operationalData": {
+        "flights": 1006,
+        "passengers": 188456,
+        "avgTaxiTime": 13.6,
+        "temperature": 29.2
+      }
+    },
+    {
+      "date": "2026-01-03",
+      "dayOfWeek": "Saturday",
+      "scope1": {
+        "vehicles": 0.96,
+        "generators": 0.83,
+        "refrigerants": 0.31,
+        "total": 2.10
+      },
+      "scope2": {
+        "t1": 44.6,
+        "t2": 35.5,
+        "t3": 74.2,
+        "t4": 23.8,
+        "jewel": 74.8,
+        "airside": 55.4,
+        "total": 308.3
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 764.2,
+          "taxi": 188.5,
+          "apu": 103.8,
+          "total": 1056.5
+        },
+        "tenants": {
+          "fnb": 89.6,
+          "retail": 53.1,
+          "services": 25.1,
+          "total": 167.8
+        },
+        "groundTransport": {
+          "taxi": 25.4,
+          "mrt": 18.1,
+          "bus": 14.5,
+          "privateCar": 14.5,
+          "total": 72.5
+        },
+        "total": 1296.8
+      },
+      "totalEmissions": 1607.2,
+      "vsLastWeek": -1.2,
+      "vsTarget": 0.7,
+      "carbonMaxActivity": {
+        "questsCompleted": 1156,
+        "co2Avoided": 3237,
+        "greenMealsServed": 462,
+        "plasticBottlesAvoided": 1618,
+        "safContributionsCount": 116,
+        "safLitersAttributed": 5800,
+        "activeUsers": 5202
+      },
+      "operationalData": {
+        "flights": 974,
+        "passengers": 212345,
+        "avgTaxiTime": 13.4,
+        "temperature": 30.0
+      }
+    },
+    {
+      "date": "2026-01-04",
+      "dayOfWeek": "Sunday",
+      "scope1": {
+        "vehicles": 0.90,
+        "generators": 0.78,
+        "refrigerants": 0.30,
+        "total": 1.98
+      },
+      "scope2": {
+        "t1": 42.8,
+        "t2": 34.1,
+        "t3": 71.2,
+        "t4": 22.8,
+        "jewel": 76.4,
+        "airside": 53.6,
+        "total": 300.9
+      },
+      "scope3": {
+        "aircraft": {
+          "lto": 742.4,
+          "taxi": 183.1,
+          "apu": 100.8,
+          "total": 1026.3
+        },
+        "tenants": {
+          "fnb": 91.8,
+          "retail": 54.4,
+          "services": 25.7,
+          "total": 171.9
+        },
+        "groundTransport": {
+          "taxi": 24.6,
+          "mrt": 17.6,
+          "bus": 14.1,
+          "privateCar": 14.1,
+          "total": 70.4
+        },
+        "total": 1268.6
+      },
+      "totalEmissions": 1571.5,
+      "vsLastWeek": -1.4,
+      "vsTarget": -1.5,
+      "carbonMaxActivity": {
+        "questsCompleted": 1234,
+        "co2Avoided": 3455,
+        "greenMealsServed": 494,
+        "plasticBottlesAvoided": 1728,
+        "safContributionsCount": 123,
+        "safLitersAttributed": 6150,
+        "activeUsers": 5553
+      },
+      "operationalData": {
+        "flights": 948,
+        "passengers": 215678,
+        "avgTaxiTime": 12.8,
+        "temperature": 29.4
+      }
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "metadata": {
+    "description": "Hourly CarbonMax consumer app activity feed for CAG Operations Dashboard",
+    "dataSource": "Simulated based on typical airport passenger flow patterns",
+    "date": "2026-01-04",
+    "version": "1.0.0"
+  },
+  "summary": {
+    "date": "2026-01-04",
+    "totalQuestsCompleted": 1234,
+    "totalCO2Avoided": 3455,
+    "totalGreenMeals": 494,
+    "totalPlasticAvoided": 1728,
+    "totalSAFContributions": 123,
+    "totalSAFLiters": 6150,
+    "activeUsers": 5553,
+    "peakHour": "11:00",
+    "peakQuestsPerHour": 124
+  },
+  "tierDistribution": {
+    "seedling": { "count": 7962, "percent": 62.0 },
+    "sapling": { "count": 3083, "percent": 24.0 },
+    "tree": { "count": 1156, "percent": 9.0 },
+    "forest": { "count": 514, "percent": 4.0 },
+    "canopy": { "count": 128, "percent": 1.0 }
+  },
+  "engagementFunnel": {
+    "viewedCarbonMax": { "count": 12847, "percent": 100 },
+    "startedQuest": { "count": 8736, "percent": 68 },
+    "completedQuest": { "count": 5396, "percent": 42 }
+  },
+  "hourlyActivity": [
+    {
+      "hour": "00:00",
+      "questsCompleted": 12,
+      "co2Avoided": 33.6,
+      "breakdown": {
+        "greenPlate": 4,
+        "hydration": 3,
+        "greenFlight": 2,
+        "ecoShopping": 2,
+        "other": 1
+      },
+      "activeUsers": 86
+    },
+    {
+      "hour": "01:00",
+      "questsCompleted": 8,
+      "co2Avoided": 22.4,
+      "breakdown": {
+        "greenPlate": 2,
+        "hydration": 2,
+        "greenFlight": 2,
+        "ecoShopping": 1,
+        "other": 1
+      },
+      "activeUsers": 52
+    },
+    {
+      "hour": "02:00",
+      "questsCompleted": 6,
+      "co2Avoided": 16.8,
+      "breakdown": {
+        "greenPlate": 2,
+        "hydration": 1,
+        "greenFlight": 2,
+        "ecoShopping": 0,
+        "other": 1
+      },
+      "activeUsers": 38
+    },
+    {
+      "hour": "03:00",
+      "questsCompleted": 4,
+      "co2Avoided": 11.2,
+      "breakdown": {
+        "greenPlate": 1,
+        "hydration": 1,
+        "greenFlight": 1,
+        "ecoShopping": 0,
+        "other": 1
+      },
+      "activeUsers": 24
+    },
+    {
+      "hour": "04:00",
+      "questsCompleted": 8,
+      "co2Avoided": 22.4,
+      "breakdown": {
+        "greenPlate": 2,
+        "hydration": 2,
+        "greenFlight": 3,
+        "ecoShopping": 0,
+        "other": 1
+      },
+      "activeUsers": 48
+    },
+    {
+      "hour": "05:00",
+      "questsCompleted": 18,
+      "co2Avoided": 50.4,
+      "breakdown": {
+        "greenPlate": 6,
+        "hydration": 4,
+        "greenFlight": 5,
+        "ecoShopping": 2,
+        "other": 1
+      },
+      "activeUsers": 124
+    },
+    {
+      "hour": "06:00",
+      "questsCompleted": 42,
+      "co2Avoided": 117.6,
+      "breakdown": {
+        "greenPlate": 14,
+        "hydration": 10,
+        "greenFlight": 12,
+        "ecoShopping": 4,
+        "other": 2
+      },
+      "activeUsers": 286
+    },
+    {
+      "hour": "07:00",
+      "questsCompleted": 68,
+      "co2Avoided": 190.4,
+      "breakdown": {
+        "greenPlate": 22,
+        "hydration": 16,
+        "greenFlight": 18,
+        "ecoShopping": 8,
+        "other": 4
+      },
+      "activeUsers": 462
+    },
+    {
+      "hour": "08:00",
+      "questsCompleted": 92,
+      "co2Avoided": 257.6,
+      "breakdown": {
+        "greenPlate": 32,
+        "hydration": 22,
+        "greenFlight": 24,
+        "ecoShopping": 10,
+        "other": 4
+      },
+      "activeUsers": 628
+    },
+    {
+      "hour": "09:00",
+      "questsCompleted": 108,
+      "co2Avoided": 302.4,
+      "breakdown": {
+        "greenPlate": 38,
+        "hydration": 26,
+        "greenFlight": 28,
+        "ecoShopping": 12,
+        "other": 4
+      },
+      "activeUsers": 734
+    },
+    {
+      "hour": "10:00",
+      "questsCompleted": 118,
+      "co2Avoided": 330.4,
+      "breakdown": {
+        "greenPlate": 42,
+        "hydration": 28,
+        "greenFlight": 30,
+        "ecoShopping": 14,
+        "other": 4
+      },
+      "activeUsers": 802
+    },
+    {
+      "hour": "11:00",
+      "questsCompleted": 124,
+      "co2Avoided": 347.2,
+      "breakdown": {
+        "greenPlate": 44,
+        "hydration": 30,
+        "greenFlight": 32,
+        "ecoShopping": 14,
+        "other": 4
+      },
+      "activeUsers": 842
+    },
+    {
+      "hour": "12:00",
+      "questsCompleted": 118,
+      "co2Avoided": 330.4,
+      "breakdown": {
+        "greenPlate": 48,
+        "hydration": 28,
+        "greenFlight": 26,
+        "ecoShopping": 12,
+        "other": 4
+      },
+      "activeUsers": 804
+    },
+    {
+      "hour": "13:00",
+      "questsCompleted": 98,
+      "co2Avoided": 274.4,
+      "breakdown": {
+        "greenPlate": 42,
+        "hydration": 24,
+        "greenFlight": 20,
+        "ecoShopping": 8,
+        "other": 4
+      },
+      "activeUsers": 668
+    },
+    {
+      "hour": "14:00",
+      "questsCompleted": 86,
+      "co2Avoided": 240.8,
+      "breakdown": {
+        "greenPlate": 32,
+        "hydration": 22,
+        "greenFlight": 20,
+        "ecoShopping": 8,
+        "other": 4
+      },
+      "activeUsers": 586
+    },
+    {
+      "hour": "15:00",
+      "questsCompleted": 78,
+      "co2Avoided": 218.4,
+      "breakdown": {
+        "greenPlate": 28,
+        "hydration": 20,
+        "greenFlight": 18,
+        "ecoShopping": 8,
+        "other": 4
+      },
+      "activeUsers": 532
+    },
+    {
+      "hour": "16:00",
+      "questsCompleted": 72,
+      "co2Avoided": 201.6,
+      "breakdown": {
+        "greenPlate": 26,
+        "hydration": 18,
+        "greenFlight": 16,
+        "ecoShopping": 8,
+        "other": 4
+      },
+      "activeUsers": 492
+    },
+    {
+      "hour": "17:00",
+      "questsCompleted": 68,
+      "co2Avoided": 190.4,
+      "breakdown": {
+        "greenPlate": 24,
+        "hydration": 18,
+        "greenFlight": 14,
+        "ecoShopping": 8,
+        "other": 4
+      },
+      "activeUsers": 464
+    },
+    {
+      "hour": "18:00",
+      "questsCompleted": 62,
+      "co2Avoided": 173.6,
+      "breakdown": {
+        "greenPlate": 24,
+        "hydration": 16,
+        "greenFlight": 12,
+        "ecoShopping": 6,
+        "other": 4
+      },
+      "activeUsers": 424
+    },
+    {
+      "hour": "19:00",
+      "questsCompleted": 54,
+      "co2Avoided": 151.2,
+      "breakdown": {
+        "greenPlate": 22,
+        "hydration": 14,
+        "greenFlight": 10,
+        "ecoShopping": 5,
+        "other": 3
+      },
+      "activeUsers": 368
+    },
+    {
+      "hour": "20:00",
+      "questsCompleted": 42,
+      "co2Avoided": 117.6,
+      "breakdown": {
+        "greenPlate": 16,
+        "hydration": 12,
+        "greenFlight": 8,
+        "ecoShopping": 4,
+        "other": 2
+      },
+      "activeUsers": 286
+    },
+    {
+      "hour": "21:00",
+      "questsCompleted": 32,
+      "co2Avoided": 89.6,
+      "breakdown": {
+        "greenPlate": 12,
+        "hydration": 8,
+        "greenFlight": 6,
+        "ecoShopping": 4,
+        "other": 2
+      },
+      "activeUsers": 218
+    },
+    {
+      "hour": "22:00",
+      "questsCompleted": 22,
+      "co2Avoided": 61.6,
+      "breakdown": {
+        "greenPlate": 8,
+        "hydration": 6,
+        "greenFlight": 4,
+        "ecoShopping": 2,
+        "other": 2
+      },
+      "activeUsers": 150
+    },
+    {
+      "hour": "23:00",
+      "questsCompleted": 14,
+      "co2Avoided": 39.2,
+      "breakdown": {
+        "greenPlate": 5,
+        "hydration": 4,
+        "greenFlight": 3,
+        "ecoShopping": 1,
+        "other": 1
+      },
+      "activeUsers": 95
+    }
+  ],
+  "questBreakdown": {
+    "greenPlate": {
+      "name": "Green Plate Discovery",
+      "completions": 494,
+      "co2AvoidedTotal": 642.2,
+      "avgCO2PerCompletion": 1.3,
+      "mode": "jewel"
+    },
+    "hydration": {
+      "name": "Hydration Station",
+      "completions": 328,
+      "co2AvoidedTotal": 426.4,
+      "avgCO2PerCompletion": 1.3,
+      "mode": "transit"
+    },
+    "greenFlight": {
+      "name": "Green Your Flight",
+      "completions": 289,
+      "co2AvoidedTotal": 1734.0,
+      "avgCO2PerCompletion": 6.0,
+      "mode": "departure"
+    },
+    "ecoShopping": {
+      "name": "Eco Shopping Trail",
+      "completions": 98,
+      "co2AvoidedTotal": 196.0,
+      "avgCO2PerCompletion": 2.0,
+      "mode": "jewel"
+    },
+    "other": {
+      "name": "Other Quests",
+      "completions": 65,
+      "co2AvoidedTotal": 130.0,
+      "avgCO2PerCompletion": 2.0,
+      "mode": "mixed"
+    }
+  },
+  "modeBreakdown": {
+    "jewel": {
+      "questsCompleted": 512,
+      "co2Avoided": 768.0,
+      "activeUsers": 2304
+    },
+    "departure": {
+      "questsCompleted": 478,
+      "co2Avoided": 2151.0,
+      "activeUsers": 2152
+    },
+    "transit": {
+      "questsCompleted": 284,
+      "co2Avoided": 536.0,
+      "activeUsers": 1097
+    }
+  },
+  "impactMetrics": {
+    "greenMeals": {
+      "total": 494,
+      "meatMealsAvoided": 494,
+      "co2Avoided": 642.2
+    },
+    "plasticBottles": {
+      "total": 1728,
+      "co2Avoided": 141.7
+    },
+    "safContributions": {
+      "count": 123,
+      "totalLiters": 6150,
+      "co2Avoided": 2460.0
+    },
+    "treesEquivalent": 14.2
+  }
+}
