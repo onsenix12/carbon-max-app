@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useQuestProgress } from "@/hooks/useQuestProgress";
-import { Leaf, ChevronRight, Sparkles } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { ROUTES } from "@/lib/routes";
 
@@ -30,11 +31,35 @@ export function CarbonMaxBanner() {
         {/* Content */}
         <div className="relative z-10">
           <div className="mb-4">
-            <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">WELCOME TO</p>
-            <h2 className="font-display font-bold text-4xl text-gray-900 mb-2">
-              <span className="text-primary">CARBON</span>
-              <span className="text-yellow-500">MAX</span>
-            </h2>
+            <div className="flex items-center gap-3 mb-3">
+              <motion.div
+                animate={{ 
+                  rotate: [0, 5, -5, 0],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="w-16 h-16 rounded-full overflow-hidden bg-white shadow-md flex-shrink-0"
+              >
+                <Image 
+                  src="/logo.png" 
+                  alt="CarbonMax Logo" 
+                  width={64} 
+                  height={64}
+                  className="object-contain w-full h-full"
+                />
+              </motion.div>
+              <div className="flex-1">
+                <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">WELCOME TO</p>
+                <h2 className="font-display font-bold text-4xl text-gray-900">
+                  <span className="text-primary">CARBON</span>
+                  <span className="text-yellow-500">MAX</span>
+                </h2>
+              </div>
+            </div>
             <p className="text-sm text-gray-700 leading-relaxed">
               Complete quests, earn eco-points, and unlock green tiers to receive sustainable rewards!
             </p>

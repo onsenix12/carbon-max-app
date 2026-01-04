@@ -2,8 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Send, Leaf } from "lucide-react";
+import { ArrowLeft, Send } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "@/components/GlassCard";
@@ -268,9 +269,15 @@ export default function ChatPage() {
               <motion.div 
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-sm"
+                className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm overflow-hidden bg-white"
               >
-                <Leaf className="w-4 h-4 text-white" />
+                <Image 
+                  src="/logo.png" 
+                  alt="CarbonMax Logo" 
+                  width={40} 
+                  height={40}
+                  className="object-contain"
+                />
               </motion.div>
               <div>
                 <h1 className="font-display font-semibold text-foreground">Ask CarbonMax</h1>
