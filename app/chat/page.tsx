@@ -319,7 +319,7 @@ export default function ChatPage() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className={cn(
-                    "max-w-[85%] rounded-2xl px-4 py-3 shadow-sm",
+                    "max-w-[85%] rounded-2xl px-4 py-3 shadow-sm select-text",
                     message.role === "user"
                       ? "bg-[#10B981] text-white"
                       : "glass"
@@ -327,7 +327,7 @@ export default function ChatPage() {
                 >
                   <p
                     className={cn(
-                      "text-sm whitespace-pre-wrap",
+                      "text-sm whitespace-pre-wrap select-text",
                       message.role === "user" ? "text-white" : "text-foreground"
                     )}
                     dangerouslySetInnerHTML={{
