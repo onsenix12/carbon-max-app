@@ -9,6 +9,7 @@ import { QuestCard } from "@/components/QuestCard";
 import { MyImpact } from "@/components/MyImpact";
 import { MessageCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import questsData from "@/data/quests.json";
 import { Quest } from "@/lib/types";
@@ -37,7 +38,18 @@ export default function QuestHubPage() {
       {/* Header with glassmorphism */}
       <header className="glass-strong border-b border-border sticky top-0 z-50">
         <div className="max-w-lg mx-auto px-5 py-4">
-          <h1 className="font-display font-bold text-xl text-foreground text-center">CarbonMax</h1>
+          <div className="flex items-center justify-center gap-2">
+            <h1 className="font-display font-semibold text-foreground flex items-center gap-2">
+              Carbon<span className="text-[#10B981]">Max</span>
+              <Image 
+                src="/logo.png" 
+                alt="CarbonMax Logo" 
+                width={24} 
+                height={24}
+                className="object-contain"
+              />
+            </h1>
+          </div>
         </div>
       </header>
 
