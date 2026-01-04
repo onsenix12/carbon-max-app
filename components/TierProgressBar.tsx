@@ -3,8 +3,10 @@
 import { useQuestProgress } from "@/hooks/useQuestProgress";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { GlassCard } from "./GlassCard";
 import { ProgressBar } from "./ProgressBar";
+import { ROUTES } from "@/lib/routes";
 
 export function TierProgressBar() {
   const { tierProgress } = useQuestProgress();
@@ -25,7 +27,8 @@ export function TierProgressBar() {
       transition={{ duration: 0.4 }}
       whileHover={{ scale: 1.01 }}
     >
-      <GlassCard className="p-6">
+      <Link href={ROUTES.TIERS}>
+        <GlassCard className="p-6 cursor-pointer hover:shadow-lg transition-shadow">
         {/* Tier Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
@@ -81,7 +84,13 @@ export function TierProgressBar() {
             Maximum tier achieved!
           </p>
         )}
+        <div className="mt-2 text-center">
+          <span className="text-xs text-muted-foreground hover:text-primary transition-colors">
+            View all tiers →
+          </span>
+        </div>
       </GlassCard>
+      </Link>
     </motion.div>
   );
 }

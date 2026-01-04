@@ -6,7 +6,7 @@ A gamified carbon reduction platform for Changi Airport that encourages sustaina
 
 - **Quest System**: Complete sustainability quests across three journey modes (Jewel, Departure, Transit)
 - **Impact Tracking**: Track CO₂ avoided, plastic saved, and trees equivalent
-- **Tier System**: Progress through Green Tiers (Seed → Sprout → Sapling → Tree → Forest)
+- **Tier System**: Progress through Green Tiers (Seedling → Sapling → Tree → Forest → Canopy)
 - **AI Chat Assistant**: Ask Max for sustainability tips and quest recommendations
 - **Glassmorphism UI**: Modern, mobile-first design with glassmorphic effects
 - **Real-time Progress**: Track quest completion and earn eco-points
@@ -51,6 +51,7 @@ carbon-max-app/
 │   ├── carbonmax/         # Quest hub page
 │   ├── chat/              # AI chat page
 │   ├── impact/            # Impact tracking page
+│   ├── tiers/             # Green tiers page
 │   └── quest/[id]/        # Quest detail pages
 ├── components/             # React components
 │   ├── quests/           # Quest-specific components
@@ -91,11 +92,11 @@ carbon-max-app/
 
 ## 🏆 Green Tiers
 
-- **Seed** (0-100 pts) - Starting your journey
-- **Sprout** (100-500 pts) - Growing awareness
-- **Sapling** (500-1500 pts) - Making an impact
-- **Tree** (1500-3000 pts) - Significant contribution
-- **Forest** (3000+ pts) - Sustainability champion
+- **Seedling** (0-499 pts) - Starting your journey
+- **Sapling** (500-1,499 pts) - Growing awareness (10% bonus points)
+- **Tree** (1,500-3,999 pts) - Making an impact (15% bonus points)
+- **Forest** (4,000-9,999 pts) - Significant contribution (20% bonus points)
+- **Canopy** (10,000+ pts) - Sustainability champion (25% bonus points)
 
 ## 🚢 Deployment
 

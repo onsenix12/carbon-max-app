@@ -18,6 +18,9 @@ export const ROUTES = {
   
   /** Impact page */
   IMPACT: '/impact',
+  
+  /** Green Tiers page */
+  TIERS: '/tiers',
 } as const;
 
 /**

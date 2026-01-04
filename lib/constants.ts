@@ -37,8 +37,8 @@ export const GREEN_TIERS: GreenTier[] = [
     perks: ["Track your carbon impact", "Access basic quests"],
   },
   {
-    id: "sprout",
-    name: "Sprout",
+    id: "sapling",
+    name: "Sapling",
     icon: "🌿",
     minPoints: 500,
     maxPoints: 1499,

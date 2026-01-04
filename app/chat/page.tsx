@@ -87,7 +87,7 @@ Would you like directions to any of these?`;
 
 **Tier Levels:**
 🌱 Seedling: 0-499 pts
-🌿 Sprout: 500-1,499 pts (10% bonus)
+🌿 Sapling: 500-1,499 pts (10% bonus)
 🌳 Tree: 1,500-3,999 pts (15% bonus)
 🌲 Forest: 4,000-9,999 pts (20% bonus)
 🏔️ Canopy: 10,000+ pts (25% bonus)

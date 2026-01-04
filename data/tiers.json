@@ -14,8 +14,8 @@
       ]
     },
     {
-      "id": "sprout",
-      "name": "Sprout",
+      "id": "sapling",
+      "name": "Sapling",
       "icon": "🌿",
       "minPoints": 500,
       "maxPoints": 1499,
