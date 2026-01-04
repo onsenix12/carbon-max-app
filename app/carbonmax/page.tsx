@@ -39,13 +39,13 @@ export default function QuestHubPage() {
       <header className="glass-strong border-b border-border sticky top-0 z-50">
         <div className="max-w-lg mx-auto px-5 py-4">
           <div className="flex items-center justify-center gap-2">
-            <h1 className="font-display font-semibold text-foreground flex items-center gap-2">
+            <h1 className="font-display font-semibold text-foreground flex items-center">
               <Image 
                 src="/logo.png" 
                 alt="CarbonMax Logo" 
-                width={24} 
-                height={24}
-                className="object-contain"
+                width={32} 
+                height={32}
+                className="object-contain mr-2"
               />
               <span>Carbon</span><span className="text-[#10B981]">Max</span>
             </h1>

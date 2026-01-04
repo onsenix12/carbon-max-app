@@ -287,7 +287,7 @@ export default function ChatPage() {
                 />
               </motion.div>
               <div>
-                <h1 className="font-display font-semibold text-foreground flex items-center gap-2">
+                <h1 className="font-display font-semibold text-foreground flex items-center">
                   Ask <span>Carbon</span><span className="text-[#10B981]">Max</span>
                 </h1>
                 <p className="text-xs text-muted-foreground">Your sustainability guide</p>
