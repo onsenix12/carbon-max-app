@@ -205,7 +205,7 @@ export default function ChatPage() {
   };
 
   const handleQuickQuestion = (question: string) => {
-    handleSend(question);
+    setInput(question);
   };
 
   return (
