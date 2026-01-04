@@ -150,18 +150,54 @@ export default function ChatPage() {
     setInput("");
     setIsTyping(true);
 
-    // Simulate typing delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Prepare messages for API (include conversation history)
+      const messagesForAPI = [
+        ...messages.map((msg) => ({
+          role: msg.role,
+          content: msg.content,
+        })),
+        {
+          role: "user",
+          content: messageText,
+        },
+      ];
 
-    // Add assistant response
-    const response = getResponse(messageText);
-    const assistantMessage: Message = {
-      id: `assistant-${Date.now()}`,
-      role: "assistant",
-      content: response,
-    };
-    setMessages((prev) => [...prev, assistantMessage]);
-    setIsTyping(false);
+      // Call Claude API
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: messagesForAPI,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to get response from API");
+      }
+
+      const data = await response.json();
+      const assistantMessage: Message = {
+        id: `assistant-${Date.now()}`,
+        role: "assistant",
+        content: data.content || "Sorry, I couldn't generate a response.",
+      };
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error("Error calling chat API:", error);
+      // Fallback to mock response if API fails
+      const response = getResponse(messageText);
+      const assistantMessage: Message = {
+        id: `assistant-${Date.now()}`,
+        role: "assistant",
+        content: response,
+      };
+      setMessages((prev) => [...prev, assistantMessage]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const handleQuickQuestion = (question: string) => {
