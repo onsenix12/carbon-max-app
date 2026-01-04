@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/Button";
+import { ROUTES } from "@/lib/routes";
 
 // Animated Counter Component
 function AnimatedCounter({ 
