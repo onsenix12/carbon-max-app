@@ -163,8 +163,15 @@ export default function ChatPage() {
         },
       ];
 
-      // Call Claude API
-      const response = await fetch("/api/chat", {
+      // Call Claude API - use environment variable or fallback to relative path
+      // Note: For GitHub Pages deployment, NEXT_PUBLIC_API_URL must be set to your Vercel function URL
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "/api/chat";
+      
+      if (!process.env.NEXT_PUBLIC_API_URL && typeof window !== 'undefined') {
+        console.warn('NEXT_PUBLIC_API_URL not set. API calls may fail on static hosting. Set it to your Vercel function URL.');
+      }
+      
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -175,7 +182,9 @@ export default function ChatPage() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to get response from API");
+        const errorText = await response.text().catch(() => 'Unknown error');
+        console.error('API Error:', response.status, errorText);
+        throw new Error(`Failed to get response from API: ${response.status} ${errorText}`);
       }
 
       const data = await response.json();
