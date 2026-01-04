@@ -80,6 +80,14 @@
     line-height: 1.6;
   }
   
+  /* Ensure text is selectable in chat messages */
+  [data-chat-message] {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+  }
+  
   /* Typography - Poppins for headings, Inter for body */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display), 'Poppins', system-ui, sans-serif;

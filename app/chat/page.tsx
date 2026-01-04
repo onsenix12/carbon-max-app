@@ -298,8 +298,8 @@ export default function ChatPage() {
       </motion.div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto relative z-10">
-        <div className="max-w-md mx-auto px-4 py-4 space-y-4">
+      <div className="flex-1 overflow-y-auto relative z-10" style={{ userSelect: 'text', WebkitUserSelect: 'text' }}>
+        <div className="max-w-md mx-auto px-4 py-4 space-y-4" style={{ userSelect: 'text', WebkitUserSelect: 'text' }}>
           <AnimatePresence mode="popLayout">
             {messages.map((message, index) => (
               <motion.div
@@ -319,17 +319,20 @@ export default function ChatPage() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className={cn(
-                    "max-w-[85%] rounded-2xl px-4 py-3 shadow-sm select-text",
+                    "max-w-[85%] rounded-2xl px-4 py-3 shadow-sm",
                     message.role === "user"
                       ? "bg-[#10B981] text-white"
                       : "glass"
                   )}
+                  data-chat-message
+                  style={{ userSelect: 'text', WebkitUserSelect: 'text', pointerEvents: 'auto' }}
                 >
                   <p
                     className={cn(
-                      "text-sm whitespace-pre-wrap select-text",
+                      "text-sm whitespace-pre-wrap",
                       message.role === "user" ? "text-white" : "text-foreground"
                     )}
+                    style={{ userSelect: 'text', WebkitUserSelect: 'text' }}
                     dangerouslySetInnerHTML={{
                       __html: message.content
                         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
