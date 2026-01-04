@@ -1,2 +1,13 @@
-{}
-
+{
+  "functions": {
+    "api/chat.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/chat",
+      "destination": "/api/chat"
+    }
+  ]
+}

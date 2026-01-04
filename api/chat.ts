@@ -6,6 +6,9 @@ export default async function handler(
 ) {
   // Handle CORS
   if (request.method === 'OPTIONS') {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     return response.status(200).json({});
   }
 
