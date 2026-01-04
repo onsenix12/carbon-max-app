@@ -28,6 +28,19 @@ export interface Quest {
   estimatedTime?: string;
 }
 
+/**
+ * Quest completion extra data
+ * Contains quest-specific metrics and information
+ */
+export interface QuestExtraData {
+  /** CO₂ avoided in kg */
+  co2Avoided?: number;
+  /** Plastic saved in grams */
+  plasticSaved?: number;
+  /** Additional quest-specific data */
+  [key: string]: unknown;
+}
+
 export interface QuestProgress {
   questId: string;
   status: QuestStatus;
@@ -35,7 +48,7 @@ export interface QuestProgress {
   completedAt?: string;
   pointsEarned: number;
   bonusEarned: boolean;
-  extraData?: Record<string, any>;
+  extraData?: QuestExtraData;
 }
 
 // Green Tiers

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Quest } from "@/lib/types";
+import { Quest, QuestExtraData } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { MapPin, Droplets, Lightbulb, Star } from "lucide-react";
 
 interface HydrationQuestProps {
   quest: Quest;
-  onComplete: (points: number, bonus: boolean, extraData?: Record<string, any>) => void;
+  onComplete: (points: number, bonus: boolean, extraData?: QuestExtraData) => void;
 }
 
 const REFILL_STATIONS = [

@@ -5,6 +5,7 @@ import { Leaf, Droplets, Award } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { GlassCard } from "./GlassCard";
+import { ROUTES } from "@/lib/routes";
 
 export function MyImpact() {
   const { userImpact } = useQuestProgress();
@@ -19,7 +20,7 @@ export function MyImpact() {
     <GlassCard className="p-6">
       <div className="flex items-center justify-between mb-5">
         <h3 className="font-display font-semibold text-foreground">My Impact</h3>
-        <Link href="/impact" className="text-sm text-[#10B981] font-medium hover:underline transition-colors flex items-center gap-1">
+        <Link href={ROUTES.IMPACT} className="text-sm text-[#10B981] font-medium hover:underline transition-colors flex items-center gap-1">
           Full Story →
         </Link>
       </div>

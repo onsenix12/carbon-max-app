@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Quest, Merchant } from "@/lib/types";
+import { Quest, Merchant, QuestExtraData } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { MapPin, Check, Lightbulb } from "lucide-react";
 import { GlassCard } from "@/components/GlassCard";
@@ -43,7 +43,7 @@ const RESTAURANTS: Merchant[] = [
 
 interface GreenPlateQuestProps {
   quest: Quest;
-  onComplete: (points: number, bonus: boolean, extraData?: Record<string, any>) => void;
+  onComplete: (points: number, bonus: boolean, extraData?: QuestExtraData) => void;
 }
 
 export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useQuestProgress } from "@/hooks/useQuestProgress";
 import { Leaf, ChevronRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { ROUTES } from "@/lib/routes";
 
 export function CarbonMaxBanner() {
   let totalPoints = 0;
@@ -16,7 +17,7 @@ export function CarbonMaxBanner() {
   }
 
   return (
-    <Link href="/carbonmax" className="block group">
+    <Link href={ROUTES.CARBONMAX} className="block group">
       <motion.div
         whileHover={{ scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.98 }}

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import questsData from "@/data/quests.json";
 import { Quest } from "@/lib/types";
+import { ROUTES } from "@/lib/routes";
 
 export default function QuestHubPage() {
   const router = useRouter();
@@ -78,7 +79,7 @@ export default function QuestHubPage() {
                 key={quest.id}
                 quest={quest}
                 completed={isQuestCompleted(quest.id)}
-                onStart={() => router.push(`/quest/${quest.id}`)}
+                onStart={() => router.push(ROUTES.QUEST(quest.id))}
               />
             ))}
           </div>
@@ -96,7 +97,7 @@ export default function QuestHubPage() {
 
       {/* Floating Chat Button - using design system */}
       <Link
-        href="/chat"
+        href={ROUTES.CHAT}
         className="fixed bottom-6 right-6 w-14 h-14 bg-[#10B981] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#059669] hover:scale-105 transition-all duration-200"
       >
         <MessageCircle className="w-6 h-6" />

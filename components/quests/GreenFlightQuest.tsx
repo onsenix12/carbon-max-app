@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Quest } from "@/lib/types";
+import { Quest, QuestExtraData } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Plane, Leaf, Info, Check, Lightbulb } from "lucide-react";
 import { GlassCard } from "@/components/GlassCard";
@@ -9,7 +9,7 @@ import { Button } from "@/components/Button";
 
 interface GreenFlightQuestProps {
   quest: Quest;
-  onComplete: (points: number, bonus: boolean, extraData?: Record<string, any>) => void;
+  onComplete: (points: number, bonus: boolean, extraData?: QuestExtraData) => void;
 }
 
 // Mock flight data

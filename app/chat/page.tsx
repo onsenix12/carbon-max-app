@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "@/components/GlassCard";
 import { Input } from "@/components/Input";
 import { Button } from "@/components/Button";
+import { ROUTES } from "@/lib/routes";
 
 interface Message {
   id: string;
@@ -259,7 +260,7 @@ export default function ChatPage() {
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center gap-3">
             <motion.div whileHover={{ x: -2 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/carbonmax" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href={ROUTES.CARBONMAX} className="text-muted-foreground hover:text-foreground transition-colors">
                 <ArrowLeft className="w-5 h-5" />
               </Link>
             </motion.div>

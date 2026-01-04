@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useJourneyMode } from "@/hooks/useJourneyMode";
 import { useQuestProgress } from "@/hooks/useQuestProgress";
-import { Quest } from "@/lib/types";
+import { Quest, QuestExtraData } from "@/lib/types";
 import { GreenPlateQuest } from "@/components/quests/GreenPlateQuest";
 import { GreenFlightQuest } from "@/components/quests/GreenFlightQuest";
 import { HydrationQuest } from "@/components/quests/HydrationQuest";
@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { GlassCard } from "@/components/GlassCard";
 import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";
+import { ROUTES } from "@/lib/routes";
 
 interface QuestDetailClientProps {
   quest: Quest;
@@ -29,7 +30,7 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
   const [completionData, setCompletionData] = useState<{
     points: number;
     bonus: boolean;
-    extraData?: Record<string, any>;
+    extraData?: QuestExtraData;
   } | null>(null);
 
   const alreadyCompleted = isQuestCompleted(quest.id);
@@ -43,7 +44,7 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
 
   const colors = modeColors[quest.mode];
 
-  const handleComplete = (points: number, bonus: boolean, extraData?: Record<string, any>) => {
+  const handleComplete = (points: number, bonus: boolean, extraData?: QuestExtraData) => {
     completeQuest(quest.id, points, bonus, extraData);
     setCompletionData({ points, bonus, extraData });
     setShowCelebration(true);
@@ -51,7 +52,7 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
 
   const handleCloseCelebration = () => {
     setShowCelebration(false);
-    router.push("/");
+    router.push(ROUTES.CARBONMAX);
   };
 
   const renderQuestContent = () => {
@@ -61,7 +62,7 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
           <div className="text-6xl mb-4">✅</div>
           <h3 className="text-xl font-bold text-foreground mb-2">Quest Completed!</h3>
           <p className="text-muted-foreground mb-6">You've already finished this quest.</p>
-          <Button onClick={() => router.push("/")}>
+          <Button onClick={() => router.push(ROUTES.CARBONMAX)}>
             Back to Quests
           </Button>
         </div>
@@ -86,7 +87,7 @@ export function QuestDetailClient({ quest }: QuestDetailClientProps) {
       <div className="glass-strong border-b border-border sticky top-0 z-10">
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <Link href="/carbonmax" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+            <Link href={ROUTES.CARBONMAX} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span className="text-sm">Back</span>
             </Link>

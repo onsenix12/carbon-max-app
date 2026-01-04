@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { QuestProgress, UserImpact, UserTierProgress } from "@/lib/types";
+import { QuestProgress, UserImpact, UserTierProgress, QuestExtraData } from "@/lib/types";
 import { GREEN_TIERS } from "@/lib/constants";
 
 interface QuestProgressContextType {
@@ -12,7 +12,7 @@ interface QuestProgressContextType {
   tierProgress: UserTierProgress;
   
   startQuest: (questId: string) => void;
-  completeQuest: (questId: string, points: number, bonus: boolean, extraData?: Record<string, any>) => void;
+  completeQuest: (questId: string, points: number, bonus: boolean, extraData?: QuestExtraData) => void;
   isQuestCompleted: (questId: string) => boolean;
   isQuestInProgress: (questId: string) => boolean;
 }
@@ -108,7 +108,7 @@ export function QuestProgressProvider({ children }: { children: ReactNode }) {
     questId: string,
     points: number,
     bonus: boolean,
-    extraData?: Record<string, any>
+    extraData?: QuestExtraData
   ) => {
     const newTotalPoints = totalPoints + points;
     

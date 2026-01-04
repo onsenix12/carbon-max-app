@@ -45,10 +45,10 @@ export async function POST(request: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
+        'anthropic-version': '2024-10-22',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-3-5-sonnet-20241022',
         max_tokens: 1024,
         messages: formattedMessages,
         system: `You are Max, a friendly and knowledgeable sustainability guide for CarbonMax, a gamified carbon reduction platform at Changi Airport in Singapore. 

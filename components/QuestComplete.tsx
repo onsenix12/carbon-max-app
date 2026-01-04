@@ -1,6 +1,6 @@
 "use client";
 
-import { Quest } from "@/lib/types";
+import { Quest, QuestExtraData } from "@/lib/types";
 import { useQuestProgress } from "@/hooks/useQuestProgress";
 import { X, Share2, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,7 +10,7 @@ interface QuestCompleteProps {
   quest: Quest;
   pointsEarned: number;
   bonusEarned: boolean;
-  extraData?: Record<string, any>;
+  extraData?: QuestExtraData;
   onClose: () => void;
 }
 
