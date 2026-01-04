@@ -26,7 +26,7 @@ export default async function QuestDetailPage({ params }: PageProps) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-500 mb-4">Quest not found</p>
-          <Link href="/" className="text-eco-leaf font-medium">
+          <Link href="/carbonmax" className="text-eco-leaf font-medium">
             Back to Quest Hub
           </Link>
         </div>

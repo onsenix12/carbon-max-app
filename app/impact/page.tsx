@@ -172,7 +172,7 @@ export default function ImpactPage() {
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <motion.div whileHover={{ x: -2 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+              <Link href="/carbonmax" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
                 <ArrowLeft className="w-5 h-5" />
                 <span className="text-sm font-medium">Back</span>
               </Link>
@@ -389,7 +389,7 @@ export default function ImpactPage() {
                 Complete your first quest to begin building your impact story!
               </p>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/">
+                <Link href="/carbonmax">
                   <Button variant="primary">
                     Explore Quests
                   </Button>

@@ -16,7 +16,7 @@ export function CarbonMaxBanner() {
   }
 
   return (
-    <Link href="/" className="block group">
+    <Link href="/carbonmax" className="block group">
       <motion.div
         whileHover={{ scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.98 }}

@@ -1,106 +1,137 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useJourneyMode } from "@/hooks/useJourneyMode";
-import { useQuestProgress } from "@/hooks/useQuestProgress";
-import { ModeSelector } from "@/components/ModeSelector";
-import { TierProgressBar } from "@/components/TierProgressBar";
-import { QuestCard } from "@/components/QuestCard";
-import { MyImpact } from "@/components/MyImpact";
-import { MessageCircle } from "lucide-react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import questsData from "@/data/quests.json";
-import { Quest } from "@/lib/types";
+import { CarbonMaxBanner } from "@/components/CarbonMaxBanner";
+import { Search, Star, MapPin, Plane, ShoppingBag, User } from "lucide-react";
 
-export default function QuestHubPage() {
-  const router = useRouter();
-  const { mode } = useJourneyMode();
-  const { isQuestCompleted } = useQuestProgress();
-
-  const quests = (questsData.quests as Quest[]).filter((q) => q.mode === mode);
-  const availableCount = quests.filter((q) => !isQuestCompleted(q.id)).length;
-
-  // Mode-specific background colors
-  const modeBackgrounds: Record<string, string> = {
-    jewel: "#FFFBEB",
-    departure: "#EFF6FF",
-    transit: "#ECFDF5",
-  };
-
+export default function HomePage() {
   return (
-    <div 
-      className="min-h-screen transition-colors duration-500"
-      style={{ backgroundColor: modeBackgrounds[mode] || modeBackgrounds.transit }}
-    >
-      {/* Header with glassmorphism */}
-      <header className="glass-strong border-b border-border sticky top-0 z-50">
-        <div className="max-w-lg mx-auto px-5 py-4">
-          <h1 className="font-display font-bold text-xl text-foreground text-center">CarbonMax</h1>
+    <div className="min-h-screen bg-gray-100">
+        {/* Simulated Changi App */}
+        <div className="max-w-md mx-auto bg-white min-h-screen shadow-xl">
+          {/* Status Bar Placeholder */}
+          <div className="bg-[#1a1a2e] text-white px-4 py-2 text-xs flex justify-between items-center">
+            <span>9:41</span>
+            <div className="flex gap-1">
+              <span>📶</span>
+              <span>🔋</span>
+            </div>
+          </div>
+
+          {/* Search Bar */}
+          <div className="bg-[#1a1a2e] px-4 pb-4">
+            <div className="flex items-center gap-3">
+              <div className="flex-1 bg-white/10 rounded-lg px-4 py-2.5 flex items-center gap-2">
+                <Search className="w-4 h-4 text-white/60" />
+                <span className="text-white/60 text-sm">Search flights, food, shops, facilities</span>
+              </div>
+              <button className="p-2">
+                <Star className="w-5 h-5 text-yellow-400" fill="currentColor" />
+              </button>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="px-4 py-4 space-y-4 pb-24">
+            {/* CarbonMax Banner - THE MAIN FEATURE */}
+            <CarbonMaxBanner />
+
+            {/* User Greeting (simulated) */}
+            <div className="bg-gradient-to-r from-[#6c5ce7] to-[#1a1a2e] rounded-2xl p-4 text-white">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-white/80 text-sm">Hi Traveller</p>
+                  <p className="font-bold">340 pts</p>
+                </div>
+                <button className="bg-white/20 rounded-full px-4 py-2 text-sm font-medium">
+                  🎁 Rewards Card
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Actions Grid (simulated Changi App features) */}
+            <div className="grid grid-cols-5 gap-2">
+              {[
+                { icon: "🎉", label: "Celebrate" },
+                { icon: "🏷️", label: "Deals" },
+                { icon: "🛍️", label: "Duty-Free" },
+                { icon: "🅿️", label: "Parking" },
+                { icon: "📍", label: "Map" },
+              ].map((item, i) => (
+                <button key={i} className="flex flex-col items-center gap-1 p-2">
+                  <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-xl">
+                    {item.icon}
+                  </div>
+                  <span className="text-xs text-gray-600">{item.label}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-5 gap-2">
+              {[
+                { icon: "✈️", label: "Flights" },
+                { icon: "🛡️", label: "Insurance" },
+                { icon: "🏨", label: "Hotels" },
+                { icon: "📱", label: "E-SIM" },
+                { icon: "⋯", label: "View All" },
+              ].map((item, i) => (
+                <button key={i} className="flex flex-col items-center gap-1 p-2">
+                  <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-xl">
+                    {item.icon}
+                  </div>
+                  <span className="text-xs text-gray-600">{item.label}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Tabs */}
+            <div className="flex gap-4 border-b">
+              <button className="pb-2 border-b-2 border-[#6c5ce7] text-[#6c5ce7] font-medium text-sm">
+                All
+              </button>
+              <button className="pb-2 text-gray-400 text-sm">
+                Celebrate with Changi
+              </button>
+              <button className="pb-2 text-gray-400 text-sm">
+                Experiences
+              </button>
+            </div>
+
+            {/* Discover Section (placeholder) */}
+            <div className="bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl p-4">
+              <h3 className="font-bold text-gray-900 mb-1">Discover & Book</h3>
+              <p className="text-sm text-gray-600">
+                The best things you can do to make the most out of your day.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Navigation */}
+          <div className="fixed bottom-0 left-0 right-0 bg-white border-t max-w-md mx-auto">
+            <div className="flex justify-around py-2">
+              {[
+                { icon: <MapPin className="w-5 h-5" />, label: "Explore", active: true },
+                { icon: <Plane className="w-5 h-5" />, label: "Fly", active: false },
+                { icon: <span className="text-lg">💳</span>, label: "Pay", active: false },
+                { icon: <ShoppingBag className="w-5 h-5" />, label: "Dine & Shop", active: false },
+                { icon: <User className="w-5 h-5" />, label: "Account", active: false },
+              ].map((item, i) => (
+                <button
+                  key={i}
+                  className={`flex flex-col items-center gap-0.5 px-3 py-1 ${
+                    item.active ? "text-[#6c5ce7]" : "text-gray-400"
+                  }`}
+                >
+                  {item.icon}
+                  <span className="text-xs">{item.label}</span>
+                </button>
+              ))}
+            </div>
+            {/* Home indicator */}
+            <div className="flex justify-center pb-1">
+              <div className="w-32 h-1 bg-gray-300 rounded-full" />
+            </div>
+          </div>
         </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-lg mx-auto px-5 py-8 space-y-8">
-        
-        {/* Tier Progress */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <TierProgressBar />
-        </motion.section>
-
-        {/* Mode Selector */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-        >
-          <ModeSelector />
-        </motion.section>
-
-        {/* Quests Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        >
-          <div className="flex items-baseline justify-between mb-5">
-            <h2 className="font-display text-2xl font-bold text-foreground">Active Quests</h2>
-            <span className="text-sm text-muted-foreground font-medium">{availableCount} available</span>
-          </div>
-          
-          <div className="space-y-3">
-            {quests.map((quest) => (
-              <QuestCard
-                key={quest.id}
-                quest={quest}
-                completed={isQuestCompleted(quest.id)}
-                onStart={() => router.push(`/quest/${quest.id}`)}
-              />
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Impact Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-        >
-          <MyImpact />
-        </motion.section>
-      </main>
-
-      {/* Floating Chat Button - using design system */}
-      <Link
-        href="/chat"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-[#10B981] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#059669] hover:scale-105 transition-all duration-200"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </Link>
-    </div>
+      </div>
   );
 }
