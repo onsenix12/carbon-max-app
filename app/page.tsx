@@ -2,6 +2,7 @@
 
 import { CarbonMaxBanner } from "@/components/CarbonMaxBanner";
 import { Search, Star, MapPin, Plane, ShoppingBag, User } from "lucide-react";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,15 @@ export default function HomePage() {
           {/* Search Bar */}
           <div className="bg-[#1a1a2e] px-4 pb-4">
             <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full overflow-hidden bg-white flex-shrink-0">
+                <Image 
+                  src="/logo.png" 
+                  alt="CarbonMax Logo" 
+                  width={32} 
+                  height={32}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <div className="flex-1 bg-white/10 rounded-lg px-4 py-2.5 flex items-center gap-2">
                 <Search className="w-4 h-4 text-white/60" />
                 <span className="text-white/60 text-sm">Search for flights, food, shops, facilities</span>

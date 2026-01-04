@@ -34,11 +34,11 @@ export function CarbonMaxBanner() {
             <div className="flex items-center gap-3 mb-3">
               <motion.div
                 animate={{ 
-                  rotate: [0, 5, -5, 0],
-                  scale: [1, 1.05, 1]
+                  y: [0, -10, 0],
+                  scale: [1, 1.08, 1]
                 }}
                 transition={{ 
-                  duration: 3,
+                  duration: 2.5,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
@@ -56,7 +56,7 @@ export function CarbonMaxBanner() {
                 <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">WELCOME TO</p>
                 <h2 className="font-display font-bold text-4xl text-gray-900">
                   <span className="text-primary">CARBON</span>
-                  <span className="text-yellow-500">MAX</span>
+                  <span className="text-[#10B981]">MAX</span>
                 </h2>
               </div>
             </div>

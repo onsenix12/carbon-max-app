@@ -267,8 +267,15 @@ export default function ChatPage() {
             </motion.div>
             <div className="flex items-center gap-2">
               <motion.div 
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                animate={{ 
+                  y: [0, -8, 0],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ 
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
                 className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm overflow-hidden bg-white"
               >
                 <Image 
