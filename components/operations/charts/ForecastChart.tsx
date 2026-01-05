@@ -71,15 +71,32 @@ export function ForecastChart({
       }).join(' ')
     : '';
   
-  // Predicted path - connect all points that have predicted values
+  // Predicted path - only show in forecast zone (where actual data doesn't exist)
+  // Start from the last actual point for smooth transition
   const predictedPath = hasPredicted
     ? (() => {
         const points: string[] = [];
         let isFirst = true;
         
-        // Connect all predicted points in sequence
+        // Start predicted line from the last actual point (if it has predicted value)
+        // This creates a smooth transition from actual to predicted
+        if (actualEnd > 0 && actualEnd <= data.length) {
+          const lastActualIndex = actualEnd - 1;
+          const lastActualPoint = data[lastActualIndex];
+          
+          // Use predicted value at the last actual point for transition
+          if (lastActualPoint.predicted !== undefined) {
+            const x = getX(lastActualIndex);
+            const y = getY(lastActualPoint.predicted);
+            points.push(`M ${x} ${y}`);
+            isFirst = false;
+          }
+        }
+        
+        // Add all predicted points in the forecast zone (where actual data doesn't exist)
         data.forEach((d, i) => {
-          if (d.predicted !== undefined) {
+          // Only include points in the forecast zone (no actual data)
+          if (d.predicted !== undefined && i >= actualEnd) {
             const x = getX(i);
             const y = getY(d.predicted);
             points.push(`${isFirst ? 'M' : 'L'} ${x} ${y}`);
@@ -132,15 +149,29 @@ export function ForecastChart({
           );
         })}
         
-        {/* Confidence Interval Area */}
+        {/* Confidence Interval Area - only in forecast zone */}
         {hasPredicted && (() => {
           const upperPoints: string[] = [];
           const lowerPoints: string[] = [];
           let isFirst = true;
           
-          // Build upper bound path
+          // Start from transition point if it has confidence data
+          if (actualEnd > 0 && actualEnd <= data.length) {
+            const lastActualIndex = actualEnd - 1;
+            const lastActualPoint = data[lastActualIndex];
+            
+            // If transition point has confidence data, start from there
+            if (lastActualPoint.confidenceUpper !== undefined && lastActualPoint.confidenceLower !== undefined) {
+              const x = getX(lastActualIndex);
+              const yUpper = getY(lastActualPoint.confidenceUpper);
+              upperPoints.push(`M ${x} ${yUpper}`);
+              isFirst = false;
+            }
+          }
+          
+          // Build upper bound path - only in forecast zone
           data.forEach((d, i) => {
-            if (d.confidenceUpper !== undefined && d.confidenceLower !== undefined) {
+            if (i >= actualEnd && d.confidenceUpper !== undefined && d.confidenceLower !== undefined) {
               const x = getX(i);
               const yUpper = getY(d.confidenceUpper);
               upperPoints.push(`${isFirst ? 'M' : 'L'} ${x} ${yUpper}`);
@@ -148,8 +179,8 @@ export function ForecastChart({
             }
           });
           
-          // Build lower bound path in reverse
-          for (let i = data.length - 1; i >= 0; i--) {
+          // Build lower bound path in reverse - only in forecast zone
+          for (let i = data.length - 1; i >= actualEnd; i--) {
             const d = data[i];
             if (d.confidenceLower !== undefined && d.confidenceUpper !== undefined) {
               const x = getX(i);
@@ -158,9 +189,19 @@ export function ForecastChart({
             }
           }
           
+          // Close the path at the transition point if we started from there
+          if (actualEnd > 0 && actualEnd <= data.length) {
+            const lastActualPoint = data[actualEnd - 1];
+            if (lastActualPoint.confidenceLower !== undefined && lastActualPoint.confidenceUpper !== undefined) {
+              const x = getX(actualEnd - 1);
+              const yLower = getY(lastActualPoint.confidenceLower);
+              lowerPoints.push(`L ${x} ${yLower}`);
+            }
+          }
+          
           const confidencePath = upperPoints.join(' ') + ' ' + lowerPoints.join(' ') + ' Z';
           
-          return confidencePath ? (
+          return confidencePath && upperPoints.length > 0 ? (
             <path
               d={confidencePath}
               fill="#3b82f6"
@@ -217,11 +258,12 @@ export function ForecastChart({
           const isHovered = hoveredIndex === i;
           const isActual = d.actual !== undefined;
           const isPredicted = d.predicted !== undefined;
+          const isInForecastZone = i >= actualEnd; // Points in forecast zone (no actual data)
           
           return (
             <g key={i}>
-              {/* Actual point */}
-              {isActual && (
+              {/* Actual point - only show in actual period */}
+              {isActual && !isInForecastZone && (
                 <circle
                   cx={x}
                   cy={getY(d.actual!)}
@@ -235,8 +277,8 @@ export function ForecastChart({
                 />
               )}
               
-              {/* Predicted point */}
-              {isPredicted && (
+              {/* Predicted point - only show in forecast zone */}
+              {isPredicted && isInForecastZone && (
                 <circle
                   cx={x}
                   cy={getY(d.predicted!)}
