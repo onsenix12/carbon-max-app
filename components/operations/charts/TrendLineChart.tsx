@@ -36,7 +36,7 @@ export function TrendLineChart({
   const minValue = Math.min(...allValues) * 0.9;
   const range = maxValue - minValue;
   
-  const padding = { top: 20, right: 20, bottom: 40, left: 60 };
+  const padding = { top: 20, right: 20, bottom: 30, left: 70 };
   const chartWidth = 100; // percentage
   const chartHeight = height - padding.top - padding.bottom;
   
@@ -45,7 +45,7 @@ export function TrendLineChart({
   };
   
   const getX = (index: number) => {
-    return (index / (data.length - 1)) * (100 - 15) + 7.5; // percentage with padding
+    return (index / (data.length - 1)) * (100 - 16) + 8; // percentage with padding
   };
   
   // Generate path for actual values
@@ -65,11 +65,11 @@ export function TrendLineChart({
     : '';
   
   return (
-    <div className={cn('relative', className)}>
+    <div className={cn('relative w-full overflow-hidden', className)}>
       <svg
         width="100%"
         height={height}
-        className="overflow-visible"
+        style={{ overflow: 'visible' }}
       >
         {/* Grid Lines */}
         {[0, 0.25, 0.5, 0.75, 1].map((ratio) => {
@@ -78,20 +78,21 @@ export function TrendLineChart({
           return (
             <g key={ratio}>
               <line
-                x1="7.5%"
+                x1="8%"
                 y1={y}
-                x2="92.5%"
+                x2="92%"
                 y2={y}
                 stroke="#e2e8f0"
                 strokeDasharray="4 4"
               />
               <text
-                x="5%"
+                x={padding.left - 12}
                 y={y}
-                fontSize="11"
-                fill="#94a3b8"
+                fontSize="12"
+                fill="#64748b"
                 textAnchor="end"
                 dominantBaseline="middle"
+                fontWeight="500"
               >
                 {valueFormatter(Math.round(value))}
               </text>
@@ -143,10 +144,11 @@ export function TrendLineChart({
               {/* X-axis label */}
               <text
                 x={`${x}%`}
-                y={height - 10}
-                fontSize="11"
+                y={height - padding.bottom + 10}
+                fontSize="10"
                 fill="#64748b"
                 textAnchor="middle"
+                dominantBaseline="middle"
               >
                 {d.label}
               </text>
