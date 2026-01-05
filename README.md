@@ -17,7 +17,8 @@ A gamified carbon reduction platform for Changi Airport that encourages sustaina
 - **Aircraft Analytics**: Track emissions by aircraft type and airline
 - **Tenant Management**: Monitor tenant emissions and carbon ratings
 - **CarbonMax Integration**: View consumer app activity and impact
-- **AI Insights**: Get AI-powered insights and anomaly detection
+- **AI Insights**: Get AI-powered insights and anomaly detection with interactive chat
+- **Data-Driven Chat**: Ask questions about emissions, trends, forecasts, airlines, and tenants using Claude API
 - **Transparent Calculations**: See detailed calculation methodologies
 
 ## 🚀 Getting Started
@@ -223,7 +224,7 @@ import { DASHBOARD_ROUTES } from '@/lib/emissions/constants';
 | `/dashboard/aircraft` | Aircraft emissions analytics | `https://your-app.vercel.app/dashboard/aircraft` |
 | `/dashboard/tenants` | Tenant management and emissions | `https://your-app.vercel.app/dashboard/tenants` |
 | `/dashboard/carbonmax` | CarbonMax consumer app activity feed | `https://your-app.vercel.app/dashboard/carbonmax` |
-| `/dashboard/insights` | AI-powered insights and anomaly detection | `https://your-app.vercel.app/dashboard/insights` |
+| `/dashboard/insights` | AI-powered insights, anomaly detection, and interactive data chat | `https://your-app.vercel.app/dashboard/insights` |
 | `/dashboard/settings` | Dashboard settings and configuration | `https://your-app.vercel.app/dashboard/settings` |
 
 ### Example Quest URLs
