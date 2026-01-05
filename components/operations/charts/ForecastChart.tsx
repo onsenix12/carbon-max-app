@@ -51,71 +51,56 @@ export function ForecastChart({
     return chartHeight - ((value - minValue) / range) * chartHeight + padding.top;
   };
   
+  // Use viewBox for proper coordinate scaling
+  const viewBoxWidth = 1000;
+  const viewBoxHeight = height;
+  
+  // Calculate x positions in viewBox coordinates
+  const chartAreaLeft = (8 / 100) * viewBoxWidth; // 8% padding
+  const chartAreaWidth = (84 / 100) * viewBoxWidth; // 84% width
   const getX = (index: number) => {
-    return (index / (data.length - 1)) * (100 - 16) + 8; // percentage with padding
+    return chartAreaLeft + (index / (data.length - 1)) * chartAreaWidth;
   };
   
-  // Generate paths
+  // Generate paths using viewBox coordinates
   const actualPath = hasActual && actualEnd > 0
     ? data.slice(0, actualEnd).map((d, i) => {
         const x = getX(i);
         const y = getY(d.actual!);
-        return `${i === 0 ? 'M' : 'L'} ${x}% ${y}`;
+        return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
       }).join(' ')
     : '';
   
+  // Predicted path - connect all points that have predicted values
   const predictedPath = hasPredicted
     ? (() => {
         const points: string[] = [];
         let isFirst = true;
+        
+        // Connect all predicted points in sequence
         data.forEach((d, i) => {
           if (d.predicted !== undefined) {
             const x = getX(i);
             const y = getY(d.predicted);
-            points.push(`${isFirst ? 'M' : 'L'} ${x}% ${y}`);
+            points.push(`${isFirst ? 'M' : 'L'} ${x} ${y}`);
             isFirst = false;
           }
         });
+        
         return points.join(' ');
       })()
     : '';
   
-  // Confidence interval area
-  const confidencePath = hasPredicted
-    ? (() => {
-        const upperPoints: string[] = [];
-        const lowerPoints: string[] = [];
-        let isFirst = true;
-        
-        // Build upper bound path
-        data.forEach((d, i) => {
-          if (d.confidenceUpper !== undefined && d.confidenceLower !== undefined) {
-            const x = getX(i);
-            const yUpper = getY(d.confidenceUpper);
-            upperPoints.push(`${isFirst ? 'M' : 'L'} ${x}% ${yUpper}`);
-            isFirst = false;
-          }
-        });
-        
-        // Build lower bound path in reverse
-        for (let i = data.length - 1; i >= 0; i--) {
-          const d = data[i];
-          if (d.confidenceLower !== undefined && d.confidenceUpper !== undefined) {
-            const x = getX(i);
-            const yLower = getY(d.confidenceLower);
-            lowerPoints.push(`L ${x}% ${yLower}`);
-          }
-        }
-        
-        return upperPoints.join(' ') + ' ' + lowerPoints.join(' ') + ' Z';
-      })()
-    : '';
+  // Confidence interval area - needs to be calculated after getX is defined
+  // We'll calculate it inline in the render
   
   return (
     <div className={cn('relative w-full pl-2', className)}>
       <svg
         width="100%"
         height={height}
+        viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
+        preserveAspectRatio="xMidYMid meet"
         style={{ overflow: 'visible' }}
       >
         {/* Grid Lines */}
@@ -125,15 +110,15 @@ export function ForecastChart({
           return (
             <g key={ratio}>
               <line
-                x1="8%"
+                x1={chartAreaLeft}
                 y1={y}
-                x2="92%"
+                x2={chartAreaLeft + chartAreaWidth}
                 y2={y}
                 stroke="#e2e8f0"
                 strokeDasharray="4 4"
               />
               <text
-                x={padding.left - 8}
+                x={chartAreaLeft - 20}
                 y={y}
                 fontSize="11"
                 fill="#64748b"
@@ -148,17 +133,45 @@ export function ForecastChart({
         })}
         
         {/* Confidence Interval Area */}
-        {confidencePath && (
-          <path
-            d={confidencePath}
-            fill="#3b82f6"
-            fillOpacity="0.1"
-            stroke="none"
-          />
-        )}
+        {hasPredicted && (() => {
+          const upperPoints: string[] = [];
+          const lowerPoints: string[] = [];
+          let isFirst = true;
+          
+          // Build upper bound path
+          data.forEach((d, i) => {
+            if (d.confidenceUpper !== undefined && d.confidenceLower !== undefined) {
+              const x = getX(i);
+              const yUpper = getY(d.confidenceUpper);
+              upperPoints.push(`${isFirst ? 'M' : 'L'} ${x} ${yUpper}`);
+              isFirst = false;
+            }
+          });
+          
+          // Build lower bound path in reverse
+          for (let i = data.length - 1; i >= 0; i--) {
+            const d = data[i];
+            if (d.confidenceLower !== undefined && d.confidenceUpper !== undefined) {
+              const x = getX(i);
+              const yLower = getY(d.confidenceLower);
+              lowerPoints.push(`L ${x} ${yLower}`);
+            }
+          }
+          
+          const confidencePath = upperPoints.join(' ') + ' ' + lowerPoints.join(' ') + ' Z';
+          
+          return confidencePath ? (
+            <path
+              d={confidencePath}
+              fill="#3b82f6"
+              fillOpacity="0.1"
+              stroke="none"
+            />
+          ) : null;
+        })()}
         
         {/* Actual Line */}
-        {actualPath && (
+        {actualPath && actualPath.trim().length > 0 && (
           <path
             d={actualPath}
             fill="none"
@@ -166,28 +179,30 @@ export function ForecastChart({
             strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
+            style={{ vectorEffect: 'non-scaling-stroke' }}
           />
         )}
         
         {/* Predicted Line */}
-        {predictedPath && (
+        {predictedPath && predictedPath.trim().length > 0 && (
           <path
             d={predictedPath}
             fill="none"
             stroke="#3b82f6"
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeDasharray="6 4"
             strokeLinecap="round"
             strokeLinejoin="round"
+            style={{ vectorEffect: 'non-scaling-stroke' }}
           />
         )}
         
         {/* Vertical divider between actual and predicted */}
         {hasActual && actualEnd > 0 && actualEnd < data.length && (
           <line
-            x1={`${getX(actualEnd - 1)}%`}
+            x1={getX(actualEnd - 1)}
             y1={padding.top}
-            x2={`${getX(actualEnd - 1)}%`}
+            x2={getX(actualEnd - 1)}
             y2={height - padding.bottom}
             stroke="#94a3b8"
             strokeWidth="1"
@@ -208,7 +223,7 @@ export function ForecastChart({
               {/* Actual point */}
               {isActual && (
                 <circle
-                  cx={`${x}%`}
+                  cx={x}
                   cy={getY(d.actual!)}
                   r={isHovered ? 6 : 4}
                   fill="#10b981"
@@ -223,7 +238,7 @@ export function ForecastChart({
               {/* Predicted point */}
               {isPredicted && (
                 <circle
-                  cx={`${x}%`}
+                  cx={x}
                   cy={getY(d.predicted!)}
                   r={isHovered ? 5 : 3}
                   fill="#3b82f6"
@@ -237,7 +252,7 @@ export function ForecastChart({
               
               {/* X-axis label */}
               <text
-                x={`${x}%`}
+                x={x}
                 y={height - padding.bottom + 15}
                 fontSize="10"
                 fill="#64748b"
@@ -251,15 +266,15 @@ export function ForecastChart({
               {isHovered && (
                 <g>
                   <rect
-                    x={`${x - 6}%`}
+                    x={x - 60}
                     y={isActual ? getY(d.actual!) - 50 : getY(d.predicted!) - 50}
-                    width="12%"
+                    width="120"
                     height="40"
                     rx="4"
                     fill="#1e293b"
                   />
                   <text
-                    x={`${x}%`}
+                    x={x}
                     y={(isActual ? getY(d.actual!) : getY(d.predicted!)) - 35}
                     fontSize="11"
                     fill="white"
@@ -270,7 +285,7 @@ export function ForecastChart({
                   </text>
                   {isPredicted && (
                     <text
-                      x={`${x}%`}
+                      x={x}
                       y={(isActual ? getY(d.actual!) : getY(d.predicted!)) - 20}
                       fontSize="11"
                       fill="white"

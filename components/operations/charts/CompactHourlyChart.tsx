@@ -57,29 +57,32 @@ export function CompactHourlyChart({
               </div>
               
               {/* Mini bars for each hour in period */}
-              <div className="flex items-end gap-0.5 h-8">
+              <div className="flex items-end gap-0.5" style={{ height: '32px' }}>
                 {period.hours.map((hour, hourIdx) => {
                   const globalIdx = periodIdx * 6 + hourIdx;
                   const heightPercent = (hour.value / maxValue) * 100;
+                  const barHeight = (heightPercent / 100) * 32; // Calculate actual pixel height
                   const isHovered = hoveredIndex === globalIdx;
                   
                   return (
                     <div
                       key={hourIdx}
-                      className="flex-1 flex flex-col items-center group relative"
+                      className="flex-1 flex flex-col items-center group relative h-full"
                       onMouseEnter={() => setHoveredIndex(globalIdx)}
                       onMouseLeave={() => setHoveredIndex(null)}
                     >
-                      <div
-                        className={cn(
-                          'w-full rounded-t transition-all duration-150 cursor-pointer',
-                          isHovered
-                            ? 'bg-emerald-600'
-                            : 'bg-emerald-400 hover:bg-emerald-500'
-                        )}
-                        style={{ height: `${Math.max(heightPercent, 8)}%` }}
-                        title={`${hour.hour}: ${valueFormatter(hour.value)}`}
-                      />
+                      <div className="w-full h-full flex flex-col justify-end">
+                        <div
+                          className={cn(
+                            'w-full rounded-t transition-all duration-150 cursor-pointer',
+                            isHovered
+                              ? 'bg-emerald-600'
+                              : 'bg-emerald-400 hover:bg-emerald-500'
+                          )}
+                          style={{ height: `${Math.max(barHeight, 2)}px` }}
+                          title={`${hour.hour}: ${valueFormatter(hour.value)}`}
+                        />
+                      </div>
                       
                       {/* Tooltip */}
                       {isHovered && (

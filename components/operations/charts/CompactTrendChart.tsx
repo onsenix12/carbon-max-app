@@ -30,20 +30,21 @@ export function CompactTrendChart({
   return (
     <div className={cn('space-y-3', className)}>
       {/* Chart bars */}
-      <div className="flex items-end justify-between gap-1.5 h-32">
+      <div className="flex items-end justify-between gap-1.5" style={{ height: '128px' }}>
         {data.map((point, i) => {
           const heightPercent = (point.value / maxValue) * 100;
+          const barHeight = (heightPercent / 100) * 128; // Calculate actual pixel height
           const isHovered = hoveredIndex === i;
           
           return (
             <div
               key={i}
-              className="flex-1 flex flex-col items-center group relative"
+              className="flex-1 flex flex-col items-center group relative h-full"
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Bar */}
-              <div className="w-full flex flex-col justify-end min-h-0">
+              {/* Bar container */}
+              <div className="w-full h-full flex flex-col justify-end">
                 <div
                   className={cn(
                     'w-full rounded-t transition-all duration-200 cursor-pointer',
@@ -51,7 +52,7 @@ export function CompactTrendChart({
                       ? 'bg-emerald-600 shadow-md' 
                       : 'bg-emerald-500 hover:bg-emerald-600'
                   )}
-                  style={{ height: `${Math.max(heightPercent, 4)}%` }}
+                  style={{ height: `${Math.max(barHeight, 4)}px` }}
                 />
               </div>
               
