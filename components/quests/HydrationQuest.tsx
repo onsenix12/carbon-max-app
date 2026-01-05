@@ -382,7 +382,7 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
       )}
 
       {/* Refill Progress */}
-      {refillStarted && (
+      {refillStarted && !refillComplete && (
         <div>
           <h3 className="font-display font-semibold text-foreground mb-3">Refill in Progress</h3>
           <GlassCard className="p-4 bg-blue-500/10">
@@ -401,12 +401,18 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
                 </div>
               </div>
             </div>
-            {refillComplete && (
-              <div className="flex items-center gap-2 text-[#10B981] mt-2">
-                <Check className="w-5 h-5" />
-                <span className="text-sm font-medium">Refill complete! Points awarded.</span>
-              </div>
-            )}
+          </GlassCard>
+        </div>
+      )}
+
+      {/* Refill Complete Message */}
+      {refillComplete && (
+        <div>
+          <GlassCard className="p-4 bg-[#10B981]/10">
+            <div className="flex items-center gap-2 text-[#10B981]">
+              <Check className="w-5 h-5" />
+              <span className="text-sm font-medium">Refill complete! Points awarded.</span>
+            </div>
           </GlassCard>
         </div>
       )}
