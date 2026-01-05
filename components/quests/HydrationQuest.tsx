@@ -102,21 +102,21 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
 
   // Simulate refill progress with sensor
   useEffect(() => {
-    if (refillStarted && refillProgress < 100) {
+    if (refillStarted && !refillComplete) {
       const interval = setInterval(() => {
         setRefillProgress((prev) => {
-          if (prev >= 100) {
-            clearInterval(interval);
+          const next = prev + 10;
+          if (next >= 100) {
             setRefillComplete(true);
             return 100;
           }
-          return prev + 10; // Increment by 10% every 500ms
+          return next;
         });
       }, 500);
 
       return () => clearInterval(interval);
     }
-  }, [refillStarted, refillProgress]);
+  }, [refillStarted, refillComplete]);
 
   // Auto-complete quest when refill is done
   useEffect(() => {
