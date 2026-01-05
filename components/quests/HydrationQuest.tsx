@@ -80,7 +80,6 @@ function calculateDistance(
 
 export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
   const [selectedStation, setSelectedStation] = useState<string | null>(null);
-  const [foundStation, setFoundStation] = useState(false);
   const [showQRCode, setShowQRCode] = useState(false);
   const [qrScanned, setQrScanned] = useState(false);
   const [refillStarted, setRefillStarted] = useState(false);
@@ -326,41 +325,13 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
         </div>
       </div>
 
-      {/* Quest Objectives */}
-      <div>
-        <h3 className="font-display font-semibold text-foreground mb-3">Quest Objectives</h3>
-        <div className="space-y-3">
-          <GlassCard
-            className={cn(
-              "flex items-center gap-3 p-4 cursor-pointer transition-all",
-              !selectedStation && "opacity-50 cursor-not-allowed",
-              foundStation && "ring-2 ring-blue-500 bg-blue-500/10"
-            )}
-          >
-            <label className="flex items-center gap-3 flex-1 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={foundStation}
-                onChange={(e) => setFoundStation(e.target.checked)}
-                disabled={!selectedStation}
-                className="w-5 h-5 rounded border-border text-primary focus:ring-primary"
-              />
-              <div className="flex-1">
-                <span className="font-medium text-foreground">I found the station</span>
-                <p className="text-sm text-muted-foreground">Navigate to the refill point</p>
-              </div>
-            </label>
-          </GlassCard>
-        </div>
-      </div>
-
       {/* QR Code Section */}
-      {foundStation && (
+      {selectedStation && (
         <div>
-          <h3 className="font-display font-semibold text-foreground mb-3">Scan QR Code</h3>
+          <h3 className="font-display font-semibold text-foreground mb-3">Scan QR Code at Station</h3>
           <GlassCard className="p-4">
             <p className="text-sm text-muted-foreground mb-4">
-              Scan the QR code at the station using your Changi app to activate the smart refill system.
+              Scan the QR code at the refill station using your Changi app to activate the smart refill system.
             </p>
             {!qrScanned ? (
               <Button
@@ -405,39 +376,39 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
         </div>
       )}
 
-      {/* Refill Complete Message */}
+      {/* Refill Complete - Success & Points */}
       {refillComplete && (
-        <div>
-          <GlassCard className="p-4 bg-[#10B981]/10">
-            <div className="flex items-center gap-2 text-[#10B981]">
-              <Check className="w-5 h-5" />
-              <span className="text-sm font-medium">Refill complete! Points awarded.</span>
+        <div className="space-y-3">
+          <GlassCard className="p-4 bg-[#10B981]/10 border-2 border-[#10B981]/30">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-[#10B981] flex items-center justify-center">
+                <Check className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground text-lg">Refill Complete!</h4>
+                <p className="text-sm text-muted-foreground">Points have been awarded</p>
+              </div>
+            </div>
+            <div className="pt-3 border-t border-border">
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Base points</span>
+                  <span className="text-foreground font-medium">+{quest.basePoints}</span>
+                </div>
+                {bonusEligible && (
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Gate station bonus</span>
+                    <span className="text-[#F59E0B] font-medium">+{quest.bonusPoints}</span>
+                  </div>
+                )}
+                <div className="pt-2 border-t border-border flex justify-between items-center">
+                  <span className="font-semibold text-foreground">Total Points</span>
+                  <span className="font-bold text-[#10B981] text-xl">+{totalPoints}</span>
+                </div>
+              </div>
             </div>
           </GlassCard>
         </div>
-      )}
-
-      {/* Points Breakdown */}
-      {refillComplete && (
-        <GlassCard className="p-4 bg-[#10B981]/10">
-          <h4 className="font-semibold text-foreground mb-3">Points Earned</h4>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Base points</span>
-              <span className="text-foreground font-medium">+{quest.basePoints}</span>
-            </div>
-            {bonusEligible && (
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Gate station bonus</span>
-                <span className="text-[#F59E0B] font-medium">+{quest.bonusPoints}</span>
-              </div>
-            )}
-            <div className="pt-2 border-t border-border flex justify-between">
-              <span className="font-semibold text-foreground">Total</span>
-              <span className="font-bold text-[#10B981] text-lg">+{totalPoints}</span>
-            </div>
-          </div>
-        </GlassCard>
       )}
 
       {/* Bonus Indicator */}
