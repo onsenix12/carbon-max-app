@@ -3,6 +3,7 @@ import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { JourneyModeProvider } from "@/hooks/useJourneyMode";
 import { QuestProgressProvider } from "@/hooks/useQuestProgress";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
         <JourneyModeProvider>
           <QuestProgressProvider>
             {children}
+            <Toaster />
           </QuestProgressProvider>
         </JourneyModeProvider>
       </body>

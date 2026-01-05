@@ -45,7 +45,10 @@ export function Input({
         step={step}
         min={min}
         max={max}
-        className="flex-1 bg-transparent outline-none placeholder:text-muted-foreground text-foreground"
+        className={cn(
+          "flex-1 bg-transparent outline-none placeholder:text-muted-foreground text-foreground",
+          type === 'number' && "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        )}
       />
     </div>
   );

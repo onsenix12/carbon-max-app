@@ -3,29 +3,52 @@
 'use client';
 
 import { useState } from 'react';
-import { Settings, Target, Database, Download, FileSpreadsheet, Mail } from 'lucide-react';
+import { Settings, Target, Database, Download, FileSpreadsheet, Mail, Save } from 'lucide-react';
 import { PageHeader } from '@/components/operations/layout/PageHeader';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { TARGETS } from '@/lib/emissions/constants';
+import { toast } from 'sonner';
 
 export default function SettingsPage() {
-  // Targets & Thresholds state
-  const [targets, setTargets] = useState({
+  // Initial values
+  const initialTargets = {
     reduction2030: (TARGETS.reduction2030 * 100).toString(),
     dailyEmissionsAlert: '1700',
     weeklyVarianceThreshold: '10',
     safMandate2026: (TARGETS.safMandate2026 * 100).toString(),
-  });
+  };
   
-  // Emission Factors state
-  const [emissionFactors, setEmissionFactors] = useState({
+  const initialEmissionFactors = {
     gridEF: '0.4057',
     jetFuelEF: '3.16',
     dieselEF: '2.31',
     plantBasedMealEF: '1.2',
     meatBasedMealEF: '2.5',
-  });
+  };
+
+  // Current values
+  const [targets, setTargets] = useState(initialTargets);
+  const [emissionFactors, setEmissionFactors] = useState(initialEmissionFactors);
+  
+  // Saved values (what's actually saved)
+  const [savedTargets, setSavedTargets] = useState(initialTargets);
+  const [savedEmissionFactors, setSavedEmissionFactors] = useState(initialEmissionFactors);
+  
+  // Check if there are unsaved changes
+  const hasUnsavedChanges = 
+    JSON.stringify(targets) !== JSON.stringify(savedTargets) ||
+    JSON.stringify(emissionFactors) !== JSON.stringify(savedEmissionFactors);
+
+  // Save handler
+  const handleSave = () => {
+    // Simulate saving
+    setSavedTargets({ ...targets });
+    setSavedEmissionFactors({ ...emissionFactors });
+    toast.success('Settings saved successfully!', {
+      description: 'Your changes have been saved.',
+    });
+  };
   
   // Data Sources
   const dataSources = [
@@ -84,6 +107,22 @@ export default function SettingsPage() {
         title="⚙️ DASHBOARD SETTINGS"
         subtitle="Configure targets, thresholds, and data sources"
         icon={<Settings className="w-6 h-6" />}
+        showExport={false}
+        actions={
+          hasUnsavedChanges ? (
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-amber-600 font-medium">Unsaved changes</span>
+              <Button 
+                onClick={handleSave}
+                variant="primary"
+                className="flex items-center gap-2"
+              >
+                <Save className="w-4 h-4" />
+                Save Changes
+              </Button>
+            </div>
+          ) : undefined
+        }
       />
       
       {/* SECTION 1: TARGETS & THRESHOLDS */}
@@ -218,9 +257,6 @@ export default function SettingsPage() {
             <p className="text-xs text-slate-500 mb-3">
               Source: DEFRA 2024, Singapore NEA
             </p>
-            <Button variant="secondary" size="sm">
-              Update Factors
-            </Button>
           </div>
         </div>
       </div>
