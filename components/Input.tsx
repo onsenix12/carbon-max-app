@@ -10,6 +10,9 @@ interface InputProps {
   icon?: ReactNode;
   className?: string;
   disabled?: boolean;
+  step?: string | number;
+  min?: string | number;
+  max?: string | number;
 }
 
 export function Input({ 
@@ -20,7 +23,10 @@ export function Input({
   onKeyPress,
   icon,
   className = '',
-  disabled = false
+  disabled = false,
+  step,
+  min,
+  max,
 }: InputProps) {
   return (
     <div className={cn(
@@ -36,6 +42,9 @@ export function Input({
         onChange={onChange}
         onKeyPress={onKeyPress}
         disabled={disabled}
+        step={step}
+        min={min}
+        max={max}
         className="flex-1 bg-transparent outline-none placeholder:text-muted-foreground text-foreground"
       />
     </div>
