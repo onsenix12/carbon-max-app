@@ -186,7 +186,7 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
 
       {/* Simple Static Map */}
       {showMap && (
-        <GlassCard className="p-4 relative" style={{ minHeight: "300px" }}>
+        <GlassCard className="p-4 relative min-h-[300px]">
           <div className="relative w-full h-[300px] bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl overflow-hidden">
             {/* User Location (Blue dot) */}
             <div

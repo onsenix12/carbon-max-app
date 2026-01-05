@@ -148,7 +148,7 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
 
       {/* Simple Static Map */}
       {showMap && (
-        <GlassCard className="p-4 relative" style={{ minHeight: "300px" }}>
+        <GlassCard className="p-4 relative min-h-[300px]">
           <div className="relative w-full h-[300px] bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl overflow-hidden">
             {/* User Location (Blue dot) */}
             <div
