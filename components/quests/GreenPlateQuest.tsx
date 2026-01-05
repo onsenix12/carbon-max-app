@@ -77,11 +77,10 @@ interface GreenPlateQuestProps {
 
 export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
   const [selectedRestaurant, setSelectedRestaurant] = useState<string | null>(null);
-  const [atRestaurant, setAtRestaurant] = useState(false);
-  const [orderedPlantBased, setOrderedPlantBased] = useState(false);
   const [showQRCode, setShowQRCode] = useState(false);
   const [qrScanned, setQrScanned] = useState(false);
   const [purchaseAmount, setPurchaseAmount] = useState<string>("");
+  const [orderedPlantBased, setOrderedPlantBased] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [hoveredRestaurant, setHoveredRestaurant] = useState<string | null>(null);
 
@@ -99,7 +98,7 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
     (orderedPlantBased && quest.bonusPoints ? quest.bonusPoints : 0) +
     purchasePoints;
 
-  const canComplete = atRestaurant && qrScanned && purchaseAmount;
+  const canComplete = qrScanned && purchaseAmount;
 
   const handleShowQRCode = () => {
     setShowQRCode(true);
@@ -108,6 +107,11 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
   const handleQRScanned = () => {
     setQrScanned(true);
     setShowQRCode(false);
+    // Simulate purchase amount based on order (typically $25-35 for a meal)
+    const simulatedAmount = (25 + Math.random() * 10).toFixed(2);
+    setPurchaseAmount(simulatedAmount);
+    // Simulate if plant-based was ordered (70% chance for green restaurants)
+    setOrderedPlantBased(Math.random() > 0.3);
   };
 
   const handleComplete = () => {
@@ -262,65 +266,13 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
         </div>
       </div>
 
-      {/* Quest Objectives */}
-      <div>
-        <h3 className="font-display font-semibold text-foreground mb-3">Quest Objectives</h3>
-        <div className="space-y-3">
-          <GlassCard
-            className={cn(
-              "flex items-center gap-3 p-4 cursor-pointer transition-all",
-              !selectedRestaurant && "opacity-50 cursor-not-allowed",
-              atRestaurant && "ring-2 ring-[#10B981] bg-[#10B981]/10"
-            )}
-          >
-            <label className="flex items-center gap-3 flex-1 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={atRestaurant}
-                onChange={(e) => setAtRestaurant(e.target.checked)}
-                disabled={!selectedRestaurant}
-                className="w-5 h-5 rounded border-border text-primary focus:ring-primary"
-              />
-              <div className="flex-1">
-                <span className="font-medium text-foreground">I'm at the restaurant</span>
-                <p className="text-sm text-muted-foreground">Check in when you arrive</p>
-              </div>
-              <span className="text-sm text-[#10B981] font-medium">+{quest.basePoints} pts</span>
-            </label>
-          </GlassCard>
-
-          <GlassCard
-            className={cn(
-              "flex items-center gap-3 p-4 cursor-pointer transition-all",
-              !atRestaurant && "opacity-50 cursor-not-allowed",
-              orderedPlantBased && "ring-2 ring-[#10B981] bg-[#10B981]/10"
-            )}
-          >
-            <label className="flex items-center gap-3 flex-1 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={orderedPlantBased}
-                onChange={(e) => setOrderedPlantBased(e.target.checked)}
-                disabled={!atRestaurant}
-                className="w-5 h-5 rounded border-border text-primary focus:ring-primary"
-              />
-              <div className="flex-1">
-                <span className="font-medium text-foreground">I ordered plant-based</span>
-                <p className="text-sm text-muted-foreground">Bonus for sustainable choice!</p>
-              </div>
-              <span className="text-sm text-[#F59E0B] font-medium">+{quest.bonusPoints} bonus</span>
-            </label>
-          </GlassCard>
-        </div>
-      </div>
-
       {/* QR Code Section */}
-      {atRestaurant && (
+      {selectedRestaurant && (
         <div>
-          <h3 className="font-display font-semibold text-foreground mb-3">Show Your QR Code</h3>
+          <h3 className="font-display font-semibold text-foreground mb-3">Scan QR Code After Purchase</h3>
           <GlassCard className="p-4">
             <p className="text-sm text-muted-foreground mb-4">
-              Show your Changi Airport membership QR code when making your purchase to earn points.
+              After completing your purchase, show your Changi Airport membership QR code to the cashier to earn points.
             </p>
             {!qrScanned ? (
               <Button
@@ -341,24 +293,27 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
         </div>
       )}
 
-      {/* Purchase Amount Input */}
-      {qrScanned && (
+      {/* Purchase Amount Display */}
+      {qrScanned && purchaseAmount && (
         <div>
-          <h3 className="font-display font-semibold text-foreground mb-3">Enter Purchase Amount</h3>
-          <Input
-            type="number"
-            placeholder="Enter amount (SGD)"
-            value={purchaseAmount}
-            onChange={(e) => setPurchaseAmount(e.target.value)}
-            icon={<span className="text-muted-foreground">$</span>}
-            min="0"
-            step="0.01"
-          />
-          {purchaseAmount && (
-            <p className="text-sm text-muted-foreground mt-2">
-              You'll earn <span className="text-[#10B981] font-medium">{purchasePoints} points</span> from this purchase (1 point per $1)
-            </p>
-          )}
+          <h3 className="font-display font-semibold text-foreground mb-3">Purchase Details</h3>
+          <GlassCard className="p-4">
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-muted-foreground">Purchase Amount</span>
+                <span className="text-lg font-semibold text-foreground">S${purchaseAmount}</span>
+              </div>
+              {orderedPlantBased && (
+                <div className="flex items-center gap-2 text-[#10B981] pt-2 border-t border-border">
+                  <Check className="w-4 h-4" />
+                  <span className="text-sm font-medium">Plant-based meal detected</span>
+                </div>
+              )}
+              <p className="text-sm text-muted-foreground mt-2">
+                You'll earn <span className="text-[#10B981] font-medium">{purchasePoints} points</span> from this purchase (1 point per $1)
+              </p>
+            </div>
+          </GlassCard>
         </div>
       )}
 
@@ -405,16 +360,18 @@ export function GreenPlateQuest({ quest, onComplete }: GreenPlateQuestProps) {
       </GlassCard>
 
       {/* Complete Button */}
-      <Button
-        onClick={handleComplete}
-        disabled={!canComplete}
-        variant="primary"
-        className="w-full"
-      >
-        {canComplete
-          ? `Complete Quest (+${totalPoints} pts)`
-          : "Complete objectives to finish"}
-      </Button>
+      {selectedRestaurant && (
+        <Button
+          onClick={handleComplete}
+          disabled={!canComplete}
+          variant="primary"
+          className="w-full"
+        >
+          {canComplete
+            ? `Complete Quest (+${totalPoints} pts)`
+            : "Scan QR code after purchase to continue"}
+        </Button>
+      )}
 
       {/* QR Code Modal */}
       {showQRCode && (
