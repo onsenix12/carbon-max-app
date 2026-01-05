@@ -36,7 +36,7 @@ export function TrendLineChart({
   const minValue = Math.min(...allValues) * 0.9;
   const range = maxValue - minValue;
   
-  const padding = { top: 20, right: 20, bottom: 30, left: 85 };
+  const padding = { top: 20, right: 20, bottom: 30, left: 100 };
   const chartWidth = 100; // percentage
   const chartHeight = height - padding.top - padding.bottom;
   
@@ -45,7 +45,7 @@ export function TrendLineChart({
   };
   
   const getX = (index: number) => {
-    return (index / (data.length - 1)) * (100 - 16) + 8; // percentage with padding
+    return (index / (data.length - 1)) * (100 - 18) + 10; // percentage with padding - increased to avoid y-axis labels
   };
   
   // Generate path for actual values
@@ -78,7 +78,7 @@ export function TrendLineChart({
           return (
             <g key={ratio}>
               <line
-                x1="8%"
+                x1="10%"
                 y1={y}
                 x2="92%"
                 y2={y}
@@ -86,7 +86,7 @@ export function TrendLineChart({
                 strokeDasharray="4 4"
               />
               <text
-                x={padding.left - 8}
+                x={padding.left - 10}
                 y={y}
                 fontSize="11"
                 fill="#64748b"
