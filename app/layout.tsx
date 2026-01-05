@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   title: "CarbonMax - Changi Airport",
   description: "Complete green quests, earn rewards, and track your impact at Changi Airport",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
