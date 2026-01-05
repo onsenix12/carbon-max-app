@@ -36,7 +36,7 @@ export function TrendLineChart({
   const minValue = Math.min(...allValues) * 0.9;
   const range = maxValue - minValue;
   
-  const padding = { top: 20, right: 20, bottom: 30, left: 70 };
+  const padding = { top: 20, right: 20, bottom: 30, left: 85 };
   const chartWidth = 100; // percentage
   const chartHeight = height - padding.top - padding.bottom;
   
@@ -65,7 +65,7 @@ export function TrendLineChart({
     : '';
   
   return (
-    <div className={cn('relative w-full overflow-hidden', className)}>
+    <div className={cn('relative w-full pl-2', className)}>
       <svg
         width="100%"
         height={height}
@@ -86,9 +86,9 @@ export function TrendLineChart({
                 strokeDasharray="4 4"
               />
               <text
-                x={padding.left - 12}
+                x={padding.left - 8}
                 y={y}
-                fontSize="12"
+                fontSize="11"
                 fill="#64748b"
                 textAnchor="end"
                 dominantBaseline="middle"
@@ -127,6 +127,12 @@ export function TrendLineChart({
           const y = getY(d.value);
           const isHovered = hoveredIndex === i;
           
+          // Calculate label interval based on data length to prevent overlapping
+          // For 24 hours, show every 2nd hour (12 labels)
+          // For fewer points, show all labels
+          const labelInterval = data.length > 12 ? Math.ceil(data.length / 12) : 1;
+          const shouldShowLabel = i % labelInterval === 0 || i === data.length - 1;
+          
           return (
             <g key={i}>
               <circle
@@ -141,17 +147,19 @@ export function TrendLineChart({
                 onMouseLeave={() => setHoveredIndex(null)}
               />
               
-              {/* X-axis label */}
-              <text
-                x={`${x}%`}
-                y={height - padding.bottom + 10}
-                fontSize="10"
-                fill="#64748b"
-                textAnchor="middle"
-                dominantBaseline="middle"
-              >
-                {d.label}
-              </text>
+              {/* X-axis label - only show for selected intervals */}
+              {shouldShowLabel && (
+                <text
+                  x={`${x}%`}
+                  y={height - padding.bottom + 10}
+                  fontSize="10"
+                  fill="#64748b"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                >
+                  {d.label}
+                </text>
+              )}
               
               {/* Tooltip */}
               {isHovered && (

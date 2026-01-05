@@ -28,8 +28,9 @@ export function ForecastChart({
   
   // Find the split point between actual and predicted
   const actualEndIndex = data.findIndex(d => d.actual === undefined);
-  const hasActual = actualEndIndex > 0;
+  const hasActual = data.some(d => d.actual !== undefined);
   const hasPredicted = data.some(d => d.predicted !== undefined);
+  const actualEnd = actualEndIndex === -1 ? data.length : actualEndIndex;
   
   // Calculate min/max for scaling
   const allValues = data.flatMap(d => [
@@ -43,7 +44,7 @@ export function ForecastChart({
   const minValue = Math.min(...allValues) * 0.9;
   const range = maxValue - minValue;
   
-  const padding = { top: 20, right: 20, bottom: 50, left: 70 };
+  const padding = { top: 20, right: 20, bottom: 50, left: 85 };
   const chartHeight = height - padding.top - padding.bottom;
   
   const getY = (value: number) => {
@@ -55,8 +56,8 @@ export function ForecastChart({
   };
   
   // Generate paths
-  const actualPath = hasActual
-    ? data.slice(0, actualEndIndex).map((d, i) => {
+  const actualPath = hasActual && actualEnd > 0
+    ? data.slice(0, actualEnd).map((d, i) => {
         const x = getX(i);
         const y = getY(d.actual!);
         return `${i === 0 ? 'M' : 'L'} ${x}% ${y}`;
@@ -64,12 +65,19 @@ export function ForecastChart({
     : '';
   
   const predictedPath = hasPredicted
-    ? data.map((d, i) => {
-        if (d.predicted === undefined) return null;
-        const x = getX(i);
-        const y = getY(d.predicted);
-        return `${i === 0 || data[i - 1]?.predicted === undefined ? 'M' : 'L'} ${x}% ${y}`;
-      }).filter(Boolean).join(' ')
+    ? (() => {
+        const points: string[] = [];
+        let isFirst = true;
+        data.forEach((d, i) => {
+          if (d.predicted !== undefined) {
+            const x = getX(i);
+            const y = getY(d.predicted);
+            points.push(`${isFirst ? 'M' : 'L'} ${x}% ${y}`);
+            isFirst = false;
+          }
+        });
+        return points.join(' ');
+      })()
     : '';
   
   // Confidence interval area
@@ -77,25 +85,22 @@ export function ForecastChart({
     ? (() => {
         const upperPoints: string[] = [];
         const lowerPoints: string[] = [];
+        let isFirst = true;
         
+        // Build upper bound path
         data.forEach((d, i) => {
           if (d.confidenceUpper !== undefined && d.confidenceLower !== undefined) {
             const x = getX(i);
             const yUpper = getY(d.confidenceUpper);
-            const yLower = getY(d.confidenceLower);
-            
-            if (i === 0 || data[i - 1]?.confidenceUpper === undefined) {
-              upperPoints.push(`M ${x}% ${yUpper}`);
-            } else {
-              upperPoints.push(`L ${x}% ${yUpper}`);
-            }
+            upperPoints.push(`${isFirst ? 'M' : 'L'} ${x}% ${yUpper}`);
+            isFirst = false;
           }
         });
         
-        // Reverse for lower bound
+        // Build lower bound path in reverse
         for (let i = data.length - 1; i >= 0; i--) {
           const d = data[i];
-          if (d.confidenceLower !== undefined) {
+          if (d.confidenceLower !== undefined && d.confidenceUpper !== undefined) {
             const x = getX(i);
             const yLower = getY(d.confidenceLower);
             lowerPoints.push(`L ${x}% ${yLower}`);
@@ -107,7 +112,7 @@ export function ForecastChart({
     : '';
   
   return (
-    <div className={cn('relative w-full overflow-hidden', className)}>
+    <div className={cn('relative w-full pl-2', className)}>
       <svg
         width="100%"
         height={height}
@@ -128,9 +133,9 @@ export function ForecastChart({
                 strokeDasharray="4 4"
               />
               <text
-                x={padding.left - 12}
+                x={padding.left - 8}
                 y={y}
-                fontSize="12"
+                fontSize="11"
                 fill="#64748b"
                 textAnchor="end"
                 dominantBaseline="middle"
@@ -178,11 +183,11 @@ export function ForecastChart({
         )}
         
         {/* Vertical divider between actual and predicted */}
-        {hasActual && actualEndIndex > 0 && (
+        {hasActual && actualEnd > 0 && actualEnd < data.length && (
           <line
-            x1={`${getX(actualEndIndex - 1)}%`}
+            x1={`${getX(actualEnd - 1)}%`}
             y1={padding.top}
-            x2={`${getX(actualEndIndex - 1)}%`}
+            x2={`${getX(actualEnd - 1)}%`}
             y2={height - padding.bottom}
             stroke="#94a3b8"
             strokeWidth="1"

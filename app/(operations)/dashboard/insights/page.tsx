@@ -2,15 +2,24 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Brain, AlertTriangle, TrendingUp, Lightbulb, Send, Sparkles } from 'lucide-react';
 import { PageHeader } from '@/components/operations/layout/PageHeader';
 import { ForecastChart } from '@/components/operations/charts/ForecastChart';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 
+interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 export default function InsightsPage() {
   const [question, setQuestion] = useState('');
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Forecast data (7 days actual + 4 days predicted)
   const forecastData = [
@@ -105,11 +114,73 @@ export default function InsightsPage() {
     "Predict next week's emissions if flight count stays same",
   ];
   
-  const handleSendQuestion = () => {
-    if (question.trim()) {
-      // TODO: Implement AI chat functionality
-      console.log('Question:', question);
-      setQuestion('');
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSendQuestion = async () => {
+    const questionText = question.trim();
+    if (!questionText || isLoading) return;
+
+    // Add user message
+    const userMessage: Message = {
+      id: `user-${Date.now()}`,
+      role: 'user',
+      content: questionText,
+    };
+    setMessages((prev) => [...prev, userMessage]);
+    setQuestion('');
+    setIsLoading(true);
+
+    try {
+      // Prepare messages for API (include conversation history)
+      const messagesForAPI = [
+        ...messages.map((msg) => ({
+          role: msg.role,
+          content: msg.content,
+        })),
+        {
+          role: 'user',
+          content: questionText,
+        },
+      ];
+
+      // Call Claude API
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: messagesForAPI,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const assistantMessage: Message = {
+        id: `assistant-${Date.now()}`,
+        role: 'assistant',
+        content: data.content || "Sorry, I couldn't generate a response.",
+      };
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error('Error calling chat API:', error);
+      const errorMessage: Message = {
+        id: `error-${Date.now()}`,
+        role: 'assistant',
+        content: 'Sorry, I encountered an error. Please try again.',
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
     }
   };
   
@@ -191,18 +262,53 @@ export default function InsightsPage() {
           <span>💬</span> ASK ABOUT YOUR DATA
         </h3>
         <div className="space-y-4">
+          {/* Messages Display */}
+          {messages.length > 0 && (
+            <div className="border border-slate-200 rounded-lg p-4 bg-slate-50 max-h-96 overflow-y-auto space-y-3">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-[80%] rounded-lg px-4 py-2 ${
+                      message.role === 'user'
+                        ? 'bg-emerald-600 text-white'
+                        : 'bg-white border border-slate-200 text-slate-900'
+                    }`}
+                  >
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  </div>
+                </div>
+              ))}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-white border border-slate-200 rounded-lg px-4 py-2">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          )}
+          
           <div className="flex gap-2">
             <Input
               type="text"
               placeholder="Ask a question about emissions, trends, or forecasts..."
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSendQuestion()}
+              onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSendQuestion()}
               className="flex-1 !bg-white !border !border-slate-300 !rounded-lg"
+              disabled={isLoading}
             />
             <Button
               onClick={handleSendQuestion}
-              disabled={!question.trim()}
+              disabled={!question.trim() || isLoading}
               className="px-6"
             >
               <Send className="w-4 h-4" />
@@ -216,7 +322,8 @@ export default function InsightsPage() {
                 <button
                   key={i}
                   onClick={() => setQuestion(q)}
-                  className="text-xs px-3 py-1.5 bg-slate-50 hover:bg-slate-100 rounded-lg text-slate-700 transition-colors"
+                  disabled={isLoading}
+                  className="text-xs px-3 py-1.5 bg-slate-50 hover:bg-slate-100 rounded-lg text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   • {q}
                 </button>
