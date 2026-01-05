@@ -288,18 +288,19 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
                   "w-full text-left p-4 cursor-pointer transition-all relative",
                   selectedStation === station.id
                     ? "ring-2 ring-blue-500 bg-blue-500/10"
-                    : "hover:glass-strong"
+                    : "hover:glass-strong",
+                  station.isRecommended && "pt-6"
                 )}
               >
                 {station.isRecommended && (
-                  <div className="absolute -top-2 -right-2 bg-warning text-warning-dark text-xs font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <div className="absolute top-2 right-2 bg-warning text-warning-dark text-xs font-bold px-2 py-0.5 rounded-full flex items-center gap-1 z-10">
                     <Star className="w-3 h-3" fill="currentColor" />
                     RECOMMENDED
                   </div>
                 )}
 
                 <div className="flex items-start justify-between">
-                  <div>
+                  <div className="flex-1 pr-2">
                     <div className="font-semibold text-foreground flex items-center gap-2">
                       <Droplets className="w-4 h-4 text-blue-500" />
                       {station.name}
@@ -309,7 +310,7 @@ export function HydrationQuest({ quest, onComplete }: HydrationQuestProps) {
                       <p className="text-sm text-blue-500 font-medium mt-1">⭐ {station.note}</p>
                     )}
                   </div>
-                  <div className="flex flex-col items-end gap-1">
+                  <div className="flex flex-col items-end gap-1 flex-shrink-0">
                     <div className="flex items-center gap-1 text-sm text-muted-foreground">
                       <MapPin className="w-4 h-4" />
                       {station.walkTime}
