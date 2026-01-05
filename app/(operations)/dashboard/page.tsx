@@ -7,7 +7,7 @@ import { PageHeader } from '@/components/operations/layout/PageHeader';
 import { AlertBanner } from '@/components/operations/layout/AlertBanner';
 import { KPICard } from '@/components/operations/cards/KPICard';
 import { ScopeDonutChart } from '@/components/operations/charts/ScopeDonutChart';
-import { TrendLineChart } from '@/components/operations/charts/TrendLineChart';
+import { CompactTrendChart } from '@/components/operations/charts/CompactTrendChart';
 import { JourneyModeCard } from '@/components/operations/cards/JourneyModeCard';
 import { CarbonMaxSummaryCard } from '@/components/operations/cards/CarbonMaxSummaryCard';
 import { AIInsightCard } from '@/components/operations/cards/AIInsightCard';
@@ -143,9 +143,8 @@ export default function OverviewPage() {
           <h3 className="text-lg font-semibold text-slate-900 mb-4">
             7-Day Trend
           </h3>
-          <TrendLineChart
+          <CompactTrendChart
             data={weeklyTrend}
-            height={240}
             valueFormatter={(v) => `${v.toLocaleString()} tCO2e`}
           />
         </div>

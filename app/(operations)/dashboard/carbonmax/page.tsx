@@ -5,7 +5,7 @@
 import { Leaf, TrendingUp } from 'lucide-react';
 import { PageHeader } from '@/components/operations/layout/PageHeader';
 import { KPICard } from '@/components/operations/cards/KPICard';
-import { TrendLineChart } from '@/components/operations/charts/TrendLineChart';
+import { CompactHourlyChart } from '@/components/operations/charts/CompactHourlyChart';
 import { useCarbonMaxData } from '@/hooks/useCarbonMaxData';
 
 export default function CarbonMaxPage() {
@@ -20,7 +20,7 @@ export default function CarbonMaxPage() {
   
   // Convert hourly activity to chart format
   const hourlyData = data.hourlyActivity.map((hour) => ({
-    label: hour.hour.split(':')[0] + ':00',
+    hour: hour.hour.split(':')[0] + ':00',
     value: hour.co2Avoided,
   }));
   
@@ -66,10 +66,8 @@ export default function CarbonMaxPage() {
           <h3 className="text-lg font-semibold text-slate-900 mb-4">
             Hourly Activity
           </h3>
-          <TrendLineChart
+          <CompactHourlyChart
             data={hourlyData}
-            height={240}
-            showTarget={false}
             valueFormatter={(v) => `${v} kg`}
           />
         </div>

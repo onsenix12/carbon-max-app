@@ -19,6 +19,8 @@ export * from './charts/ScopeDonutChart';
 export * from './charts/TrendLineChart';
 export * from './charts/HourlyEmissionsChart';
 export * from './charts/ForecastChart';
+export * from './charts/CompactTrendChart';
+export * from './charts/CompactHourlyChart';
 
 // Tables
 export * from './tables/AirlineLeaderboard';
