@@ -254,8 +254,8 @@
     font-size: 0.75rem;
     line-height: 1rem;
     font-weight: 600;
-    background-color: var(--success-light);
-    color: var(--success);
+    background-color: var(--success);
+    color: white;
     text-transform: uppercase;
     letter-spacing: 0.025em;
   }
