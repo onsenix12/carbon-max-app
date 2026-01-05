@@ -18,6 +18,7 @@ export * from './cards/AIInsightCard';
 export * from './charts/ScopeDonutChart';
 export * from './charts/TrendLineChart';
 export * from './charts/HourlyEmissionsChart';
+export * from './charts/ForecastChart';
 
 // Tables
 export * from './tables/AirlineLeaderboard';
