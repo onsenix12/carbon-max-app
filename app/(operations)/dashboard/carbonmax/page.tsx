@@ -69,6 +69,15 @@ export default function CarbonMaxPage() {
           <CompactHourlyChart
             data={hourlyData}
             valueFormatter={(v) => `${v} kg`}
+            calculation={{
+              title: 'CarbonMax Hourly CO₂ Avoided',
+              methodology: `Hourly CO₂ avoided = Sum of all user actions (Green Meals + Plastic Avoided + SAF Contributions) per hour. Total daily = ${(summary.totalCO2Avoided / 1000).toFixed(1)} tCO2e`,
+              factors: [
+                { name: 'Green Meals Impact', value: summary.totalGreenMeals, unit: 'meals', source: 'Lower carbon meal choices' },
+                { name: 'Plastic Avoided Impact', value: summary.totalPlasticAvoided, unit: 'items', source: 'Reusable alternatives' },
+                { name: 'SAF Contributions', value: summary.totalSAFContributions, unit: 'contributions', source: 'User SAF purchases' },
+              ],
+            }}
           />
         </div>
         

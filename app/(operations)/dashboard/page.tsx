@@ -135,6 +135,15 @@ export default function OverviewPage() {
             segments={scopeSegments}
             centerValue={todayData.totalEmissions.toFixed(0)}
             centerLabel="tCO2e"
+            calculation={{
+              title: 'Emissions by Scope Breakdown',
+              methodology: `Total Emissions = Scope 1 + Scope 2 + Scope 3 = ${todayData.scope1.total.toFixed(1)} + ${todayData.scope2.total.toFixed(1)} + ${todayData.scope3.total.toFixed(1)} = ${todayData.totalEmissions.toFixed(1)} tCO2e`,
+              factors: [
+                { name: 'Scope 1', value: todayData.scope1.total, unit: 'tCO2e', source: 'Direct measurement' },
+                { name: 'Scope 2', value: todayData.scope2.total, unit: 'tCO2e', source: 'SMART meters × Grid EF' },
+                { name: 'Scope 3', value: todayData.scope3.total, unit: 'tCO2e', source: 'Activity-based calculation' },
+              ],
+            }}
           />
         </div>
         
@@ -146,6 +155,14 @@ export default function OverviewPage() {
           <CompactTrendChart
             data={weeklyTrend}
             valueFormatter={(v) => `${v.toLocaleString()} tCO2e`}
+            calculation={{
+              title: '7-Day Emissions Trend',
+              methodology: `Daily emissions calculated as sum of Scope 1, Scope 2, and Scope 3 emissions. Weekly average = (Day 1 + Day 2 + ... + Day 7) / 7 = ${(weeklyTrend.reduce((sum, d) => sum + d.value, 0) / weeklyTrend.length).toFixed(1)} tCO2e/day`,
+              factors: [
+                { name: 'Daily Calculation', value: 1, unit: 'sum of scopes', source: 'Scope 1 + Scope 2 + Scope 3' },
+                { name: 'Weekly Average', value: weeklyTrend.reduce((sum, d) => sum + d.value, 0) / weeklyTrend.length, unit: 'tCO2e/day', source: '7-day rolling average' },
+              ],
+            }}
           />
         </div>
       </div>

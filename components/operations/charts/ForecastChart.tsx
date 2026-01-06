@@ -4,6 +4,9 @@
 
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { Info } from 'lucide-react';
+import { CalculationInfoModal } from '@/components/operations/cards/CalculationInfoModal';
+import type { CalculationFactor } from '@/lib/emissions/types';
 
 interface ForecastDataPoint {
   date: string;
@@ -17,14 +20,21 @@ interface ForecastChartProps {
   data: ForecastDataPoint[];
   height?: number;
   className?: string;
+  calculation?: {
+    title: string;
+    methodology: string;
+    factors: CalculationFactor[];
+  };
 }
 
 export function ForecastChart({
   data,
   height = 300,
   className,
+  calculation,
 }: ForecastChartProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [showCalcModal, setShowCalcModal] = useState(false);
   
   // Find the split point between actual and predicted
   const actualEndIndex = data.findIndex(d => d.actual === undefined);
@@ -365,6 +375,39 @@ export function ForecastChart({
           </>
         )}
       </div>
+      
+      {/* Calculation Formula Display */}
+      {calculation && (
+        <>
+          <div className="mt-4 pt-4 border-t border-slate-100">
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xs font-medium text-slate-600">Calculation Formula:</span>
+                  <button
+                    onClick={() => setShowCalcModal(true)}
+                    className="text-slate-400 hover:text-slate-600 transition-colors p-0.5"
+                    aria-label="View detailed calculation methodology"
+                  >
+                    <Info className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <p className="text-xs text-slate-500 font-mono break-words">
+                  {calculation.methodology}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <CalculationInfoModal
+            isOpen={showCalcModal}
+            onClose={() => setShowCalcModal(false)}
+            title={calculation.title}
+            methodology={calculation.methodology}
+            factors={calculation.factors}
+          />
+        </>
+      )}
     </div>
   );
 }

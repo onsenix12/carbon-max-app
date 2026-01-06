@@ -110,6 +110,15 @@ export default function AircraftPage() {
             segments={phaseSegments}
             centerValue={data.emissions.total.toFixed(0)}
             centerLabel="tCO2e"
+            calculation={{
+              title: 'Aircraft Emissions by Flight Phase',
+              methodology: `Total Aircraft Emissions = LTO Cycle + Taxi + APU = ${data.emissions.lto.toFixed(1)} + ${data.emissions.taxi.toFixed(1)} + ${data.emissions.apu.toFixed(1)} = ${data.emissions.total.toFixed(1)} tCO2e`,
+              factors: [
+                { name: 'LTO Cycle', value: data.emissions.lto, unit: 'tCO2e', source: 'ICAO Doc 9889' },
+                { name: 'Taxi Operations', value: data.emissions.taxi, unit: 'tCO2e', source: 'Calculated from taxi times' },
+                { name: 'APU Usage', value: data.emissions.apu, unit: 'tCO2e', source: 'Estimated gate time' },
+              ],
+            }}
           />
         </div>
         
@@ -134,7 +143,17 @@ export default function AircraftPage() {
         <h3 className="text-lg font-semibold text-slate-900 mb-4">
           Emissions by Hour
         </h3>
-        <HourlyEmissionsChart data={data.hourlyPattern} />
+        <HourlyEmissionsChart 
+          data={data.hourlyPattern}
+          calculation={{
+            title: 'Hourly Aircraft Emissions',
+            methodology: `Hourly emissions = Sum of all flight operations (LTO + Taxi + APU) per hour. Total daily = ${data.hourlyPattern.reduce((sum, h) => sum + h.emissions, 0).toFixed(1)} tCO2e`,
+            factors: [
+              { name: 'Hourly Calculation', value: 1, unit: 'sum of operations', source: 'LTO + Taxi + APU per hour' },
+              { name: 'Peak Hour', value: Math.max(...data.hourlyPattern.map(h => h.emissions)), unit: 'tCO2e', source: '08:00-10:00 (morning departures)' },
+            ],
+          }}
+        />
         <p className="text-sm text-slate-500 mt-4">
           Peak: 08:00-10:00 (morning departures)
         </p>
