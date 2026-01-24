@@ -157,11 +157,17 @@ export default function OverviewPage() {
             valueFormatter={(v) => `${v.toLocaleString()} tCO2e`}
             calculation={{
               title: '7-Day Emissions Trend',
-              methodology: `Daily emissions calculated as sum of Scope 1, Scope 2, and Scope 3 emissions. Weekly average = (Day 1 + Day 2 + ... + Day 7) / 7 = ${(weeklyTrend.reduce((sum, d) => sum + d.value, 0) / weeklyTrend.length).toFixed(1)} tCO2e/day`,
-              factors: [
-                { name: 'Daily Calculation', value: 1, unit: 'sum of scopes', source: 'Scope 1 + Scope 2 + Scope 3' },
-                { name: 'Weekly Average', value: weeklyTrend.reduce((sum, d) => sum + d.value, 0) / weeklyTrend.length, unit: 'tCO2e/day', source: '7-day rolling average' },
-              ],
+              methodology: weeklyTrend.length > 0
+                ? `Daily emissions calculated as sum of Scope 1, Scope 2, and Scope 3 emissions. Weekly average = (Day 1 + Day 2 + ... + Day 7) / 7 = ${(weeklyTrend.reduce((sum, d) => sum + d.value, 0) / weeklyTrend.length).toFixed(1)} tCO2e/day`
+                : 'Daily emissions calculated as sum of Scope 1, Scope 2, and Scope 3 emissions. Weekly average = (Day 1 + Day 2 + ... + Day 7) / 7',
+              factors: weeklyTrend.length > 0
+                ? [
+                    { name: 'Daily Calculation', value: 1, unit: 'sum of scopes', source: 'Scope 1 + Scope 2 + Scope 3' },
+                    { name: 'Weekly Average', value: weeklyTrend.reduce((sum, d) => sum + d.value, 0) / weeklyTrend.length, unit: 'tCO2e/day', source: '7-day rolling average' },
+                  ]
+                : [
+                    { name: 'Daily Calculation', value: 1, unit: 'sum of scopes', source: 'Scope 1 + Scope 2 + Scope 3' },
+                  ],
             }}
           />
         </div>

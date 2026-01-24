@@ -34,14 +34,59 @@ export function CompactTrendChart({
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [showCalcModal, setShowCalcModal] = useState(false);
   
-  const values = data.map(d => d.value);
+  // Filter out invalid values and ensure we have valid data
+  const validData = data.filter(d => d != null && typeof d.value === 'number' && !isNaN(d.value) && isFinite(d.value));
+  const values = validData.map(d => d.value);
+  
+  // Handle empty or invalid data
+  if (validData.length === 0 || values.length === 0) {
+    return (
+      <div className={cn('space-y-3', className)}>
+        <div className="flex items-center justify-center" style={{ height: '128px' }}>
+          <p className="text-sm text-slate-400">No data available</p>
+        </div>
+        {calculation && (
+          <>
+            <div className="mt-4 pt-4 border-t border-slate-100">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-medium text-slate-600">Calculation Formula:</span>
+                    <button
+                      onClick={() => setShowCalcModal(true)}
+                      className="text-slate-400 hover:text-slate-600 transition-colors p-0.5"
+                      aria-label="View detailed calculation methodology"
+                    >
+                      <Info className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                  <p className="text-xs text-slate-500 font-mono break-words">
+                    {calculation.methodology}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <CalculationInfoModal
+              isOpen={showCalcModal}
+              onClose={() => setShowCalcModal(false)}
+              title={calculation.title}
+              methodology={calculation.methodology}
+              factors={calculation.factors}
+            />
+          </>
+        )}
+      </div>
+    );
+  }
+  
   const maxValue = Math.max(...values, 1) * 1.15; // Add some padding, ensure at least 1
   
   return (
     <div className={cn('space-y-3', className)}>
       {/* Chart bars */}
       <div className="flex items-end justify-between gap-1.5" style={{ height: '128px' }}>
-        {data.map((point, i) => {
+        {validData.map((point, i) => {
           const heightPercent = (point.value / maxValue) * 100;
           const barHeight = (heightPercent / 100) * 128; // Calculate actual pixel height
           const isHovered = hoveredIndex === i;
@@ -89,12 +134,16 @@ export function CompactTrendChart({
       <div className="flex items-center justify-between pt-2 border-t border-slate-100">
         <div className="text-xs text-slate-500">
           Avg: <span className="font-medium text-slate-700">
-            {valueFormatter(Math.round(values.reduce((a, b) => a + b, 0) / values.length))}
+            {values.length > 0 
+              ? valueFormatter(Math.round(values.reduce((a, b) => a + b, 0) / values.length))
+              : 'N/A'}
           </span>
         </div>
         <div className="text-xs text-slate-500">
           Peak: <span className="font-medium text-slate-700">
-            {valueFormatter(Math.max(...values))}
+            {values.length > 0 
+              ? valueFormatter(Math.max(...values))
+              : 'N/A'}
           </span>
         </div>
       </div>

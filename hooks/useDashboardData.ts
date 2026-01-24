@@ -63,35 +63,39 @@ function getTodayData(): DailyEmissions {
 
 /**
  * Generate weekly trend data from the 30-day dataset
+ * Uses the last 7 entries from the data file to ensure we always have data
  */
 function generateWeeklyTrend(): WeeklyDataPoint[] {
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const today = new Date();
-  const weeklyData: WeeklyDataPoint[] = [];
   
-  // Get last 7 days of data
-  for (let i = 6; i >= 0; i--) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().split('T')[0];
-    
-    const dayData = dailyEmissionsData.dailyEmissions.find(
-      (entry) => entry.date === dateStr
-    );
-    
-    if (dayData) {
-      const dayIndex = date.getDay();
-      const dayName = days[dayIndex === 0 ? 6 : dayIndex - 1]; // Adjust for Monday = 0
-      
-      weeklyData.push({
-        label: dayName,
-        value: dayData.totalEmissions,
-        target: dailyEmissionsData.metadata.baseline.dailyAverage * 0.95, // 5% below baseline
-      });
+  // Get the last 7 entries from the data file
+  const last7Entries = dailyEmissionsData.dailyEmissions.slice(-7);
+  
+  // If we have fewer than 7 entries, duplicate the last one to fill the array
+  if (last7Entries.length < 7 && last7Entries.length > 0) {
+    const lastEntry = last7Entries[last7Entries.length - 1];
+    while (last7Entries.length < 7) {
+      last7Entries.push(lastEntry);
     }
   }
   
-  return weeklyData;
+  // If no data at all, return empty array (component will handle this)
+  if (last7Entries.length === 0) {
+    return [];
+  }
+  
+  // Map to WeeklyDataPoint format with proper day labels
+  return last7Entries.map((entry, index) => {
+    const date = new Date(entry.date);
+    const dayIndex = date.getDay();
+    const dayName = days[dayIndex === 0 ? 6 : dayIndex - 1]; // Adjust for Monday = 0
+    
+    return {
+      label: dayName,
+      value: entry.totalEmissions,
+      target: dailyEmissionsData.metadata.baseline.dailyAverage * 0.95, // 5% below baseline
+    };
+  });
 }
 
 export function useDashboardData(): DashboardData {
